@@ -1,0 +1,10 @@
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\bin\Debug\MaximumTrafficFlow.exe.config
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\bin\Debug\MaximumTrafficFlow.exe
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\bin\Debug\MaximumTrafficFlow.pdb
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\obj\Debug\MaximumTrafficFlow.csproj.AssemblyReference.cache
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\obj\Debug\MaximumTrafficFlow.Form1.resources
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\obj\Debug\MaximumTrafficFlow.Properties.Resources.resources
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\obj\Debug\MaximumTrafficFlow.csproj.GenerateResource.cache
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\obj\Debug\MaximumTrafficFlow.csproj.CoreCompileInputs.cache
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\obj\Debug\MaximumTrafficFlow.exe
+E:\Artem\Аспирантура\Максимальный поток\MaximumTrafficFlow\MaximumTrafficFlow\obj\Debug\MaximumTrafficFlow.pdb
