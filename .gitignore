@@ -119,3 +119,7 @@ Backup*/
 UpgradeLog*.htm
 _ServiceFabricBackup/
 *.rptproj.bak
+
+# Мои игноры
+*.pdb   
+*.exe

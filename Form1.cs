@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TreeView;
 
 namespace MaximumTrafficFlow
 {
@@ -17,61 +19,112 @@ namespace MaximumTrafficFlow
             InitializeComponent();
         }
 
-        //Vertices - Вершины графа
-
-        int[,] matrix = new int[6, 6]
-        {
-            {0,6,2,0,0,0 },
-            {4,0,8,4,0,0 },
-            {8,8,0,0,0,0 },
-            {7,9,2,0,8,2 },
-            {0,6,4,3,0,2 },
-            {0,0,0,8,10,0 }
-        };
-        List<int> usedVertices = new List<int>();
-        List<List<int>> connectedVertices = new List<List<int>>();
-
         private void button1_Click(object sender, EventArgs e)
         {
-            StartIterateMatrix();
+            Graph graph = new Graph();
+            graph.CreateListConnectedVertices();
+            List<int> path = new List<int>();
+            path = graph.BuildPath(graph.connectedVertices);
+
         }
 
-        void StartIterateMatrix()
+        class Graph
         {
-            for (int i = 0; i < matrix.GetLength(0); i++)
+            public Graph()
             {
-                List<int> rowVertices = new List<int>();        
-                for (int j = 0; j < matrix.GetLength(1); j++)
+                Matrix = new int[6, 6]
                 {
-                    rowVertices.Add(matrix[i,j]);
-                }
-                connectedVertices.Add(FindConnectedVertices(rowVertices, i));
+                    {0,6,2,0,0,0 },
+                    {4,0,8,4,0,0 },
+                    {8,8,0,0,0,0 },
+                    {7,9,2,0,8,2 },
+                    {0,6,4,3,0,2 },
+                    {0,0,0,8,10,0 }
+                };
             }
-        }
+            public int[,] Matrix { get; set; }
+            
+            public List<List<int>> connectedVertices = new List<List<int>>();
 
-        List<int> FindConnectedVertices(List<int> rowVertices, int numberRow)
-        {
-            List<int> connectedVertices = new List<int>(); 
-            connectedVertices.Add(numberRow + 1);
-            usedVertices.Add(numberRow + 1);
-            for (int indexVertex = 0; indexVertex < rowVertices.Count; indexVertex++)
+            public void CreateListConnectedVertices()
             {
-                if (rowVertices[indexVertex] > 0 && CheckIndividuality(indexVertex + 1))
+                List<int> usedVertices = new List<int>();
+                for (int numberRow = 0; numberRow < Matrix.GetLength(0); numberRow++)
                 {
-                    connectedVertices.Add(indexVertex + 1);
-                    usedVertices.Add(indexVertex + 1);
+                    List<int> rowVertices = new List<int>();
+                    for (int j = 0; j < Matrix.GetLength(1); j++)
+                    {
+                        rowVertices.Add(Matrix[numberRow, j]);
+                    }
+                    connectedVertices.Add(FindConnectedVerticesInRow(rowVertices, numberRow, usedVertices));
                 }
             }
-            return connectedVertices;
-        }
 
-        bool CheckIndividuality(int indexVertex)
-        {
-            foreach (var usedVertex in usedVertices)
+            List<int> FindConnectedVerticesInRow(List<int> rowVertices, int numberRow, List<int> usedVertices)
             {
-                if(usedVertex == indexVertex) return false;
+                List<int> connectedVerticesInRow = new List<int>();
+                connectedVerticesInRow.Add(numberRow + 1);
+                usedVertices.Add(numberRow + 1);
+                for (int indexVertex = 0; indexVertex < rowVertices.Count; indexVertex++)
+                {
+                    if (rowVertices[indexVertex] > 0 && CheckIndividuality(indexVertex + 1, usedVertices))
+                    {
+                        connectedVerticesInRow.Add(indexVertex + 1);
+                        usedVertices.Add(indexVertex + 1);
+                    }
+                }
+                return connectedVerticesInRow;
             }
-            return true;
+
+            bool CheckIndividuality(int indexVertex, List<int> usedVertices)
+            {
+                foreach (var usedVertex in usedVertices)
+                {
+                    if (usedVertex == indexVertex) return false;
+                }
+                return true;
+            }
+
+            List<int> RemoveEmptyVertices(List<int> lineSegment, ref int targetVertex)
+            {
+                for (int index = lineSegment.Count - 1; index > 0; index--)
+                {
+                    if (lineSegment[index] != targetVertex && index != 0) lineSegment.RemoveAt(index);
+                }
+                if(lineSegment.Count > 1) targetVertex = lineSegment[0];
+                return lineSegment;
+            }
+
+            public List<int> BuildPath(List<List<int>> connectedVertices)
+            {
+                List<int> path = new List<int>();
+                int targetVertex = Matrix.GetLength(0);
+                List<List<int>> reverseConnectedVertices = Enumerable.Reverse(connectedVertices).ToList();
+                foreach (List<int> lineSegment in reverseConnectedVertices) 
+                {
+                    RemoveEmptyVertices(lineSegment, ref targetVertex);
+                    if (lineSegment.Count > 1) 
+                    {
+                        path.Add(lineSegment[lineSegment.Count - 1]);
+                        path.Add(lineSegment[0]);
+                    }
+                }
+                return path;
+            }
+
         }
+        //void PrintMatrix(List<List<int>> matrix)
+        //{
+        //    string line = "";
+        //    foreach (List<int> list in matrix)
+        //    {
+        //        foreach (int num in list)
+        //        {
+        //            line += num.ToString() + "\t";
+        //        }
+        //        textBox1.Text += line + "\r\n";
+        //        line = "";
+        //    }
+        //}
     }
 }
