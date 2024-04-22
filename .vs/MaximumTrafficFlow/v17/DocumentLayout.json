@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{347A62E7-E03F-42A5-AB56-CA565D401702}|MaximumTrafficFlow\\MaximumTrafficFlow.csproj|E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\maximumtrafficflow\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{347A62E7-E03F-42A5-AB56-CA565D401702}|MaximumTrafficFlow\\MaximumTrafficFlow.csproj|solutionrelative:maximumtrafficflow\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{347A62E7-E03F-42A5-AB56-CA565D401702}|MaximumTrafficFlow\\MaximumTrafficFlow.csproj|e:\\artem\\\u0430\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u043C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\maximumtrafficflow\\maximumtrafficflow\\xplusdelta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{347A62E7-E03F-42A5-AB56-CA565D401702}|MaximumTrafficFlow\\MaximumTrafficFlow.csproj|solutionrelative:maximumtrafficflow\\xplusdelta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DA2BA62-21D1-465A-A410-8535DF0DEF37}|XplusDelta.Test\\XplusDelta.Test.csproj|E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\xplusdelta.test\\xplusdeltatest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7DA2BA62-21D1-465A-A410-8535DF0DEF37}|XplusDelta.Test\\XplusDelta.Test.csproj|solutionrelative:xplusdelta.test\\xplusdeltatest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{347A62E7-E03F-42A5-AB56-CA565D401702}|MaximumTrafficFlow\\MaximumTrafficFlow.csproj|E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\maximumtrafficflow\\matrix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{347A62E7-E03F-42A5-AB56-CA565D401702}|MaximumTrafficFlow\\MaximumTrafficFlow.csproj|solutionrelative:maximumtrafficflow\\matrix.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{347A62E7-E03F-42A5-AB56-CA565D401702}|MaximumTrafficFlow\\MaximumTrafficFlow.csproj|E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\maximumtrafficflow\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{347A62E7-E03F-42A5-AB56-CA565D401702}|MaximumTrafficFlow\\MaximumTrafficFlow.csproj|solutionrelative:maximumtrafficflow\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "XplusDeltaTest.cs",
+              "DocumentMoniker": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\XplusDelta.Test\\XplusDeltaTest.cs",
+              "RelativeDocumentMoniker": "XplusDelta.Test\\XplusDeltaTest.cs",
+              "ToolTip": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\XplusDelta.Test\\XplusDeltaTest.cs",
+              "RelativeToolTip": "XplusDelta.Test\\XplusDeltaTest.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-22T10:08:47.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Matrix.cs",
+              "DocumentMoniker": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\MaximumTrafficFlow\\Matrix.cs",
+              "RelativeDocumentMoniker": "MaximumTrafficFlow\\Matrix.cs",
+              "ToolTip": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\MaximumTrafficFlow\\Matrix.cs",
+              "RelativeToolTip": "MaximumTrafficFlow\\Matrix.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T20:28:19.745Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "XplusDelta.cs",
+              "DocumentMoniker": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\MaximumTrafficFlow\\XplusDelta.cs",
+              "RelativeDocumentMoniker": "MaximumTrafficFlow\\XplusDelta.cs",
+              "ToolTip": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\MaximumTrafficFlow\\XplusDelta.cs",
+              "RelativeToolTip": "MaximumTrafficFlow\\XplusDelta.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-21T15:12:00.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\MaximumTrafficFlow\\Form1.cs",
+              "RelativeDocumentMoniker": "MaximumTrafficFlow\\Form1.cs",
+              "ToolTip": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\MaximumTrafficFlow\\Form1.cs",
+              "RelativeToolTip": "MaximumTrafficFlow\\Form1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T09:16:34.621Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "DocumentMoniker": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\MaximumTrafficFlow\\Form1.cs",
+              "RelativeDocumentMoniker": "MaximumTrafficFlow\\Form1.cs",
+              "ToolTip": "E:\\Artem\\\u0410\u0441\u043F\u0438\u0440\u0430\u043D\u0442\u0443\u0440\u0430\\\u041C\u0430\u043A\u0441\u0438\u043C\u0430\u043B\u044C\u043D\u044B\u0439 \u043F\u043E\u0442\u043E\u043A\\MaximumTrafficFlow\\MaximumTrafficFlow\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "RelativeToolTip": "MaximumTrafficFlow\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-16T09:13:57.713Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
