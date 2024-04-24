@@ -127,3 +127,7 @@ _ServiceFabricBackup/
 *.json
 /vs/MaximumTrafficFlow/v17/*.json
 /vs/MaximumTrafficFlow/v17/*.suo
+MaximumTrafficFlow.sln
+Graph.Test/Graph.Test.csproj
+Graph.Test/Properties/AssemblyInfo.cs
+MaximumTrafficFlow/MaximumTrafficFlow.csproj
