@@ -20,6 +20,26 @@ namespace MaximumTrafficFlow
 
         private void button1_Click(object sender, EventArgs e)
         {
+            List<List<int>> allPath = new List<List<int>>();
+            //int[,] matrix = new int[,]
+            //{
+            //    {0,6900,0,0,0,0,0,9200,0,0,4600,2300,0,0,0 },
+            //    {0,0,4600,4600,0,0,0,0,0,0,0,0,0,0,0 },
+            //    {0,0,0,4600,4600,0,0,0,0,0,0,0,0,0,0 },
+            //    {0,0,2300,0,0,0,6900,0,0,0,0,0,0,0,0 },
+            //    {0,0,0,0,0,4600,0,0,0,4600,0,0,0,0,0 },
+            //    {0,0,0,0,2300,0,2300,0,0,0,0,0,0,0,0 },
+            //    {0,0,0,0,0,2300,0,4600,0,0,0,0,0,0,0 },
+            //    {0,0,0,0,0,0,0,0,6900,0,0,0,0,4600,0 },
+            //    {0,0,0,0,0,0,0,6900,0,6900,0,0,0,0,0 },
+            //    {0,0,0,0,0,0,0,0,6900,0,4600,0,0,0,0 },
+            //    {0,0,0,0,0,0,0,0,0,0,0,6900,0,0,0 },
+            //    {0,0,0,0,0,0,0,0,0,0,0,0,4600,0,6900 },
+            //    {0,0,0,0,0,0,0,0,0,0,0,4600,0,4600,4600 },
+            //    {0,0,0,0,0,0,0,0,0,0,0,0,4600,0,4600 },
+            //    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
+            //};
+
             int[,] matrix = new int[6, 6]
             {
                 {0,7,4,2,0,0 },
@@ -30,10 +50,11 @@ namespace MaximumTrafficFlow
                 {0,0,0,0,0,0 }
             };
             Matrix connectionMatrix = new Matrix(matrix);
-            Graph graph = new Graph(connectionMatrix);
-            List<List<int>> allPath = new List<List<int>>();
-            allPath = graph.FindAllPath();
-            textBox1.Text = "1";
+            Graph graph = new Graph(new Matrix((int[,])matrix.Clone())); //Клонирование матрицы в обьект Matrix который в новой ссылке
+            Matrix flowMatrix = new Matrix(graph.GetFlowMatrix().Arrayy);
+            Matrix rMinusX = RminusX.StartProcess(connectionMatrix, flowMatrix);
+            rMinusX.PrintMatrix(textBox1);
+
 
 
             //int[,] matrixRminusXn = new int[6, 6]
@@ -44,15 +65,6 @@ namespace MaximumTrafficFlow
             //    {7,9,2,0,8,2 },
             //    {0,6,4,3,0,2 },
             //    {0,0,0,8,10,0 }
-            //};
-            //int[,] matrixXn = new int[6, 6]
-            //{
-            //    {0,1,2,2,0,0 },
-            //    {-1,0,0,0,1,0 },
-            //    {-2,0,0,0,2,0 },
-            //    {-2,0,0,0,0,2 },
-            //    {0,-1,-2,0,0,3 },
-            //    {0,0,0,-2,-3,0 }
             //};
 
             //Matrix Xn = new Matrix(matrixXn);

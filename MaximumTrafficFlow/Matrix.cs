@@ -11,22 +11,24 @@ namespace MaximumTrafficFlow
     {
         public Matrix(int[,] array)
         {
-            Array = array;
+            Arrayy = array;
         }
-        public int[,] Array { get; set; }
+        public int[,] Arrayy { get; set; }
 
         public void PrintMatrix(TextBox textBox)
         {
             string row = "";
-            for (int i = 0; i < Array.GetLength(0); i++)
+            for (int i = 0; i < Arrayy.GetLength(0); i++)
             {
-                for (int j = 0; j < Array.GetLength(1); j++)
+                for (int j = 0; j < Arrayy.GetLength(1); j++)
                 {
-                    row += Array[i, j].ToString() + "\t";
+                    row += Arrayy[i, j].ToString() + "\t";
                 }
                 textBox.Text += row + "\r\n";
                 row = "";
             }
         }
+
+
     }
 }

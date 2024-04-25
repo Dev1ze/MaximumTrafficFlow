@@ -131,3 +131,4 @@ MaximumTrafficFlow.sln
 Graph.Test/Graph.Test.csproj
 Graph.Test/Properties/AssemblyInfo.cs
 MaximumTrafficFlow/MaximumTrafficFlow.csproj
+MaximumTrafficFlow/Form1.Designer.cs

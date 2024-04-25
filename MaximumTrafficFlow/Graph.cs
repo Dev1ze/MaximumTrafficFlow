@@ -1,38 +1,97 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MaximumTrafficFlow
 {
     public class Graph
     {
-        public Matrix ConnectionsMatrix { get; }
-        private Matrix FlowMatrix { get; set; }
-        private int Vertices { get; set; }
+        public Matrix ConnectionsMatrix { get; } //Матрица смежности
+        public Matrix FlowMatrix { get; } //Матрица потока
+        public int Vertices { get; }
+        private int CountRow { get; set; }
+        private int CountColumn { get; set; }
+
         public Graph(Matrix connectionsMatrix)
         {
-            Vertices = connectionsMatrix.Array.GetLength(0);
+            CountRow = connectionsMatrix.Arrayy.GetLength(0);
+            CountColumn = connectionsMatrix.Arrayy.GetLength(1);
+            Vertices = connectionsMatrix.Arrayy.GetLength(0);
             ConnectionsMatrix = connectionsMatrix;
+            FlowMatrix = new Matrix(CreateEmptyMatrix());
         }
 
-        private void DFSAlgoritm(int source, int stock, bool[] isVisited, List<int> path, List<List<int>> allPath)
+        private int[,] CreateEmptyMatrix()
+        {
+            int[,] emptyMatrix = new int[CountColumn, CountRow];
+            for (int i = 1; i < CountColumn; i++)
+            {
+                for (int j = 1; j < CountRow; j++)
+                {
+                    emptyMatrix[i, j] = 0;
+                }
+            }
+            return emptyMatrix;
+        }
+
+        private int FindMinimumOnPath(List<int> path, int[,] Matrix)
+        {
+            int minimalGraphEdge = int.MaxValue;
+            List<int> graphEdges = new List<int>();
+            for (int indexPath = 0; indexPath + 1 < path.Count; indexPath++)
+            {
+                int column = path[indexPath];
+                int row = path[indexPath + 1];
+                graphEdges.Add(Matrix[column, row]);
+            }
+            foreach (var graphEdge in graphEdges)
+            {
+                if (graphEdge < minimalGraphEdge) minimalGraphEdge = graphEdge;
+            }
+            return minimalGraphEdge;
+        }
+
+        private void DFSAlgoritm(int source, int stock, bool[] isVisited, List<int> path, List<List<int>> allPaths)
         {
             isVisited[source] = true;
-            path.Add(source + 1);
+            path.Add(source);
 
             if(source == stock - 1)
             {
-                allPath.Add(new List<int>(path));
+                int minimalGraphEdge;
+                minimalGraphEdge = FindMinimumOnPath(path, ConnectionsMatrix.Arrayy);
+                if (minimalGraphEdge > 0)
+                {
+                    allPaths.Add(new List<int>(path));
+
+                    //Заполняем матрицу потока
+                    for (int i = 0; i + 1 < path.Count; i++)
+                    {
+                        int column = path[i];
+                        int row = path[i + 1];
+                        FlowMatrix.Arrayy[column, row] += minimalGraphEdge;
+                    }
+
+                    //Вычитаем из матрицы смежности данные по пути(path) по которому проехали
+                    for (int i = 0; i + 1 < path.Count; i++)
+                    {
+                        int column = path[i];
+                        int row = path[i + 1];
+                        ConnectionsMatrix.Arrayy[column, row] -= minimalGraphEdge;
+                    }
+                }
             }
             else
             {
-                for (int itemRow = 0; itemRow <= Vertices - 1; itemRow++)
+                for (int itemRow = Vertices - 1; itemRow > 0; itemRow--)
                 {
-                    if (ConnectionsMatrix.Array[source, itemRow] != 0 && !isVisited[itemRow])
+                    if (ConnectionsMatrix.Arrayy[source, itemRow] != 0 && !isVisited[itemRow])
                     {
-                        DFSAlgoritm(itemRow, stock, isVisited, path, allPath);
+                        DFSAlgoritm(itemRow, stock, isVisited, path, allPaths);
                     }
                 }
             }
@@ -41,15 +100,15 @@ namespace MaximumTrafficFlow
             isVisited[source] = false;
         }
         
-        public List<List<int>> FindAllPath()
+        public Matrix GetFlowMatrix()
         {
             int source = 0;
             int stock = Vertices;
             bool[] isVisited = new bool[Vertices];
             List<int> path = new List<int>();
-            List<List<int>> allPath = new List<List<int>>();
-            DFSAlgoritm(source, stock, isVisited, path, allPath);
-            return allPath;
+            List<List<int>> allPaths = new List<List<int>>();
+            DFSAlgoritm(source, stock, isVisited, path, allPaths);
+            return FlowMatrix;
         }
     }
 }

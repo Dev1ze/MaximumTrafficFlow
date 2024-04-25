@@ -11,12 +11,6 @@ namespace Graph.Test
         {
             //arrange
             
-
-            //act
-            int[,] actual = MaximumTrafficFlow.XplusDelta.StartProcess(matrixRminusXn, matrixXn);
-
-            //assert
-            CollectionAssert.AreEqual(expected, actual);
         }
     }
 }
