@@ -57,7 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MaximumTrafficFlow\MaximumTrafficFlow.csproj">
-      <Project>{347a62e7-e03f-42a5-ab56-ca565d401702}</Project>
+      <Project>{4247e78e-d0f2-4fa3-9008-8b6fcd963482}</Project>
       <Name>MaximumTrafficFlow</Name>
     </ProjectReference>
   </ItemGroup>
