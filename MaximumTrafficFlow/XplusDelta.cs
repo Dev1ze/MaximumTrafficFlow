@@ -8,16 +8,38 @@ namespace MaximumTrafficFlow
 {
     public static class XplusDelta
     {
-        public static int[,] StartProcess(int[,] matrixRminusDelta, int[,] matrixXn)
+        public static object[] StartProcess(Matrix matrixRminusDelta, Matrix matrixXn)
         {
+            object[] pathAndMinimalEdge = new object[2];
             List<List<int>> connectedVertices = new List<List<int>>();
             List<int> path = new List<int>();
             int minimalGraphEdge;
-            connectedVertices = CreateListConnectedVertices(matrixRminusDelta);
-            path = BuildPath(connectedVertices, matrixRminusDelta);
-            minimalGraphEdge = FindMinimumOnPath(path, matrixRminusDelta);
-            int[,] XplusDeltaResult = Sum(matrixXn, minimalGraphEdge, path);
-            return XplusDeltaResult;
+            connectedVertices = CreateListConnectedVertices(matrixRminusDelta.Arrayy);
+            path = BuildPath(connectedVertices, matrixRminusDelta.Arrayy);
+            if (path[0] == 1 && path[path.Count-1] == matrixXn.Arrayy.GetLength(0))
+            {
+                minimalGraphEdge = FindMinimumOnPath(path, matrixRminusDelta.Arrayy);
+                pathAndMinimalEdge[0] = minimalGraphEdge;
+                pathAndMinimalEdge[1] = path;
+                return pathAndMinimalEdge;
+            }
+            else
+            {
+                for(int i = 0; i < connectedVertices.Count; i++)
+                {
+                    if (connectedVertices[i].Count == 1) 
+                    {
+                        connectedVertices.RemoveAt(i);
+                        i--;
+                    }
+                }
+                pathAndMinimalEdge[0] = 0;
+                pathAndMinimalEdge[1] = connectedVertices;
+                return pathAndMinimalEdge;
+            }
+            
+            //int[,] XplusDeltaResult = Sum(matrixXn.Arrayy, minimalGraphEdge, path);
+            //return XplusDeltaResult;
         }
 
         static List<List<int>> CreateListConnectedVertices(int[,] matrix)
@@ -55,10 +77,11 @@ namespace MaximumTrafficFlow
         {
             List<int> path = new List<int>();
             int targetVertex = matrix.GetLength(0);
-            List<List<int>> reverseConnectedVertices = Enumerable.Reverse(connectedVertices).ToList();
+            List<List<int>> reverseConnectedVertices = new List<List<int>>();
+            reverseConnectedVertices = Enumerable.Reverse(connectedVertices).ToList();
             foreach (List<int> lineSegment in reverseConnectedVertices)
             {
-                RemoveEmptyVertices(lineSegment, ref targetVertex);
+                RemoveEmptyVertices(new List<int>(lineSegment), ref targetVertex);
                 if (lineSegment.Count > 1)
                 {
                     path.Add(lineSegment[lineSegment.Count - 1]);
@@ -104,7 +127,7 @@ namespace MaximumTrafficFlow
             return minimalGraphEdge;
         }
 
-        static int[,] Sum(int[,] Xn, int delta, List<int> path)
+        public static int[,] Sum(int[,] Xn, int delta, List<int> path)
         {
             for (int indexPath = 0; indexPath < path.Count; indexPath += 2)
             {
