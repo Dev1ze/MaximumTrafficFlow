@@ -8,7 +8,7 @@ namespace MaximumTrafficFlow
 {
     public static class XplusDelta
     {
-        public static object[] StartProcess(Matrix matrixRminusDelta, Matrix matrixXn)
+        public static object[] FindDelta(Matrix matrixRminusDelta, Matrix matrixXn)
         {
             object[] pathAndMinimalEdge = new object[2];
             List<List<int>> connectedVertices = new List<List<int>>();
@@ -16,7 +16,7 @@ namespace MaximumTrafficFlow
             int minimalGraphEdge;
             connectedVertices = CreateListConnectedVertices(matrixRminusDelta.Arrayy);
             path = BuildPath(connectedVertices, matrixRminusDelta.Arrayy);
-            if (path[0] == 1 && path[path.Count-1] == matrixXn.Arrayy.GetLength(0))
+            if (path[0] == matrixXn.Arrayy.GetLength(0) && path[path.Count-1] == 1)
             {
                 minimalGraphEdge = FindMinimumOnPath(path, matrixRminusDelta.Arrayy);
                 pathAndMinimalEdge[0] = minimalGraphEdge;
@@ -25,14 +25,6 @@ namespace MaximumTrafficFlow
             }
             else
             {
-                for(int i = 0; i < connectedVertices.Count; i++)
-                {
-                    if (connectedVertices[i].Count == 1) 
-                    {
-                        connectedVertices.RemoveAt(i);
-                        i--;
-                    }
-                }
                 pathAndMinimalEdge[0] = 0;
                 pathAndMinimalEdge[1] = connectedVertices;
                 return pathAndMinimalEdge;
@@ -81,11 +73,11 @@ namespace MaximumTrafficFlow
             reverseConnectedVertices = Enumerable.Reverse(connectedVertices).ToList();
             foreach (List<int> lineSegment in reverseConnectedVertices)
             {
-                RemoveEmptyVertices(new List<int>(lineSegment), ref targetVertex);
+                List<int> line = RemoveEmptyVertices(new List<int>(lineSegment), ref targetVertex);
                 if (lineSegment.Count > 1)
                 {
-                    path.Add(lineSegment[lineSegment.Count - 1]);
-                    path.Add(lineSegment[0]);
+                    path.Add(line[line.Count - 1]);
+                    path.Add(line[0]);
                 }
             }
             return path;
@@ -127,14 +119,14 @@ namespace MaximumTrafficFlow
             return minimalGraphEdge;
         }
 
-        public static int[,] Sum(int[,] Xn, int delta, List<int> path)
+        public static Matrix Sum(Matrix Xn, int delta, List<int> path)
         {
             for (int indexPath = 0; indexPath < path.Count; indexPath += 2)
             {
                 int column = path[indexPath];
                 int row = path[indexPath + 1];
-                Xn[row - 1, column - 1] += delta;
-                Xn[column - 1, row - 1] -= delta;
+                Xn.Arrayy[row - 1, column - 1] += delta;
+                Xn.Arrayy[column - 1, row - 1] -= delta;
             }
             return Xn;
         }
