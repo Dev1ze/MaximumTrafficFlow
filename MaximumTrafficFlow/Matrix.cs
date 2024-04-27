@@ -47,10 +47,11 @@ namespace MaximumTrafficFlow
 
         private Label SetLabel(Form form, string nameBlock, int heightBox)
         {
+            int sizeOneChar = 6;
             Label label = new Label();
             label.Text = nameBlock;
-            label.Location = new Point(40, (Heiht - 20) - (heightBox/2));
-            label.Width = nameBlock.Length * 6;
+            label.Width = TextRenderer.MeasureText(nameBlock,label.Font).Width;
+            label.Location = new Point(80 - label.Width, (Heiht - 20) - (heightBox/2));
             form.Controls.Add(label);
             return label;
         }
