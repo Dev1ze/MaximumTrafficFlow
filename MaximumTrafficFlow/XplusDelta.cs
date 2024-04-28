@@ -10,23 +10,32 @@ namespace MaximumTrafficFlow
     {
         public static object[] FindDelta(Matrix matrixRminusDelta, Matrix matrixXn)
         {
-            object[] pathAndMinimalEdge = new object[2];
+            object[] pathAndMinimalEdge = new object[3];
             List<List<int>> connectedVertices = new List<List<int>>();
             List<int> path = new List<int>();
             int minimalGraphEdge;
             connectedVertices = CreateListConnectedVertices(matrixRminusDelta.Arrayy);
             path = BuildPath(connectedVertices, matrixRminusDelta.Arrayy);
-            if (path[0] == matrixXn.Arrayy.GetLength(0) && path[path.Count-1] == 1)
+            if(path.Count != 0)
             {
-                minimalGraphEdge = FindMinimumOnPath(path, matrixRminusDelta.Arrayy);
-                pathAndMinimalEdge[0] = minimalGraphEdge;
-                pathAndMinimalEdge[1] = path;
+                if (path[0] == matrixXn.Arrayy.GetLength(0) && path[path.Count - 1] == 1)
+                {
+                    minimalGraphEdge = FindMinimumOnPath(path, matrixRminusDelta.Arrayy);
+                    pathAndMinimalEdge[0] = minimalGraphEdge;
+                    pathAndMinimalEdge[1] = path;
+                    pathAndMinimalEdge[2] = connectedVertices;
+                    return pathAndMinimalEdge;
+                }
+                pathAndMinimalEdge[0] = 0;
+                pathAndMinimalEdge[1] = 0;
+                pathAndMinimalEdge[2] = connectedVertices;
                 return pathAndMinimalEdge;
             }
             else
             {
                 pathAndMinimalEdge[0] = 0;
-                pathAndMinimalEdge[1] = connectedVertices;
+                pathAndMinimalEdge[1] = 0;
+                pathAndMinimalEdge[2] = connectedVertices;
                 return pathAndMinimalEdge;
             }
             
@@ -73,11 +82,11 @@ namespace MaximumTrafficFlow
             reverseConnectedVertices = Enumerable.Reverse(connectedVertices).ToList();
             foreach (List<int> lineSegment in reverseConnectedVertices)
             {
-                List<int> line = RemoveEmptyVertices(new List<int>(lineSegment), ref targetVertex);
-                if (lineSegment.Count > 1)
+                List<int> lineAfterRemoveItms = RemoveEmptyVertices(new List<int>(lineSegment), ref targetVertex);
+                if (lineAfterRemoveItms.Count > 1)
                 {
-                    path.Add(line[line.Count - 1]);
-                    path.Add(line[0]);
+                    path.Add(lineAfterRemoveItms[lineAfterRemoveItms.Count - 1]);
+                    path.Add(lineAfterRemoveItms[0]);
                 }
             }
             return path;
@@ -98,8 +107,17 @@ namespace MaximumTrafficFlow
             {
                 if (lineSegment[index] != targetVertex && index != 0) lineSegment.RemoveAt(index);
             }
-            if (lineSegment.Count > 1) targetVertex = lineSegment[0];
-            return lineSegment;
+            if (lineSegment.Count > 1)
+            {
+                targetVertex = lineSegment[0];
+                return lineSegment;
+            }
+            else 
+            {
+                lineSegment.Clear();
+                return lineSegment;
+            }
+
         }
 
         static int FindMinimumOnPath(List<int> path, int[,] Matrix)
