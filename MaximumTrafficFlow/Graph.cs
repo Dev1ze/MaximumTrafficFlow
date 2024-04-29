@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace MaximumTrafficFlow
 {
@@ -16,10 +17,12 @@ namespace MaximumTrafficFlow
         private int CountRow { get; set; }
         private int CountColumn { get; set; }
 
+        public List<List<int>> allPaths = new List<List<int>>(); 
+
         public Graph(Matrix connectionsMatrix)
         {
-            CountRow = connectionsMatrix.Arrayy.GetLength(0);
-            CountColumn = connectionsMatrix.Arrayy.GetLength(1);
+            CountRow = connectionsMatrix.Arrayy.GetLength(1);
+            CountColumn = connectionsMatrix.Arrayy.GetLength(0);
             Vertices = connectionsMatrix.Arrayy.GetLength(0);
             ConnectionsMatrix = connectionsMatrix;
             FlowMatrix = new Matrix(CreateEmptyMatrix());
@@ -106,9 +109,21 @@ namespace MaximumTrafficFlow
             int stock = Vertices;
             bool[] isVisited = new bool[Vertices];
             List<int> path = new List<int>();
-            List<List<int>> allPaths = new List<List<int>>();
             DFSAlgoritm(source, stock, isVisited, path, allPaths);
+            VertexPlusOne(allPaths);
             return FlowMatrix;
+        }
+
+        private void VertexPlusOne(List<List<int>> allPaths)
+        {
+            for (int i = 0; i < allPaths.Count; i++)
+            {
+                for (int j = 0; j < allPaths[i].Count; j++)
+                {
+                     allPaths[i][j] += 1;
+
+                }
+            }
         }
     }
 }
