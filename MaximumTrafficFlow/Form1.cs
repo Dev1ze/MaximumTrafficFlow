@@ -86,7 +86,7 @@ namespace MaximumTrafficFlow
             Matrix Xn = new Matrix(graph.GetFlowMatrix().Arrayy);
 
             //Matrix Xn = new Matrix(flow);
-            Window.Write(this, new Listing(graph.allPaths), "X0 = ");
+            Window.Write(this, new Listing(graph.allPaths[1]), "X0 = ");
             Window.NewLIne();
             Window.Write(this, connectionMatrix, "R = ");
             Window.Write(this, new Listing(graph.allPaths), "X0 = ");
