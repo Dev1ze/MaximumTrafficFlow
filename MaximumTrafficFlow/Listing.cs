@@ -13,26 +13,46 @@ namespace MaximumTrafficFlow
             List = list;
         }
 
+        public Listing(List<int> singleList)
+        {
+            SingleList = singleList;
+        }
+
         public List<List<int>> List { get; set; }
+        public List<int> SingleList { get; set; }
 
         public override string ToString()
         {
-            string text = "";
-            string row = "";
-            for (int i = 0; i < List.Count; i++)
+            if(List != null)
             {
-                for (int j = 0; j < List[i].Count; j++)
+                string text = "";
+                string row = "";
+                for (int i = 0; i < List.Count; i++)
                 {
-                    if (j == 0)
+                    for (int j = 0; j < List[i].Count; j++)
                     {
-                        row += List[i][j].ToString() + "\t";
+                        if (j == 0)
+                        {
+                            row += List[i][j].ToString() + "\t";
+                        }
+                        else row += List[i][j].ToString() + "\t";
                     }
-                    else row += List[i][j].ToString() + "\t";
+                    text += row + "\r\n";
+                    row = "";
                 }
-                text += row + "\r\n";
-                row = "";
+                return text;
             }
-            return text;
+
+            else if(SingleList != null)
+            {
+                string text = "";
+                foreach(var item in SingleList)
+                {
+                    text += item.ToString() + "\t";
+                }
+                return text;
+            }
+            else return string.Empty;
         }
 
         private int width;
@@ -42,14 +62,22 @@ namespace MaximumTrafficFlow
             get 
             {
                 int longestList = 0;
-                foreach (var path in List)
+                if (List != null)
                 {
-                    if (path.Count > longestList)
+                    foreach (var path in List)
                     {
-                        longestList = path.Count;
+                        if (path.Count > longestList)
+                        {
+                            longestList = path.Count;
+                        }
                     }
+                    return longestList;
                 }
-                return longestList;
+                else if(SingleList != null)
+                {
+                    return longestList = SingleList.Count;
+                }
+                else return 0;
             }
         }
 
@@ -59,7 +87,9 @@ namespace MaximumTrafficFlow
         {
             get 
             {
-                return List.Count; 
+                if (List != null) return List.Count;
+                else if (SingleList != null) return 2;
+                else return 0;
             }
         }
 
