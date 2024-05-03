@@ -27,14 +27,14 @@ namespace MaximumTrafficFlow
                     return pathAndMinimalEdge;
                 }
                 pathAndMinimalEdge[0] = 0;
-                pathAndMinimalEdge[1] = 0;
+                pathAndMinimalEdge[1] = new List<int>() { 0, 0, 0, };
                 pathAndMinimalEdge[2] = connectedVertices;
                 return pathAndMinimalEdge;
             }
             else
             {
                 pathAndMinimalEdge[0] = 0;
-                pathAndMinimalEdge[1] = 0;
+                pathAndMinimalEdge[1] = new List<int>() { 0, 0, 0, };
                 pathAndMinimalEdge[2] = connectedVertices;
                 return pathAndMinimalEdge;
             }

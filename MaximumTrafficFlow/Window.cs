@@ -12,58 +12,40 @@ namespace MaximumTrafficFlow
 {
     static class Window
     {
-        private static int startPositionY = 80;
+        private static int startPositionY = 60;
         private static int startPositionX = 60;
-        static int marginRight = 50;
-        static int marginBottom = startPositionY;
+        static int margin = 50;
+        static List<int> heigherBlock = new List<int>();
 
         public static void Write(Form1 form, IDataStructure objectPrint, string nameMatrix)
         {
-            int heightBox = 0;
-            TextBox textBox = SetTextBox(form, ref heightBox, objectPrint);
+            TextBox textBox = SetTextBox(form, objectPrint);
             textBox.Text = objectPrint.ToString();
             Label label = SetLabel(form, nameMatrix, textBox);
-            if ((startPositionY + heightBox) > marginBottom) marginBottom += heightBox;
+            heigherBlock.Add(textBox.Height);
         }
 
         public static void NewLIne()
         {
-            startPositionY = marginBottom + 50;
+            startPositionY += FindMaximumValue(heigherBlock) + margin;
             startPositionX = 60;
+            heigherBlock.Clear();
         }
 
-        private static TextBox SetTextBox(Form form, ref int heightBox, IDataStructure objectPrint)
+        private static TextBox SetTextBox(Form form, IDataStructure objectPrint)
         {
-            int matrixWidth = objectPrint.Width * 48; // Предполагаем начальную ширину матрицы
-            int matrixHeight = objectPrint.Heigth * 14; // Предполагаем начальную высоту матрицы
+            int matrixWidth = objectPrint.Width * 48;
+            int matrixHeight = objectPrint.Heigth * 14;
             TextBox textBox = new TextBox();
             textBox.WordWrap = true;
             textBox.Multiline = true; // Разрешаем многострочный режим
             textBox.Location = new Point(startPositionX, startPositionY); // Положение textBox'а
-            heightBox = matrixHeight;
             textBox.Width = matrixWidth;
             textBox.Height = matrixHeight;
-            startPositionX += matrixWidth + marginRight;
+            startPositionX += matrixWidth + margin;
             form.Controls.Add(textBox); // Добавляем textBox на форму
             return textBox;
         }
-
-        //private static TextBox SetTextBox(Form form, ref int heightBox, List<List<int>> connectedVertices, TextBox matrix)
-        //{
-        //    int Wigth;
-        //    TextBox textBox = new TextBox();
-        //    textBox.WordWrap = true;
-        //    textBox.Multiline = true; // Разрешаем многострочный режим
-        //    Wigth = matrix.Width + 20 + startPositionX;
-        //    textBox.Location = new Point(Wigth, matrix.Location.Y); // Положение каждого textBox'а
-        //    int matrixWidth = FindLongestList(connectedVertices) * 48; // Предполагаем начальную ширину матрицы
-        //    int matrixHeight = connectedVertices.Count * 14; // Предполагаем начальную высоту матрицы
-        //    heightBox = matrixHeight;
-        //    textBox.Width = matrixWidth; // Учитываем полосу прокрутки и небольшой отступ
-        //    textBox.Height = matrixHeight;
-        //    form.Controls.Add(textBox); // Добавляем textBox на форму
-        //    return textBox;
-        //}
 
         private static Label SetLabel(Form form, string nameBlock, TextBox textBox)
         {
@@ -73,6 +55,16 @@ namespace MaximumTrafficFlow
             label.Location = new Point(textBox.Location.X + ((textBox.Width / 2) - (label.Width / 2)), textBox.Location.Y - 20);
             form.Controls.Add(label);
             return label;
+        }
+
+        private static int FindMaximumValue(List<int> values)
+        {
+            int maxValue = 0;
+            foreach (var item in values)
+            {
+                if (item > maxValue) maxValue = item;
+            }
+            return maxValue;
         }
     }
 }

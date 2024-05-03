@@ -54,6 +54,7 @@
     </Compile>
     <Compile Include="Graph.cs" />
     <Compile Include="IDataStructure.cs" />
+    <Compile Include="IntValue.cs" />
     <Compile Include="Listing.cs" />
     <Compile Include="Matrix.cs" />
     <Compile Include="Window.cs" />
