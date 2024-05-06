@@ -77,6 +77,8 @@
             this.Text = "VisualGraph";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.VisualGraph_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VisualGraph_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VisualGraph_MouseMove);
+            this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VisualGraph_MouseUp);
             this.ResumeLayout(false);
             this.PerformLayout();
 
