@@ -57,6 +57,14 @@
     <Compile Include="IntValue.cs" />
     <Compile Include="Listing.cs" />
     <Compile Include="Matrix.cs" />
+    <Compile Include="Multitude.cs" />
+    <Compile Include="Node.cs" />
+    <Compile Include="VisualGraph.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VisualGraph.Designer.cs">
+      <DependentUpon>VisualGraph.cs</DependentUpon>
+    </Compile>
     <Compile Include="Window.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,6 +82,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="VisualGraph.resx">
+      <DependentUpon>VisualGraph.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -86,6 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="VisualGraph\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
