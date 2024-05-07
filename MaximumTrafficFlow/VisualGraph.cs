@@ -25,13 +25,14 @@ namespace MaximumTrafficFlow
             if (e.Button == MouseButtons.Left)
             {
                 nodes.Add(new Node(e.Location));
+                nodes[nodes.Count - 1].Number = nodes.Count;
                 Refresh();
             }
             if (e.Button == MouseButtons.Right)
             {
-                for(int i = 0; i < nodes.Count; i++)
+                for (int i = 0; i < nodes.Count; i++)
                 {
-                    if(Distance(e.Location, nodes[i].Position) < Node.Radius / 2)
+                    if (Distance(e.Location, nodes[i].Position) < Node.Radius)
                     {
                         selectedNodeIndex = i;
                         break;
@@ -56,9 +57,10 @@ namespace MaximumTrafficFlow
 
         private void VisualGraph_Paint(object sender, PaintEventArgs e)
         {
-            foreach (var node in nodes) 
+            foreach (var node in nodes)
             {
                 e.Graphics.FillEllipse(node.Color, node.Position.X - Node.Radius / 2, node.Position.Y - Node.Radius / 2, Node.Radius, Node.Radius);
+                e.Graphics.DrawString(node.Number.ToString(), Node.FontText, Brushes.White, node.Position.X - node.SizeNumber(node.Number).X / 2, node.Position.Y - node.SizeNumber(node.Number).Y / 2);
             }
         }
 
@@ -66,7 +68,5 @@ namespace MaximumTrafficFlow
         {
             return Math.Sqrt(Math.Pow(Math.Abs(mousePoint.X - nodePoint.X), 2) + Math.Pow(Math.Abs(mousePoint.Y - nodePoint.Y), 2));
         }
-
-
     }
 }
