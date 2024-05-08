@@ -9,17 +9,19 @@ namespace MaximumTrafficFlow
 {
     public class Edge
     {
-        public Edge(Point startPos, Point endPos, int startIndex, int endIndex)
+        public Edge(Point startPos, Point endPos, int startIndex, int endIndex, int valueStream)
         {
             StartPos = startPos;
             EndPos = endPos;
             StartIndex = startIndex;
             EndIndex = endIndex;
+            ValueStream = valueStream;
         }
         public Point StartPos { get; set; }
         public Point EndPos { get; set; }
         public int StartIndex { get; set; }
         public int EndIndex { get; set; }
+        public int ValueStream { get; set; }
         public Pen ColorEdge { get; set; } = new Pen(Color.Black, 2f);
     }
 }

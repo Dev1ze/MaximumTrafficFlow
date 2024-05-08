@@ -34,7 +34,7 @@ namespace MaximumTrafficFlow
             return new Point(width, height);
         }
 
-        public static void UpdateAllEdge(List<Edge> edges, int index, Point Position)
+        public static void UpdateRelatedEdge(List<Edge> edges, int index, Point Position)
         {
             foreach (Edge edge in edges)
             {

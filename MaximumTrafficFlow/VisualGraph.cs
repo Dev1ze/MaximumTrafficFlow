@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace MaximumTrafficFlow
 {
@@ -57,34 +58,57 @@ namespace MaximumTrafficFlow
 
         private void VisualGraph_Paint(object sender, PaintEventArgs e)
         {
-            for (int i = 0; i < nodes.Count; i++)
-            {
-                Node.UpdateAllEdge(Node.Edges, i, nodes[i].Position);
-                foreach (var edge in Node.Edges)
-                {
-                    e.Graphics.DrawLine(edge.ColorEdge, edge.StartPos.X, edge.StartPos.Y, edge.EndPos.X, edge.EndPos.Y);
-                }
-            }
-            foreach (var node in nodes)
-            {
-                e.Graphics.FillEllipse(node.Color, node.Position.X - Node.Radius / 2, node.Position.Y - Node.Radius / 2, Node.Radius, Node.Radius);
-                e.Graphics.DrawString(node.Number.ToString(), Node.FontText, Brushes.White, node.Position.X - node.SizeNumber(node.Number).X / 2, node.Position.Y - node.SizeNumber(node.Number).Y / 2);
-            }
-        }
-
-        private double Distance(Point mousePoint, Point nodePoint)
-        {
-            return Math.Sqrt(Math.Pow(Math.Abs(mousePoint.X - nodePoint.X), 2) + Math.Pow(Math.Abs(mousePoint.Y - nodePoint.Y), 2));
+            DrawEdges(e);
+            DrawNodes(e);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Point start = new Point(nodes[int.Parse(textBox1.Text) - 1].Position.X, nodes[int.Parse(textBox1.Text) - 1].Position.Y);
-            Point end = new Point(nodes[int.Parse(textBox2.Text) - 1].Position.X, nodes[int.Parse(textBox2.Text) - 1].Position.Y);
-            nodes[int.Parse(textBox1.Text) - 1].AddEdge(new Edge(start, end, int.Parse(textBox1.Text) - 1, int.Parse(textBox2.Text) - 1));
-            Node.UpdateAllEdge(Node.Edges, int.Parse(textBox1.Text) - 1, nodes[int.Parse(textBox1.Text) - 1].Position);
-            Node.UpdateAllEdge(Node.Edges, int.Parse(textBox2.Text) - 1, nodes[int.Parse(textBox2.Text) - 1].Position);
+            int startIndex = int.Parse(textBox1.Text) - 1;
+            int endIndex = int.Parse(textBox2.Text) - 1;
+            int valueStream = int.Parse(textBox3.Text);
+            Point startPos = new Point(nodes[startIndex].Position.X, nodes[startIndex].Position.Y);
+            Point endPos = new Point(nodes[endIndex].Position.X, nodes[endIndex].Position.Y);
+            nodes[startIndex].AddEdge(new Edge(startPos, endPos, startIndex, endIndex, valueStream));
+            Node.UpdateRelatedEdge(Node.Edges, startIndex, nodes[startIndex].Position);
+            Node.UpdateRelatedEdge(Node.Edges, endIndex, nodes[endIndex].Position);
             Refresh();
         }
+
+        private void DrawEdges(PaintEventArgs e)
+        {
+            for (int i = 0; i < nodes.Count; i++)
+            {
+                Node.UpdateRelatedEdge(Node.Edges, i, nodes[i].Position);
+                foreach (var edge in Node.Edges)
+                {
+                    e.Graphics.DrawLine(edge.ColorEdge, edge.StartPos.X, edge.StartPos.Y, edge.EndPos.X, edge.EndPos.Y);
+                    e.Graphics.DrawString(edge.ValueStream.ToString(), Node.FontText, Brushes.Black, HalfSegment(HalfSegment(edge.StartPos, edge.EndPos), edge.EndPos).X, HalfSegment(HalfSegment(edge.StartPos, edge.EndPos), edge.EndPos).Y);
+                }
+            }
+        }
+
+        private void DrawNodes(PaintEventArgs e)
+        {
+            Point nodeCenterPos;
+            foreach (var node in nodes)
+            {
+                nodeCenterPos = new Point(node.Position.X - node.SizeNumber(node.Number).X / 2, node.Position.Y - node.SizeNumber(node.Number).Y / 2);
+                e.Graphics.FillEllipse(node.Color, node.Position.X - Node.Radius / 2, node.Position.Y - Node.Radius / 2, Node.Radius, Node.Radius);
+                e.Graphics.DrawString(node.Number.ToString(), Node.FontText, Brushes.White, nodeCenterPos);
+            }
+        }
+        private double Distance(Point mousePoint, Point nodePoint)
+        {
+            return Math.Sqrt(Math.Pow(Math.Abs(mousePoint.X - nodePoint.X), 2) + Math.Pow(Math.Abs(mousePoint.Y - nodePoint.Y), 2));
+        }
+        private Point HalfSegment(Point start, Point end)
+        {
+            Point result;
+            result = new Point((start.X + end.X) / 2, (start.Y + end.Y) / 2);
+            return result;
+        }
+
+
     }
 }
