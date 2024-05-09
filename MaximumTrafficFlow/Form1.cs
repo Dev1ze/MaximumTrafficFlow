@@ -18,8 +18,11 @@ namespace MaximumTrafficFlow
             InitializeComponent();
         }
 
+        public event Action<List<int>> GetResult;
+
         private void button1_Click(object sender, EventArgs e)
         {
+            Matrix connectionMatrix = MatrixConverter.BuildMatrix(Node.Edges);
             //int[,] matrix = new int[,]
             //{
             //    {0,6900,0,0,0,0,0,9200,0,0,4600,2300,0,0,0 },
@@ -39,20 +42,20 @@ namespace MaximumTrafficFlow
             //    {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 }
             //};
 
-            int[,] matrix = new int[,]
-            {
-                {0,4,5,0,2,0,0,0,0,0 },
-                {0,0,0,0,1,5,0,0,0,0 },
-                {0,0,0,5,2,0,0,0,0,0 },
-                {0,0,0,0,1,0,0,5,0,0 },
-                {0,1,0,1,0,1,1,1,1,0 },
-                {0,0,0,0,1,0,5,0,0,0 },
-                {0,0,0,0,1,0,0,0,5,0 },
-                {0,0,0,0,1,0,0,0,5,0 },
-                {0,0,0,0,1,0,0,0,0,15 },
-                {0,0,0,0,0,0,0,0,0,0 }
+            //int[,] matrix = new int[,]
+            //{
+            //    {0,4,5,0,2,0,0,0,0,0 },
+            //    {0,0,0,0,1,5,0,0,0,0 },
+            //    {0,0,0,5,2,0,0,0,0,0 },
+            //    {0,0,0,0,1,0,0,5,0,0 },
+            //    {0,1,0,1,0,1,1,1,1,0 },
+            //    {0,0,0,0,1,0,5,0,0,0 },
+            //    {0,0,0,0,1,0,0,0,5,0 },
+            //    {0,0,0,0,1,0,0,0,5,0 },
+            //    {0,0,0,0,1,0,0,0,0,15 },
+            //    {0,0,0,0,0,0,0,0,0,0 }
 
-            };
+            //};
 
             //int[,] flow = new int[,]
             //{
@@ -107,11 +110,11 @@ namespace MaximumTrafficFlow
             //    {0,-1,-2,0,0,3 },
             //    {0,0,0,-2,-3,0 }
             //};
-            Matrix connectionMatrix = new Matrix(matrix);
+            //Matrix connectionMatrix = new Matrix(matrix);
             Window.Write(this, connectionMatrix, "R");
             Window.NewLIne();
 
-            Graph graph = new Graph(new Matrix((int[,])matrix.Clone())); //Клонирование матрицы в обьект Matrix который в новой ссылке
+            Graph graph = new Graph(new Matrix((int[,])connectionMatrix.Arrayy.Clone())); //Клонирование матрицы в обьект Matrix который в новой ссылке
             Matrix Xn = new Matrix(graph.GetFlowMatrix().Arrayy);
             //Matrix Xn = new Matrix(flow);
             Window.Write(this, Xn, "X0");
@@ -148,8 +151,9 @@ namespace MaximumTrafficFlow
                 Window.NewLIne();
                 countLoop++;
             }
-            List<int> test = Multitude.GetMultitude((List<List<int>>)minimalEdgaAndPath[2]);
-            Window.Write(this, new Listing(test), "Ответ");
+            List<int> multitude = Multitude.GetMultitude((List<List<int>>)minimalEdgaAndPath[2]);
+            Window.Write(this, new Listing(multitude), "Ответ");
+            GetResult.Invoke(multitude);
         }
     }
 }

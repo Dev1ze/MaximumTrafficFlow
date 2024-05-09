@@ -103,7 +103,47 @@ namespace MaximumTrafficFlow
             return Math.Sqrt(Math.Pow(Math.Abs(mousePoint.X - nodePoint.X), 2) + Math.Pow(Math.Abs(mousePoint.Y - nodePoint.Y), 2));
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.GetResult += GetMultitude;
+            form1.Show();
+        }
 
+        public void GetMultitude(List<int> list)
+        {
+            List<Edge> indexesMinimalPaths = new List<Edge>();
+            for(int i = 0; i < Node.Edges.Count; i++)
+            {
+                int[] itemList = new int[2];
+                itemList[0] = Node.Edges[i].StartIndex;
+                itemList[1] = Node.Edges[i].EndIndex;
+                if(GetCountRepeats(itemList, list) == 1)
+                {
+                    indexesMinimalPaths.Add(Node.Edges[i]);
+                }
+            }
+            foreach(var edge in indexesMinimalPaths) 
+            {
+                edge.ColorEdge = Pens.Red;
+            }
+            Refresh();
+        }
 
+        private int GetCountRepeats(int[] itemList, List<int> list)
+        {
+            int countRepeats = 0;
+            for(int i = 0; i < itemList.Length; i++) 
+            { 
+                for(int j = 0; j < list.Count; j++)
+                {
+                    if (list[j] - 1 == itemList[i])
+                    {
+                        countRepeats++;
+                    }
+                }
+            }
+            return countRepeats;
+        }
     }
 }
