@@ -59,6 +59,7 @@
     <Compile Include="IntValue.cs" />
     <Compile Include="Listing.cs" />
     <Compile Include="Matrix.cs" />
+    <Compile Include="MatrixConverter.cs" />
     <Compile Include="Multitude.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="VisualGraph.cs">
