@@ -16,6 +16,7 @@ namespace MaximumTrafficFlow
         public VisualGraph()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
 
         public List<Node> nodes = new List<Node>();
@@ -83,31 +84,25 @@ namespace MaximumTrafficFlow
                 foreach (var edge in Node.Edges)
                 {
                     e.Graphics.DrawLine(edge.ColorEdge, edge.StartPos.X, edge.StartPos.Y, edge.EndPos.X, edge.EndPos.Y);
-                    e.Graphics.DrawString(edge.ValueStream.ToString(), Node.FontText, Brushes.Black, HalfSegment(HalfSegment(edge.StartPos, edge.EndPos), edge.EndPos).X, HalfSegment(HalfSegment(edge.StartPos, edge.EndPos), edge.EndPos).Y);
+                    //e.Graphics.FillEllipse(Brushes.White, edge.ValueStreamPos.X, edge.ValueStreamPos.Y, 20,20);
+                    e.Graphics.DrawString(edge.ValueStream.ToString(), Node.FontText, Brushes.Black, edge.ValueStreamPos);
                 }
             }
         }
 
         private void DrawNodes(PaintEventArgs e)
         {
-            Point nodeCenterPos;
             foreach (var node in nodes)
             {
-                nodeCenterPos = new Point(node.Position.X - node.SizeNumber(node.Number).X / 2, node.Position.Y - node.SizeNumber(node.Number).Y / 2);
                 e.Graphics.FillEllipse(node.Color, node.Position.X - Node.Radius / 2, node.Position.Y - Node.Radius / 2, Node.Radius, Node.Radius);
-                e.Graphics.DrawString(node.Number.ToString(), Node.FontText, Brushes.White, nodeCenterPos);
+                e.Graphics.DrawString(node.Number.ToString(), Node.FontText, Brushes.White, node.NodeCenterPos);
             }
         }
         private double Distance(Point mousePoint, Point nodePoint)
         {
             return Math.Sqrt(Math.Pow(Math.Abs(mousePoint.X - nodePoint.X), 2) + Math.Pow(Math.Abs(mousePoint.Y - nodePoint.Y), 2));
         }
-        private Point HalfSegment(Point start, Point end)
-        {
-            Point result;
-            result = new Point((start.X + end.X) / 2, (start.Y + end.Y) / 2);
-            return result;
-        }
+
 
 
     }
