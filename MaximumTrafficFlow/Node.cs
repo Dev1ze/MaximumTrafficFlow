@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace MaximumTrafficFlow
 {
@@ -18,8 +19,18 @@ namespace MaximumTrafficFlow
         public static int Radius { get; set; } = 40;
         public Brush Color { get; set; } = Brushes.Black;
         public Point Position { get; set; }
+        public Point NodeCenterPos 
+        {
+            get 
+            {
+                Point nodeCenterPos;
+                nodeCenterPos = new Point(Position.X - SizeNumber(Number).X / 2, Position.Y - SizeNumber(Number).Y / 2);
+                return nodeCenterPos;
+            }
+            set { } }
         public int Number { get; set; }
         public static Font FontText { get; set; } = new Font("Arial", 14);
+
         public static List<Edge> Edges = new List<Edge>();
         public void AddEdge(Edge edge)
         {
@@ -33,7 +44,6 @@ namespace MaximumTrafficFlow
             height = TextRenderer.MeasureText(number.ToString(), FontText).Height;
             return new Point(width, height);
         }
-
         public static void UpdateRelatedEdge(List<Edge> edges, int index, Point Position)
         {
             foreach (Edge edge in edges)
@@ -61,7 +71,7 @@ namespace MaximumTrafficFlow
                 }
                 if (edge.EndIndex == index)
                 {
-                    if (edge.StartPos.X > edge.EndPos.X && edge.StartPos.Y > edge.EndPos.Y)
+                    if (edge.StartPos.X >= edge.EndPos.X && edge.StartPos.Y >= edge.EndPos.Y)
                     {
                         edge.EndPos = new Point(Position.X + 5, Position.Y - 5);
                     }
