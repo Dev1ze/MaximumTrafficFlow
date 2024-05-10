@@ -28,70 +28,160 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.CreateEdge = new System.Windows.Forms.Button();
+            this.indexFrom = new System.Windows.Forms.TextBox();
+            this.indexTo = new System.Windows.Forms.TextBox();
+            this.valueEdge = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.startIndex = new System.Windows.Forms.Label();
+            this.endIndex = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.EmptyFields = new System.Windows.Forms.Label();
+            this.NonExsistNode = new System.Windows.Forms.Label();
+            this.noneExsistEdge = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // button1
+            // CreateEdge
             // 
-            this.button1.Location = new System.Drawing.Point(702, 26);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.CreateEdge.Location = new System.Drawing.Point(636, 26);
+            this.CreateEdge.Name = "CreateEdge";
+            this.CreateEdge.Size = new System.Drawing.Size(141, 23);
+            this.CreateEdge.TabIndex = 0;
+            this.CreateEdge.Text = "Создать ребро";
+            this.CreateEdge.UseVisualStyleBackColor = true;
+            this.CreateEdge.Click += new System.EventHandler(this.button_CreateEdge);
             // 
-            // textBox1
+            // indexFrom
             // 
-            this.textBox1.Location = new System.Drawing.Point(688, 65);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 1;
+            this.indexFrom.Location = new System.Drawing.Point(727, 55);
+            this.indexFrom.Name = "indexFrom";
+            this.indexFrom.Size = new System.Drawing.Size(50, 20);
+            this.indexFrom.TabIndex = 1;
+            this.indexFrom.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
-            // textBox2
+            // indexTo
             // 
-            this.textBox2.Location = new System.Drawing.Point(688, 91);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 2;
+            this.indexTo.Location = new System.Drawing.Point(727, 81);
+            this.indexTo.Name = "indexTo";
+            this.indexTo.Size = new System.Drawing.Size(50, 20);
+            this.indexTo.TabIndex = 2;
+            this.indexTo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
-            // textBox3
+            // valueEdge
             // 
-            this.textBox3.Location = new System.Drawing.Point(688, 117);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 3;
+            this.valueEdge.Location = new System.Drawing.Point(727, 107);
+            this.valueEdge.Name = "valueEdge";
+            this.valueEdge.Size = new System.Drawing.Size(50, 20);
+            this.valueEdge.TabIndex = 3;
+            this.valueEdge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(702, 306);
+            this.button2.Location = new System.Drawing.Point(21, 168);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(141, 36);
             this.button2.TabIndex = 4;
-            this.button2.Text = "button2";
+            this.button2.Text = "Найти минимальный разрез";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // startIndex
+            // 
+            this.startIndex.AutoSize = true;
+            this.startIndex.Location = new System.Drawing.Point(633, 58);
+            this.startIndex.Name = "startIndex";
+            this.startIndex.Size = new System.Drawing.Size(47, 13);
+            this.startIndex.TabIndex = 5;
+            this.startIndex.Text = "Из узла";
+            // 
+            // endIndex
+            // 
+            this.endIndex.AutoSize = true;
+            this.endIndex.Location = new System.Drawing.Point(633, 84);
+            this.endIndex.Name = "endIndex";
+            this.endIndex.Size = new System.Drawing.Size(40, 13);
+            this.endIndex.TabIndex = 6;
+            this.endIndex.Text = "В узел";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(633, 110);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Значение ребра";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.NonExsistNode);
+            this.panel1.Controls.Add(this.EmptyFields);
+            this.panel1.Controls.Add(this.noneExsistEdge);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Location = new System.Drawing.Point(614, 1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(184, 219);
+            this.panel1.TabIndex = 8;
+            // 
+            // EmptyFields
+            // 
+            this.EmptyFields.ForeColor = System.Drawing.Color.Red;
+            this.EmptyFields.Location = new System.Drawing.Point(4, 139);
+            this.EmptyFields.Name = "EmptyFields";
+            this.EmptyFields.Size = new System.Drawing.Size(175, 13);
+            this.EmptyFields.TabIndex = 9;
+            this.EmptyFields.Text = "Не все поля заполнены";
+            this.EmptyFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EmptyFields.Visible = false;
+            // 
+            // NonExsistNode
+            // 
+            this.NonExsistNode.ForeColor = System.Drawing.Color.Red;
+            this.NonExsistNode.Location = new System.Drawing.Point(2, 139);
+            this.NonExsistNode.Name = "NonExsistNode";
+            this.NonExsistNode.Size = new System.Drawing.Size(179, 13);
+            this.NonExsistNode.TabIndex = 10;
+            this.NonExsistNode.Text = "Указаны несуществующие узлы";
+            this.NonExsistNode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.NonExsistNode.Visible = false;
+            // 
+            // noneExsistEdge
+            // 
+            this.noneExsistEdge.AutoSize = true;
+            this.noneExsistEdge.ForeColor = System.Drawing.Color.Red;
+            this.noneExsistEdge.Location = new System.Drawing.Point(1, 139);
+            this.noneExsistEdge.Name = "noneExsistEdge";
+            this.noneExsistEdge.Size = new System.Drawing.Size(182, 13);
+            this.noneExsistEdge.TabIndex = 11;
+            this.noneExsistEdge.Text = "Ребро должно иметь направление";
+            this.noneExsistEdge.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.noneExsistEdge.Visible = false;
             // 
             // VisualGraph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.endIndex);
+            this.Controls.Add(this.startIndex);
+            this.Controls.Add(this.valueEdge);
+            this.Controls.Add(this.indexTo);
+            this.Controls.Add(this.indexFrom);
+            this.Controls.Add(this.CreateEdge);
+            this.Controls.Add(this.panel1);
             this.Name = "VisualGraph";
-            this.Text = "VisualGraph";
+            this.Text = "Создание сети";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.VisualGraph_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VisualGraph_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VisualGraph_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VisualGraph_MouseUp);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -99,10 +189,17 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button CreateEdge;
+        private System.Windows.Forms.TextBox indexFrom;
+        private System.Windows.Forms.TextBox indexTo;
+        private System.Windows.Forms.TextBox valueEdge;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label startIndex;
+        private System.Windows.Forms.Label endIndex;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label EmptyFields;
+        private System.Windows.Forms.Label NonExsistNode;
+        private System.Windows.Forms.Label noneExsistEdge;
     }
 }
