@@ -21,6 +21,7 @@ namespace MaximumTrafficFlow
 
         public List<Node> nodes = new List<Node>();
         public int selectedNodeIndex = -1;
+        public static event Action OnExsistEdge;
 
         private void VisualGraph_MouseDown(object sender, MouseEventArgs e)
         {
@@ -62,17 +63,48 @@ namespace MaximumTrafficFlow
             DrawEdges(e);
             DrawNodes(e);
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button_CreateEdge(object sender, EventArgs e)
         {
-            int startIndex = int.Parse(textBox1.Text) - 1;
-            int endIndex = int.Parse(textBox2.Text) - 1;
-            int valueStream = int.Parse(textBox3.Text);
-            Point startPos = new Point(nodes[startIndex].Position.X, nodes[startIndex].Position.Y);
-            Point endPos = new Point(nodes[endIndex].Position.X, nodes[endIndex].Position.Y);
-            nodes[startIndex].AddEdge(new Edge(startPos, endPos, startIndex, endIndex, valueStream));
-            Node.UpdateRelatedEdge(Node.Edges, startIndex, nodes[startIndex].Position);
-            Node.UpdateRelatedEdge(Node.Edges, endIndex, nodes[endIndex].Position);
+
+            string startIndex = indexFrom.Text ?? "";
+            string endIndex = indexTo.Text ?? "";
+            string valueStream = valueEdge.Text ?? "";
+            List<TextBox> InputsFields = new List<TextBox>()
+            {
+                indexFrom,
+                indexTo,
+                valueEdge
+            };
+            ExceptionHandler.Handle(NonExsistNode,EmptyFields, noneExsistEdge);
+            ExceptionChecker.CheckExsistNode(nodes, startIndex, endIndex);
+            ExceptionChecker.CheckEmptyFields(InputsFields);
+            ExceptionChecker.CheckExsistEdge(Node.Edges, startIndex, endIndex);
+            if (!ExceptionHandler.IsError)
+            {
+                BuildEdge(nodes);
+            }
+            
+        }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form1 form1 = new Form1();
+            form1.GetResult += GetMultitude;
+            form1.Show();
+        }
+
+        private void BuildEdge(List<Node> nodes)
+        {
+            NonExsistNode.Visible = false;
+            EmptyFields.Visible = false;
+            noneExsistEdge.Visible = false;
+            int start = int.Parse(indexFrom.Text) - 1;
+            int end = int.Parse(indexTo.Text) - 1;
+            int value = int.Parse(valueEdge.Text);
+            Point startPos = new Point(nodes[start].Position.X, nodes[start].Position.Y);
+            Point endPos = new Point(nodes[end].Position.X, nodes[end].Position.Y);
+            nodes[start].AddEdge(new Edge(startPos, endPos, start, end, value));
+            Node.UpdateRelatedEdge(Node.Edges, start, nodes[start].Position);
+            Node.UpdateRelatedEdge(Node.Edges, end, nodes[end].Position);
             Refresh();
         }
 
@@ -84,7 +116,6 @@ namespace MaximumTrafficFlow
                 foreach (var edge in Node.Edges)
                 {
                     e.Graphics.DrawLine(edge.ColorEdge, edge.StartPos.X, edge.StartPos.Y, edge.EndPos.X, edge.EndPos.Y);
-                    //e.Graphics.FillEllipse(Brushes.White, edge.ValueStreamPos.X, edge.ValueStreamPos.Y, 20,20);
                     e.Graphics.DrawString(edge.ValueStream.ToString(), Node.FontText, Brushes.Black, edge.ValueStreamPos);
                 }
             }
@@ -101,13 +132,6 @@ namespace MaximumTrafficFlow
         private double Distance(Point mousePoint, Point nodePoint)
         {
             return Math.Sqrt(Math.Pow(Math.Abs(mousePoint.X - nodePoint.X), 2) + Math.Pow(Math.Abs(mousePoint.Y - nodePoint.Y), 2));
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Form1 form1 = new Form1();
-            form1.GetResult += GetMultitude;
-            form1.Show();
         }
 
         public void GetMultitude(List<int> list)
@@ -144,6 +168,19 @@ namespace MaximumTrafficFlow
                 }
             }
             return countRepeats;
+        }
+
+        private void textBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            char number = e.KeyChar;
+            NonExsistNode.Visible = false;
+            EmptyFields.Visible = false;
+            noneExsistEdge.Visible = false;
+            if (!char.IsDigit(number) && number != (char)Keys.Back)
+            {
+                // Если символ не является цифрой, отменяем его ввод
+                e.Handled = true;
+            }
         }
     }
 }
