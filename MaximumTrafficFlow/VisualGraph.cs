@@ -65,7 +65,6 @@ namespace MaximumTrafficFlow
         }
         private void button_CreateEdge(object sender, EventArgs e)
         {
-
             string startIndex = indexFrom.Text ?? "";
             string endIndex = indexTo.Text ?? "";
             string valueStream = valueEdge.Text ?? "";
@@ -76,15 +75,13 @@ namespace MaximumTrafficFlow
                 valueEdge
             };
             ExceptionHandler.Handle(NonExsistNode,EmptyFields, noneExsistEdge);
-            ExceptionChecker.CheckExsistNode(nodes, startIndex, endIndex);
-            ExceptionChecker.CheckEmptyFields(InputsFields);
-            ExceptionChecker.CheckExsistEdge(Node.Edges, startIndex, endIndex);
+            ExceptionChecker.CheckAllExceptions(Node.Edges, startIndex, endIndex, nodes, InputsFields);
             if (!ExceptionHandler.IsError)
             {
                 BuildEdge(nodes);
             }
-            
         }
+
         private void button2_Click(object sender, EventArgs e)
         {
             Form1 form1 = new Form1();

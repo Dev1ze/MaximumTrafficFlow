@@ -38,7 +38,6 @@ namespace MaximumTrafficFlow
             EmptyFields.BringToFront();
             IsError = true;
         }
-
         private static void NotifyNoneExistEdge()
         {
             NoneExistEdge.Visible = true;
