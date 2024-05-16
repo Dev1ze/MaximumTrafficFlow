@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaximumTrafficFlow
+namespace GraphMinCutLibrary
 {
-    public class Listing : IDataStructure
+    public class Listing
     {
         public Listing(List<List<int>> list) 
         { 

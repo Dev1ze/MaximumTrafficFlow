@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MaximumTrafficFlow
+namespace GraphMinCutLibrary
 {
     public static class XplusDelta
     {

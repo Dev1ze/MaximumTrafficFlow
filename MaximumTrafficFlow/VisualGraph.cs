@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
+using GraphMinCutLibrary;
 
 namespace MaximumTrafficFlow
 {
@@ -84,9 +85,11 @@ namespace MaximumTrafficFlow
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Graph graph = new Graph(MatrixConverter.BuildMatrix(Node.Edges));
+            Matrix matrix1 = new Matrix(MatrixConverter.BuildMatrix(Node.Edges));
+            Graph graph = new Graph(matrix1);
             graph.GetResult += GetMultitude;
             graph.FindMinimalCut();
+            string i;
         }
 
         private void BuildEdge(List<Node> nodes)

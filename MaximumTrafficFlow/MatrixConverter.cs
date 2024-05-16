@@ -8,7 +8,7 @@ namespace MaximumTrafficFlow
 {
     public static class MatrixConverter
     {
-        public static Matrix BuildMatrix(List<Edge> edges)
+        public static int[,] BuildMatrix(List<Edge> edges)
         {
             int matrixSize = GetMatrixSize(edges);
             int[,] array = new int[matrixSize, matrixSize];
@@ -16,7 +16,7 @@ namespace MaximumTrafficFlow
             {
                 array[edge.StartIndex, edge.EndIndex] = edge.ValueStream;
             }
-            return new Matrix(array);
+            return array;
 
         }
 
