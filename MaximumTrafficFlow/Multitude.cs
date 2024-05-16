@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,11 +13,11 @@ namespace MaximumTrafficFlow
         {
             List<int> result = new List<int>();
 
-            result = FindMultitude(list);
+            result = FindMultitudeB(list);
             return RemoveDuplicates(result);
         }
 
-        public static List<int> FindMultitude(List<List<int>> list)
+        public static List<int> FindMultitudeB(List<List<int>> list)
         {
             List<List<int>> reverseConnectedVertices = new List<List<int>>();
             reverseConnectedVertices = Enumerable.Reverse(list).ToList();
@@ -33,6 +34,19 @@ namespace MaximumTrafficFlow
                     multitude.Add(item.Last());
                     multitude.Add(item.First());
                     target = item.First();
+                    if(target == 1)
+                    {
+                        List<int> multitudeB = new List<int>();
+                        List<int> multitudeA = new List<int>();
+                        multitudeA = reverseConnectedVertices.Last();
+                        for(int i = reverseConnectedVertices.First()[0]; i > 0; i--)
+                        {
+                            multitudeB.Add(i);
+                        }
+                        IEnumerable<int> difference = multitudeB.Except(multitudeA);
+                        List<int> resultList = difference.ToList();
+                        return resultList;
+                    }
                     break;
                 }
             }

@@ -84,9 +84,9 @@ namespace MaximumTrafficFlow
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Form1 form1 = new Form1();
-            form1.GetResult += GetMultitude;
-            form1.Show();
+            Graph graph = new Graph(MatrixConverter.BuildMatrix(Node.Edges));
+            graph.GetResult += GetMultitude;
+            graph.FindMinimalCut();
         }
 
         private void BuildEdge(List<Node> nodes)
