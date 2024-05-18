@@ -74,6 +74,7 @@ namespace GraphMinCutLibrary
             }
             return connectedVerticesInRow;
         }
+
         static List<int> BuildPath(List<List<int>> connectedVertices, int[,] matrix)
         {
             List<int> path = new List<int>();

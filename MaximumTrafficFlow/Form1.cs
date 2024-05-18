@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphMinCutLibrary;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,18 @@ namespace MaximumTrafficFlow
         public Form1()
         {
             InitializeComponent();
+        }
+        
+        public void PrintText(List<List<string>> list)
+        {
+            foreach (var line in list)
+            {
+                foreach(var lineItem in line) 
+                {
+                    Window.Write(this, lineItem, "X");
+                }
+                Window.NewLIne();
+            }
         }
     }
 }

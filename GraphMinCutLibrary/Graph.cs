@@ -35,7 +35,7 @@ namespace GraphMinCutLibrary
                 rMinusX.ToString(), 
                 new Listing((List<List<int>>)minimalEdgaAndPath[2]).ToString(),
                 new Listing((List<int>)minimalEdgaAndPath[1]).ToString(),
-                minimalEdgaAndPath[0].ToString() 
+                new IntValue((int)minimalEdgaAndPath[0]).ToString()
             });
 
             int countLoop = 0;
@@ -52,7 +52,7 @@ namespace GraphMinCutLibrary
                     rMinusX.ToString(),
                     new Listing((List<List<int>>)minimalEdgaAndPath[2]).ToString(),
                     new Listing((List<int>)minimalEdgaAndPath[1]).ToString(),
-                    minimalEdgaAndPath[0].ToString()
+                    new IntValue((int)minimalEdgaAndPath[0]).ToString()
                 });
                 countLoop++;
             }

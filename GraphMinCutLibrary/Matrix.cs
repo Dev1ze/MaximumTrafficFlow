@@ -17,18 +17,19 @@ namespace GraphMinCutLibrary
 
         public override string ToString()
         {
-            string text = "";
-            string row = "";
-            for (int i = 0; i < Arrayy.GetLength(0); i++)
+            StringBuilder sb = new StringBuilder();
+            int rows = Arrayy.GetLength(0);
+            int columns = Arrayy.GetLength(1);
+
+            for (int i = 0; i < rows; i++)
             {
-                for (int j = 0; j < Arrayy.GetLength(1); j++)
+                for (int j = 0; j < columns; j++)
                 {
-                    row += Arrayy[i, j].ToString() + "\t";
+                    sb.Append(Arrayy[i, j] + "    ");
                 }
-                text += row + "\r\n";
-                row = "";
+                if (i < rows - 1) sb.AppendLine();
             }
-            return text;
+            return sb.ToString();
         }
 
         private int width;

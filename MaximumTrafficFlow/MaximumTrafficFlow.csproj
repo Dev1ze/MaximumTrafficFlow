@@ -32,6 +32,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GraphMinCutLibrary">
       <HintPath>..\GraphMinCutLibrary\bin\Debug\GraphMinCutLibrary.dll</HintPath>
@@ -59,7 +62,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="IDataStructure.cs" />
     <Compile Include="MatrixConverter.cs" />
     <Compile Include="Node.cs" />
     <Compile Include="VisualGraph.cs">

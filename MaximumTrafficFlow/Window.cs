@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GraphMinCutLibrary;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static MaximumTrafficFlow.Window;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace MaximumTrafficFlow
 {
@@ -17,7 +19,7 @@ namespace MaximumTrafficFlow
         static int margin = 50;
         static List<int> heigherBlock = new List<int>();
 
-        public static void Write(Form1 form, IDataStructure objectPrint, string nameMatrix)
+        public static void Write(Form1 form, string objectPrint, string nameMatrix)
         {
             TextBox textBox = SetTextBox(form, objectPrint);
             textBox.Text = objectPrint.ToString();
@@ -32,11 +34,11 @@ namespace MaximumTrafficFlow
             heigherBlock.Clear();
         }
 
-        private static TextBox SetTextBox(Form form, IDataStructure objectPrint)
+        private static TextBox SetTextBox(Form form, string objectPrint)
         {
-            int matrixWidth = objectPrint.Width * 48;
-            int matrixHeight = objectPrint.Heigth * 14;
             TextBox textBox = new TextBox();
+            int matrixWidth = TextRenderer.MeasureText(objectPrint, textBox.Font).Width;
+            int matrixHeight = TextRenderer.MeasureText(objectPrint, textBox.Font).Height * 3/2;
             textBox.WordWrap = true;
             textBox.Multiline = true; // Разрешаем многострочный режим
             textBox.Location = new Point(startPositionX, startPositionY); // Положение textBox'а

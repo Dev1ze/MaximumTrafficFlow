@@ -25,22 +25,17 @@ namespace GraphMinCutLibrary
         {
             if(List != null)
             {
-                string text = "";
-                string row = "";
+                StringBuilder sb = new StringBuilder();
+
                 for (int i = 0; i < List.Count; i++)
                 {
-                    for (int j = 0; j < List[i].Count; j++)
+                    foreach (var item in List[i])
                     {
-                        if (j == 0)
-                        {
-                            row += List[i][j].ToString() + "\t";
-                        }
-                        else row += List[i][j].ToString() + "\t";
+                        sb.Append(item + "    "); // Заменяем "\t" на четыре пробела
                     }
-                    text += row + "\r\n";
-                    row = "";
+                    if(i < List.Count - 1) sb.AppendLine(); // Добавляет новую строку после каждой строки матрицы
                 }
-                return text;
+                return sb.ToString();
             }
 
             else if(SingleList != null)
@@ -48,7 +43,7 @@ namespace GraphMinCutLibrary
                 string text = "";
                 foreach(var item in SingleList)
                 {
-                    text += item.ToString() + "\t";
+                    text += item.ToString() + "    ";
                 }
                 return text;
             }

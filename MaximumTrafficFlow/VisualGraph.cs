@@ -89,6 +89,9 @@ namespace MaximumTrafficFlow
             Graph graph = new Graph(matrix1);
             graph.GetResult += GetMultitude;
             graph.FindMinimalCut();
+            Form1 form1 = new Form1();
+            form1.PrintText(graph.Results);
+            form1.Show();
             string i;
         }
 
