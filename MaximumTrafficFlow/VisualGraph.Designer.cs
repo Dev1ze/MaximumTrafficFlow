@@ -37,15 +37,15 @@
             this.endIndex = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.EmptyFields = new System.Windows.Forms.Label();
             this.NonExsistNode = new System.Windows.Forms.Label();
+            this.EmptyFields = new System.Windows.Forms.Label();
             this.noneExsistEdge = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // CreateEdge
             // 
-            this.CreateEdge.Location = new System.Drawing.Point(636, 26);
+            this.CreateEdge.Location = new System.Drawing.Point(21, 21);
             this.CreateEdge.Name = "CreateEdge";
             this.CreateEdge.Size = new System.Drawing.Size(141, 23);
             this.CreateEdge.TabIndex = 0;
@@ -55,7 +55,7 @@
             // 
             // indexFrom
             // 
-            this.indexFrom.Location = new System.Drawing.Point(727, 55);
+            this.indexFrom.Location = new System.Drawing.Point(112, 50);
             this.indexFrom.Name = "indexFrom";
             this.indexFrom.Size = new System.Drawing.Size(50, 20);
             this.indexFrom.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             // indexTo
             // 
-            this.indexTo.Location = new System.Drawing.Point(727, 81);
+            this.indexTo.Location = new System.Drawing.Point(112, 76);
             this.indexTo.Name = "indexTo";
             this.indexTo.Size = new System.Drawing.Size(50, 20);
             this.indexTo.TabIndex = 2;
@@ -71,7 +71,7 @@
             // 
             // valueEdge
             // 
-            this.valueEdge.Location = new System.Drawing.Point(727, 107);
+            this.valueEdge.Location = new System.Drawing.Point(112, 102);
             this.valueEdge.Name = "valueEdge";
             this.valueEdge.Size = new System.Drawing.Size(50, 20);
             this.valueEdge.TabIndex = 3;
@@ -90,7 +90,7 @@
             // startIndex
             // 
             this.startIndex.AutoSize = true;
-            this.startIndex.Location = new System.Drawing.Point(633, 58);
+            this.startIndex.Location = new System.Drawing.Point(18, 53);
             this.startIndex.Name = "startIndex";
             this.startIndex.Size = new System.Drawing.Size(47, 13);
             this.startIndex.TabIndex = 5;
@@ -99,7 +99,7 @@
             // endIndex
             // 
             this.endIndex.AutoSize = true;
-            this.endIndex.Location = new System.Drawing.Point(633, 84);
+            this.endIndex.Location = new System.Drawing.Point(18, 79);
             this.endIndex.Name = "endIndex";
             this.endIndex.Size = new System.Drawing.Size(40, 13);
             this.endIndex.TabIndex = 6;
@@ -108,7 +108,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(633, 110);
+            this.label3.Location = new System.Drawing.Point(18, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 7;
@@ -116,27 +116,24 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.NonExsistNode);
+            this.panel1.Controls.Add(this.endIndex);
             this.panel1.Controls.Add(this.EmptyFields);
+            this.panel1.Controls.Add(this.startIndex);
             this.panel1.Controls.Add(this.noneExsistEdge);
+            this.panel1.Controls.Add(this.valueEdge);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(614, 1);
+            this.panel1.Controls.Add(this.indexTo);
+            this.panel1.Controls.Add(this.CreateEdge);
+            this.panel1.Controls.Add(this.indexFrom);
+            this.panel1.Location = new System.Drawing.Point(615, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(184, 219);
             this.panel1.TabIndex = 8;
-            // 
-            // EmptyFields
-            // 
-            this.EmptyFields.ForeColor = System.Drawing.Color.Red;
-            this.EmptyFields.Location = new System.Drawing.Point(4, 139);
-            this.EmptyFields.Name = "EmptyFields";
-            this.EmptyFields.Size = new System.Drawing.Size(175, 13);
-            this.EmptyFields.TabIndex = 9;
-            this.EmptyFields.Text = "Не все поля заполнены";
-            this.EmptyFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.EmptyFields.Visible = false;
             // 
             // NonExsistNode
             // 
@@ -148,6 +145,17 @@
             this.NonExsistNode.Text = "Указаны несуществующие узлы";
             this.NonExsistNode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.NonExsistNode.Visible = false;
+            // 
+            // EmptyFields
+            // 
+            this.EmptyFields.ForeColor = System.Drawing.Color.Red;
+            this.EmptyFields.Location = new System.Drawing.Point(4, 139);
+            this.EmptyFields.Name = "EmptyFields";
+            this.EmptyFields.Size = new System.Drawing.Size(175, 13);
+            this.EmptyFields.TabIndex = 9;
+            this.EmptyFields.Text = "Не все поля заполнены";
+            this.EmptyFields.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.EmptyFields.Visible = false;
             // 
             // noneExsistEdge
             // 
@@ -166,13 +174,6 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.endIndex);
-            this.Controls.Add(this.startIndex);
-            this.Controls.Add(this.valueEdge);
-            this.Controls.Add(this.indexTo);
-            this.Controls.Add(this.indexFrom);
-            this.Controls.Add(this.CreateEdge);
             this.Controls.Add(this.panel1);
             this.Name = "VisualGraph";
             this.Text = "Создание сети";
@@ -183,7 +184,6 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 

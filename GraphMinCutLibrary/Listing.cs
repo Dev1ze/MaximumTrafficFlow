@@ -31,7 +31,8 @@ namespace GraphMinCutLibrary
                 {
                     foreach (var item in List[i])
                     {
-                        sb.Append(item + "    "); // Заменяем "\t" на четыре пробела
+                        sb.Append(item);
+                        sb.Append(' ', 6 - item.ToString().Length);
                     }
                     if(i < List.Count - 1) sb.AppendLine(); // Добавляет новую строку после каждой строки матрицы
                 }

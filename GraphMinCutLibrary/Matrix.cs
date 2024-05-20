@@ -25,7 +25,8 @@ namespace GraphMinCutLibrary
             {
                 for (int j = 0; j < columns; j++)
                 {
-                    sb.Append(Arrayy[i, j] + "    ");
+                    sb.Append(Arrayy[i, j] );
+                    sb.Append(' ', 6 - (Arrayy[i, j].ToString().Length));
                 }
                 if (i < rows - 1) sb.AppendLine();
             }

@@ -36,16 +36,19 @@ namespace MaximumTrafficFlow
 
         private static TextBox SetTextBox(Form form, string objectPrint)
         {
-            TextBox textBox = new TextBox();
+            TextBox textBox = new TextBox
+            {
+                Font = new Font("Consolas", 10) //Шрифт где все знаки одинаковой ширины 
+            };
             int matrixWidth = TextRenderer.MeasureText(objectPrint, textBox.Font).Width;
-            int matrixHeight = TextRenderer.MeasureText(objectPrint, textBox.Font).Height * 3/2;
+            int matrixHeight = TextRenderer.MeasureText(objectPrint, textBox.Font).Height;
             textBox.WordWrap = true;
-            textBox.Multiline = true; // Разрешаем многострочный режим
+            textBox.Multiline = true;
             textBox.Location = new Point(startPositionX, startPositionY); // Положение textBox'а
             textBox.Width = matrixWidth;
             textBox.Height = matrixHeight;
             startPositionX += matrixWidth + margin;
-            form.Controls.Add(textBox); // Добавляем textBox на форму
+            form.Controls.Add(textBox);
             return textBox;
         }
 

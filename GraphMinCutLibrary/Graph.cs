@@ -21,43 +21,68 @@ namespace GraphMinCutLibrary
 
         public List<int> FindMinimalCut()
         {
+            int countLoop = 1;
             Matrix connectionMatrix = Matrix;
-            Results.Add(new List<string>() { connectionMatrix.ToString() });
+            Results.Add(new List<string>() 
+            {
+                "R",
+                connectionMatrix.ToString()
+            });
 
             Matrix Xn = new Matrix(new int[connectionMatrix.Arrayy.GetLength(0), connectionMatrix.Arrayy.GetLength(1)]);
-            Results.Add(new List<string>() { Xn.ToString() });
+            Results.Add(new List<string>() 
+            {
+                "X",
+                Xn.ToString() 
+            });
 
             Matrix rMinusX = RminusX.StartProcess(new Matrix((int[,])connectionMatrix.Arrayy.Clone()), Xn);
             object[] minimalEdgaAndPath = new object[3];
             minimalEdgaAndPath = XplusDelta.FindDelta(rMinusX, Xn);
             Results.Add(new List<string>() 
-            { 
+            {
+                "R-X",
                 rMinusX.ToString(), 
+                "Список вершин",
                 new Listing((List<List<int>>)minimalEdgaAndPath[2]).ToString(),
+                "Путь",
                 new Listing((List<int>)minimalEdgaAndPath[1]).ToString(),
+                "∆",
                 new IntValue((int)minimalEdgaAndPath[0]).ToString()
             });
 
-            int countLoop = 0;
+            
             while ((int)minimalEdgaAndPath[0] != 0)
             {
                 int minimalEdge = (int)minimalEdgaAndPath[0];
                 Xn = XplusDelta.Sum(Xn, minimalEdge, (List<int>)minimalEdgaAndPath[1]);
-                Results.Add(new List<string>() { Xn.ToString() });
+                Results.Add(new List<string>() 
+                { 
+                    "X" + countLoop.ToString(),
+                    Xn.ToString() 
+                });
 
                 rMinusX = RminusX.StartProcess(new Matrix((int[,])connectionMatrix.Arrayy.Clone()), Xn);
                 minimalEdgaAndPath = XplusDelta.FindDelta(rMinusX, Xn);
                 Results.Add(new List<string>()
                 {
+                    "R-X" + countLoop.ToString(),
                     rMinusX.ToString(),
+                    "Список вершин",
                     new Listing((List<List<int>>)minimalEdgaAndPath[2]).ToString(),
+                    "Путь",
                     new Listing((List<int>)minimalEdgaAndPath[1]).ToString(),
+                    "∆",
                     new IntValue((int)minimalEdgaAndPath[0]).ToString()
                 });
                 countLoop++;
             }
             List<int> multitude = Multitude.GetMultitude((List<List<int>>)minimalEdgaAndPath[2]);
-            Results.Add(new List<string>() { new Listing(multitude).ToString(), });
+            Results.Add(new List<string>() 
+            { 
+                "Множество B",
+                new Listing(multitude).ToString(), 
+            });
             GetResult.Invoke(multitude);
             return multitude;
         }

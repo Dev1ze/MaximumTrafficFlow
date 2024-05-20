@@ -23,9 +23,9 @@ namespace MaximumTrafficFlow
         {
             foreach (var line in list)
             {
-                foreach(var lineItem in line) 
+                for(int i = 0; i < line.Count - 1; i = i + 2)
                 {
-                    Window.Write(this, lineItem, "X");
+                    Window.Write(this, line[i + 1], line[i]);
                 }
                 Window.NewLIne();
             }
