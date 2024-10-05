@@ -122,7 +122,6 @@ _ServiceFabricBackup/
 
 # Мои игноры
 *.pdb   
-*.exe
 *.suo
 *.json
 /vs/MaximumTrafficFlow/v17/*.json
