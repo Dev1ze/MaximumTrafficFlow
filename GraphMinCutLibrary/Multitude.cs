@@ -9,15 +9,27 @@ namespace GraphMinCutLibrary
 {
     static class Multitude
     {
-        public static List<int> GetMultitude(List<List<int>> list)
+        public static List<List<int>> GetMultitude(List<List<int>> list)
         {
-            List<int> result = new List<int>();
-
-            result = FindMultitudeB(list);
-            return RemoveDuplicates(result);
+            List<List<int>> multitude = new List<List<int>>();
+            List<int> resultB = new List<int>();
+            resultB = FindMultitudeB(list);
+            multitude.Add(RemoveDuplicates(resultB));
+            multitude.Add(FindMultitudeA(RemoveDuplicates(resultB)));
+            return multitude;
         }
 
-        public static List<int> FindMultitudeB(List<List<int>> list)
+        private static List<int> FindMultitudeA(List<int> list)
+        {
+            List<int> resultA = new List<int>();
+            for(int i = list.First(); i == 0; i--)
+            {
+                resultA.Add(i);
+            }
+            return resultA;
+        }
+
+        private static List<int> FindMultitudeB(List<List<int>> list)
         {
             List<List<int>> reverseConnectedVertices = new List<List<int>>();
             reverseConnectedVertices = Enumerable.Reverse(list).ToList();

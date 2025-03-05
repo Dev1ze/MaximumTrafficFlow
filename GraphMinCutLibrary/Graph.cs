@@ -19,7 +19,7 @@ namespace GraphMinCutLibrary
             Results = new List<List<string>>();
         }
 
-        public List<int> FindMinimalCut()
+        public List<List<int>> FindMinimalCut()
         {
             int countLoop = 1;
             Matrix connectionMatrix = Matrix;
@@ -77,13 +77,18 @@ namespace GraphMinCutLibrary
                 });
                 countLoop++;
             }
-            List<int> multitude = Multitude.GetMultitude((List<List<int>>)minimalEdgaAndPath[2]);
+            List<List<int>> multitude = Multitude.GetMultitude((List<List<int>>)minimalEdgaAndPath[2]);
             Results.Add(new List<string>() 
             { 
                 "Множество B",
-                new Listing(multitude).ToString(), 
+                new Listing(multitude.First()).ToString(), 
             });
-            GetResult.Invoke(multitude);
+            Results.Add(new List<string>()
+            {
+                "Множество A",
+                new Listing(multitude.Last()).ToString(),
+            });
+            GetResult.Invoke(multitude.First());
             return multitude;
         }
     }

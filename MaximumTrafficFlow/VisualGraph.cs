@@ -64,6 +64,7 @@ namespace MaximumTrafficFlow
             DrawEdges(e);
             DrawNodes(e);
         }
+
         private void button_CreateEdge(object sender, EventArgs e)
         {
             string startIndex = indexFrom.Text ?? "";
@@ -83,7 +84,7 @@ namespace MaximumTrafficFlow
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e) //Нажатие на кнопку "Найти минимальный разрез"
         {
             Matrix matrix1 = new Matrix(MatrixConverter.BuildMatrix(Node.Edges));
             Graph graph = new Graph(matrix1);
@@ -132,6 +133,7 @@ namespace MaximumTrafficFlow
                 e.Graphics.DrawString(node.Number.ToString(), Node.FontText, Brushes.White, node.NodeCenterPos);
             }
         }
+
         private double Distance(Point mousePoint, Point nodePoint)
         {
             return Math.Sqrt(Math.Pow(Math.Abs(mousePoint.X - nodePoint.X), 2) + Math.Pow(Math.Abs(mousePoint.Y - nodePoint.Y), 2));
