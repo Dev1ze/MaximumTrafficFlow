@@ -12,7 +12,7 @@ namespace GraphMinCutLibrary
         public Matrix Matrix { get; } //Матрица смежности
         public List<List<string>> Results { get; private set; }
 
-        public event Action<List<int>> GetResult;
+        public event Action<List<List<int>>> GetResult;
         public Graph(Matrix connectionsMatrix)
         {
             Matrix = connectionsMatrix;
@@ -78,17 +78,16 @@ namespace GraphMinCutLibrary
                 countLoop++;
             }
             List<List<int>> multitude = Multitude.GetMultitude((List<List<int>>)minimalEdgaAndPath[2]);
+            List<List<int>> minimalEdges = Multitude.GetMinimalEdges(multitude.Last(), multitude.First(), Matrix);
             Results.Add(new List<string>() 
             { 
                 "Множество B",
-                new Listing(multitude.First()).ToString(), 
-            });
-            Results.Add(new List<string>()
-            {
+                new Listing(multitude.First()).ToString(),
                 "Множество A",
                 new Listing(multitude.Last()).ToString(),
+
             });
-            GetResult.Invoke(multitude.First());
+            GetResult.Invoke(multitude);
             return multitude;
         }
     }

@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace GraphMinCutLibrary
 {
-    static class Multitude
+    public static class Multitude
     {
         public static List<List<int>> GetMultitude(List<List<int>> list)
         {
@@ -19,10 +20,29 @@ namespace GraphMinCutLibrary
             return multitude;
         }
 
+        public static List<List<int>> GetMinimalEdges(List<int> multitudeA, List<int> multitudeB, Matrix connectionsMatrix)
+        {
+            List<List<int>> minimalEdges = new List<List<int>>();
+            for (int i = 0; i < multitudeB.Count; i++)
+            {
+                for (int j = 0; j < multitudeA.Count; j++)
+                {
+                    if (connectionsMatrix.Arrayy[multitudeA.ElementAt(j) - 1, multitudeB.ElementAt(i) - 1] > 0)
+                    {
+                        List<int> oneMinimalEdge = new List<int>();
+                        oneMinimalEdge.Add(multitudeA.ElementAt(j));
+                        oneMinimalEdge.Add(multitudeB.ElementAt(i));
+                        minimalEdges.Add(oneMinimalEdge);
+                    }
+                }
+            }
+            return minimalEdges;
+        }
+
         private static List<int> FindMultitudeA(List<int> list)
         {
             List<int> resultA = new List<int>();
-            for(int i = list.First(); i == 0; i--)
+            for(int i = list.Last() - 1; i > 0; i--)
             {
                 resultA.Add(i);
             }
@@ -80,7 +100,7 @@ namespace GraphMinCutLibrary
             return multitude;
         }
 
-        static List<int> RemoveDuplicates(List<int> list)
+        private static List<int> RemoveDuplicates(List<int> list)
         {
             HashSet<int> uniqueElements = new HashSet<int>();
             List<int> result = new List<int>();
@@ -97,5 +117,25 @@ namespace GraphMinCutLibrary
             list.AddRange(result);
             return result;  
         }
+
+        //public void GetMultitude(List<List<int>> list)
+        //{
+        //    List<Edge> indexesMinimalPaths = new List<Edge>();
+        //    for (int i = 0; i < Node.Edges.Count; i++)
+        //    {
+        //        int[] itemList = new int[2];
+        //        itemList[0] = Node.Edges[i].StartIndex;
+        //        itemList[1] = Node.Edges[i].EndIndex;
+        //        if (GetCountRepeats(itemList, list.First()) == 1)
+        //        {
+        //            indexesMinimalPaths.Add(Node.Edges[i]);
+        //        }
+        //    }
+        //    foreach (var edge in indexesMinimalPaths)
+        //    {
+        //        edge.ColorEdge = Pens.Red;
+        //    }
+        //    Refresh();
+        //}
     }
 }

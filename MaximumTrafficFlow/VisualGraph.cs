@@ -139,7 +139,7 @@ namespace MaximumTrafficFlow
             return Math.Sqrt(Math.Pow(Math.Abs(mousePoint.X - nodePoint.X), 2) + Math.Pow(Math.Abs(mousePoint.Y - nodePoint.Y), 2));
         }
 
-        public void GetMultitude(List<int> list)
+        public void GetMultitude(List<List<int>> list)
         {
             List<Edge> indexesMinimalPaths = new List<Edge>();
             for(int i = 0; i < Node.Edges.Count; i++)
@@ -147,7 +147,7 @@ namespace MaximumTrafficFlow
                 int[] itemList = new int[2];
                 itemList[0] = Node.Edges[i].StartIndex;
                 itemList[1] = Node.Edges[i].EndIndex;
-                if(GetCountRepeats(itemList, list) == 1)
+                if(GetCountRepeats(itemList, list.First()) == 1)
                 {
                     indexesMinimalPaths.Add(Node.Edges[i]);
                 }
