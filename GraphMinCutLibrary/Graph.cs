@@ -11,7 +11,6 @@ namespace GraphMinCutLibrary
     {
         public Matrix Matrix { get; } //Матрица смежности
         public List<List<string>> Results { get; private set; }
-
         public event Action<List<List<int>>> GetResult;
         public Graph(Matrix connectionsMatrix)
         {
@@ -87,6 +86,15 @@ namespace GraphMinCutLibrary
                 new Listing(multitude.Last()).ToString(),
 
             });
+
+            for (int i = minimalEdges.Count; i > 0; i--)
+            {
+                Results.Add(new List<string>()
+                {
+                    "Минимальный разрез #" + i.ToString(),
+                    new Listing(minimalEdges.ElementAt(i - 1)).ToString()
+                });
+            }
             GetResult.Invoke(multitude);
             return multitude;
         }

@@ -34,6 +34,13 @@ namespace GraphMinCutLibrary
                         oneMinimalEdge.Add(multitudeB.ElementAt(i));
                         minimalEdges.Add(oneMinimalEdge);
                     }
+                    if (connectionsMatrix.Arrayy[multitudeB.ElementAt(i) - 1, multitudeA.ElementAt(j) - 1] > 0)
+                    {
+                        List<int> oneMinimalEdge = new List<int>();
+                        oneMinimalEdge.Add(multitudeB.ElementAt(i));
+                        oneMinimalEdge.Add(multitudeA.ElementAt(j));
+                        minimalEdges.Add(oneMinimalEdge);
+                    }
                 }
             }
             return minimalEdges;
