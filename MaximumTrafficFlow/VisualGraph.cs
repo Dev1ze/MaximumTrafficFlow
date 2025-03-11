@@ -76,8 +76,10 @@ namespace MaximumTrafficFlow
                 indexTo,
                 valueEdge
             };
-            ExceptionHandler.Handle(NonExsistNode,EmptyFields, noneExsistEdge);
+
+            ExceptionHandler.Handle(NonExsistNode, ExistEdge, EmptyFields, IdenticalNode);
             ExceptionChecker.CheckAllExceptions(Node.Edges, startIndex, endIndex, nodes, InputsFields);
+
             if (!ExceptionHandler.IsError)
             {
                 BuildEdge(nodes);
@@ -100,7 +102,7 @@ namespace MaximumTrafficFlow
         {
             NonExsistNode.Visible = false;
             EmptyFields.Visible = false;
-            noneExsistEdge.Visible = false;
+            IdenticalNode.Visible = false;
             int start = int.Parse(indexFrom.Text) - 1;
             int end = int.Parse(indexTo.Text) - 1;
             int value = int.Parse(valueEdge.Text);
@@ -180,7 +182,7 @@ namespace MaximumTrafficFlow
             char number = e.KeyChar;
             NonExsistNode.Visible = false;
             EmptyFields.Visible = false;
-            noneExsistEdge.Visible = false;
+            IdenticalNode.Visible = false;
             if (!char.IsDigit(number) && number != (char)Keys.Back)
             {
                 // Если символ не является цифрой, отменяем его ввод
