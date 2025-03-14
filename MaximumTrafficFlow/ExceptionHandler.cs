@@ -3,64 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MaximumTrafficFlow
 {
     public static class ExceptionHandler
     {
-        private static System.Windows.Forms.Label NoneExistNode { get; set; } //Указаны несуществующие узлы
-        private static System.Windows.Forms.Label ExistEdge { get; set; } //Такое ребро уже есть
-        private static System.Windows.Forms.Label EmptyFields { get; set; } // Не все поля заполнены
-        private static System.Windows.Forms.Label IdenticalNode { get; set; } //Ребро должно иметь направление
+
+        private static System.Windows.Forms.Label ErrorText { get; set; }
         public static bool IsError { get; private set; }
 
-        public static void Handle
-        (
-            System.Windows.Forms.Label nonExsistNode, 
-            System.Windows.Forms.Label exsistEdge,
-            System.Windows.Forms.Label emptyFields, 
-            System.Windows.Forms.Label identicalNode
-        )
+        public static void Handle(System.Windows.Forms.Label nonExsistNode)
         {
-            NoneExistNode = nonExsistNode;
-            ExistEdge = exsistEdge;
-            EmptyFields = emptyFields;
-            IdenticalNode = identicalNode;
+            ErrorText = nonExsistNode;
+
             ExceptionChecker.OnNoneExsistNode += NotifyNoneExistNode;
-            ExceptionChecker.OnExistEdge += NotifyExistEdge;
-            ExceptionChecker.OnEmptyFields += NotifyEmptyFields;
-            ExceptionChecker.OnIdenticalNode += NotifyIdenticalNode;
+            ExceptionChecker.OnExistEdge += NotifyNoneExistNode;
+            ExceptionChecker.OnEmptyFields += NotifyNoneExistNode;
+            ExceptionChecker.OnIdenticalNode += NotifyNoneExistNode;
+            ExceptionChecker.OnInputStock += NotifyNoneExistNode;
+            ExceptionChecker.OnOutputIstock += NotifyNoneExistNode;
             IsError = false;
         }
 
-        private static void NotifyNoneExistNode()
+        private static void NotifyNoneExistNode(string text)
         {
-            //Заморозить поток дополнительный который задерживает показ на 3 секунды потом висибл опять фолс
-            NoneExistNode.Visible = true;
-            EmptyFields.BringToFront();
-            IsError = true; 
+            ErrorText.Text = text;
+            IsError = true;
+            Task.Run(() => ShowException(ErrorText));
         }
 
-        private static void NotifyExistEdge()
+        private static void ShowException(System.Windows.Forms.Label textBlock)
         {
-            ExistEdge.Visible = true;
-            EmptyFields.BringToFront();
-            IsError = true;
-        }
-
-        private static void NotifyEmptyFields()
-        {
-            EmptyFields.Visible = true;
-            EmptyFields.BringToFront();
-            IsError = true;
-        }
-
-        private static void NotifyIdenticalNode()
-        {
-            IdenticalNode.Visible = true;
-            EmptyFields.BringToFront();
-            IsError = true;
+            textBlock.Invoke(new Action(() => textBlock.Visible = true));
+            Thread.Sleep(2000);
+            textBlock.Invoke(new Action(() => textBlock.Visible = false));
         }
     }
 }

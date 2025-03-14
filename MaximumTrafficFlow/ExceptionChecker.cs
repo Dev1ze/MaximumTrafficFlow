@@ -7,10 +7,12 @@ namespace MaximumTrafficFlow
 {
     public static class ExceptionChecker
     {
-        public static event Action OnNoneExsistNode;
-        public static event Action OnEmptyFields;
-        public static event Action OnExistEdge;
-        public static event Action OnIdenticalNode;
+        public static event Action<string> OnNoneExsistNode;
+        public static event Action<string> OnEmptyFields;
+        public static event Action<string> OnExistEdge;
+        public static event Action<string> OnIdenticalNode;
+        public static event Action<string> OnInputStock;
+        public static event Action<string> OnOutputIstock;
 
         private static bool CheckExsistNode(List<Node> nodes, string indexFrom, string indexTo)
         {
@@ -20,17 +22,17 @@ namespace MaximumTrafficFlow
                 int endIndex = int.Parse(indexTo);
                 if (nodes.Count == 0)
                 {
-                    OnNoneExsistNode?.Invoke();
+                    OnNoneExsistNode?.Invoke("Указаны несуществующие узлы");
                     return true;
                 }
                 else if (startIndex > nodes[nodes.Count - 1].Number | startIndex < nodes[0].Number)
                 {
-                    OnNoneExsistNode?.Invoke();
+                    OnNoneExsistNode?.Invoke("Указаны несуществующие узлы");
                     return true;
                 }
                 else if (endIndex < nodes[0].Number | endIndex > nodes[nodes.Count - 1].Number)
                 {
-                    OnNoneExsistNode?.Invoke();
+                    OnNoneExsistNode?.Invoke("Указаны несуществующие узлы");
                     return true;
                 }
                 else return false;
@@ -43,7 +45,7 @@ namespace MaximumTrafficFlow
             {
                 if(textBox.Text.Length == 0)
                 {
-                    OnEmptyFields?.Invoke();
+                    OnEmptyFields?.Invoke("Не все поля заполнены");
                     return true;
                 }
             }
@@ -58,7 +60,7 @@ namespace MaximumTrafficFlow
             };
             if (inputFields[0] == inputFields[1])
             {
-                OnIdenticalNode?.Invoke();
+                OnIdenticalNode?.Invoke("Такое ребро уже есть");
                 return true;
             }
 
@@ -71,12 +73,31 @@ namespace MaximumTrafficFlow
                 };
                 if (actualEdges.SequenceEqual(inputFields)) //Проверка на идентичность списков, включая порядок
                 {
-                    OnExistEdge?.Invoke();
+                    OnExistEdge?.Invoke("Такое ребро уже есть");
                     return true;
                 }
             }
             return false;
-        }//Проверка существование ребер "
+        }//Проверка существование ребер"
+        private static bool CheckInputStock(string indexTo)
+        {
+            if(int.Parse(indexTo) == 1)
+            {
+                OnInputStock?.Invoke("В сток не должны входить рерба");
+                return true;
+            }
+            return false;
+        }
+        private static bool CheckOutputIstock(List<Node> nodes, string indexFrom)
+        {
+            if (nodes.Count == int.Parse(indexFrom))
+            {
+                OnOutputIstock?.Invoke("Из истока не должны выходить ребра");
+                return true;
+            }
+            return false;
+        }
+
         public static void CheckAllExceptions(List<Edge> edges, string indexFrom, string indexTo, List<Node> nodes, List<TextBox> textBoxes)
         {
             if (CheckEmptyFields(textBoxes))
@@ -88,6 +109,14 @@ namespace MaximumTrafficFlow
                 return;
             }
             else if (CheckExsistNode(nodes, indexFrom, indexTo))
+            {
+                return;
+            }
+            else if (CheckInputStock(indexTo))
+            {
+                return;
+            }
+            else if (CheckOutputIstock(nodes, indexFrom))
             {
                 return;
             }
