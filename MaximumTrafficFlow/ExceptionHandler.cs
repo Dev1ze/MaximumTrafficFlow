@@ -11,24 +11,28 @@ namespace MaximumTrafficFlow
 {
     public static class ExceptionHandler
     {
-
         private static System.Windows.Forms.Label ErrorText { get; set; }
         public static bool IsError { get; private set; }
-
-        public static void Handle(System.Windows.Forms.Label nonExsistNode)
+        public static void HandleBuildEdge(System.Windows.Forms.Label errorText)
         {
-            ErrorText = nonExsistNode;
-
-            ExceptionChecker.OnNoneExsistNode += NotifyNoneExistNode;
-            ExceptionChecker.OnExistEdge += NotifyNoneExistNode;
-            ExceptionChecker.OnEmptyFields += NotifyNoneExistNode;
-            ExceptionChecker.OnIdenticalNode += NotifyNoneExistNode;
-            ExceptionChecker.OnInputStock += NotifyNoneExistNode;
-            ExceptionChecker.OnOutputIstock += NotifyNoneExistNode;
+            ErrorText = errorText;
+            ExceptionChecker.OnNoneExsistNode += NotifyError;
+            ExceptionChecker.OnExistEdge += NotifyError;
+            ExceptionChecker.OnEmptyFields += NotifyError;
+            ExceptionChecker.OnIdenticalNode += NotifyError;
+            ExceptionChecker.OnInputStock += NotifyError;
+            ExceptionChecker.OnOutputIstock += NotifyError;
             IsError = false;
         }
 
-        private static void NotifyNoneExistNode(string text)
+        public static void HandleFindMinimalCut(System.Windows.Forms.Label errorText)
+        {
+            ErrorText = errorText;
+            ExceptionChecker.OnIsolatedNode += NotifyError;
+            IsError = false;
+        }
+
+        private static void NotifyError(string text)
         {
             ErrorText.Text = text;
             IsError = true;

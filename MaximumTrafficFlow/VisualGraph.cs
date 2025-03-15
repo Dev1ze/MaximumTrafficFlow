@@ -77,7 +77,7 @@ namespace MaximumTrafficFlow
                 valueEdge
             };
 
-            ExceptionHandler.Handle(NonExsistNode);
+            ExceptionHandler.HandleBuildEdge(ErrorText);
             ExceptionChecker.CheckAllExceptions(Node.Edges, startIndex, endIndex, nodes, InputsFields);
 
             if (!ExceptionHandler.IsError)
@@ -88,25 +88,43 @@ namespace MaximumTrafficFlow
 
         private void button2_Click(object sender, EventArgs e) //Нажатие на кнопку "Найти минимальный разрез"
         {
-            Matrix matrix1 = new Matrix(MatrixConverter.BuildMatrix(Node.Edges));
-            Graph graph = new Graph(matrix1);
-            graph.GetResult += GetMultitude;
-            graph.FindMinimalCut();
-            Form1 form1 = new Form1();
-            form1.PrintText(graph.Results);
-            form1.Show();
-            string i;
+            string startIndex = indexFrom.Text ?? "";
+            string endIndex = indexTo.Text ?? "";
+            string valueStream = valueEdge.Text ?? "";
+            List<TextBox> InputsFields = new List<TextBox>()
+            {
+                indexFrom,
+                indexTo,
+                valueEdge
+            };
+            ExceptionHandler.HandleFindMinimalCut(ErrorText);
+            ExceptionChecker.CheckIsolatedkNode(nodes);
+
+            if (!ExceptionHandler.IsError)
+            {
+                Matrix matrix1 = new Matrix(MatrixConverter.BuildMatrix(Node.Edges));
+                Graph graph = new Graph(matrix1);
+                graph.GetResult += GetMultitude;
+                graph.FindMinimalCut();
+                Form1 form1 = new Form1();
+                form1.PrintText(graph.Results);
+                form1.Show();
+                string i;
+            }
+            
         }
 
         private void BuildEdge(List<Node> nodes)
         {
-            NonExsistNode.Visible = false;
+            ErrorText.Visible = false;
             int start = int.Parse(indexFrom.Text) - 1;
             int end = int.Parse(indexTo.Text) - 1;
             int value = int.Parse(valueEdge.Text);
             Point startPos = new Point(nodes[start].Position.X, nodes[start].Position.Y);
             Point endPos = new Point(nodes[end].Position.X, nodes[end].Position.Y);
             nodes[start].AddEdge(new Edge(startPos, endPos, start, end, value));
+            nodes[start].IndexTo = end;
+            nodes[end].IndexFrom = start;
             Node.UpdateRelatedEdge(Node.Edges, start, nodes[start].Position);
             Node.UpdateRelatedEdge(Node.Edges, end, nodes[end].Position);
             Refresh();
@@ -178,7 +196,7 @@ namespace MaximumTrafficFlow
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            NonExsistNode.Visible = false;
+            ErrorText.Visible = false;
             if (!char.IsDigit(number) && number != (char)Keys.Back)
             {
                 // Если символ не является цифрой, отменяем его ввод

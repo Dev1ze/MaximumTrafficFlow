@@ -13,6 +13,7 @@ namespace MaximumTrafficFlow
         public static event Action<string> OnIdenticalNode;
         public static event Action<string> OnInputStock;
         public static event Action<string> OnOutputIstock;
+        public static event Action<string> OnIsolatedNode;
 
         private static bool CheckExsistNode(List<Node> nodes, string indexFrom, string indexTo)
         {
@@ -97,7 +98,18 @@ namespace MaximumTrafficFlow
             }
             return false;
         }
-
+        public static bool CheckIsolatedkNode(List<Node> nodes)
+        {
+            for(int i = 1; i < nodes.Count - 1; i++)
+            {
+                if (nodes[i].IndexFrom == - 1 || nodes[i].IndexTo == -1)
+                {
+                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i+1}");
+                    return true;
+                }
+            }
+            return false;
+        }
         public static void CheckAllExceptions(List<Edge> edges, string indexFrom, string indexTo, List<Node> nodes, List<TextBox> textBoxes)
         {
             if (CheckEmptyFields(textBoxes))

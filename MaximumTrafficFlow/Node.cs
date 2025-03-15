@@ -15,7 +15,8 @@ namespace MaximumTrafficFlow
         {
             Position = positoin;
         }
-
+        public int IndexFrom { get; set; } = -1;
+        public int IndexTo { get; set; } = -1;
         public static int Radius { get; set; } = 40;
         public Brush Color { get; set; } = Brushes.Black;
         public Point Position { get; set; }
