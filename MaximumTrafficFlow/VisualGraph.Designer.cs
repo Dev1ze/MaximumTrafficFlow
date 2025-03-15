@@ -38,6 +38,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ErrorText = new System.Windows.Forms.Label();
+            this.DeleteButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_forDelete = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,6 +120,9 @@
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.textBox_forDelete);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.DeleteButton);
             this.panel1.Controls.Add(this.ErrorText);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.endIndex);
@@ -128,7 +134,7 @@
             this.panel1.Controls.Add(this.indexFrom);
             this.panel1.Location = new System.Drawing.Point(615, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(184, 219);
+            this.panel1.Size = new System.Drawing.Size(184, 281);
             this.panel1.TabIndex = 8;
             // 
             // ErrorText
@@ -141,6 +147,32 @@
             this.ErrorText.Text = "Указаны несуществующие узлы";
             this.ErrorText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ErrorText.Visible = false;
+            // 
+            // DeleteButton
+            // 
+            this.DeleteButton.Location = new System.Drawing.Point(21, 247);
+            this.DeleteButton.Name = "DeleteButton";
+            this.DeleteButton.Size = new System.Drawing.Size(141, 23);
+            this.DeleteButton.TabIndex = 9;
+            this.DeleteButton.Text = "Удалить вершину";
+            this.DeleteButton.UseVisualStyleBackColor = true;
+            this.DeleteButton.Click += new System.EventHandler(this.button_DeleteNode);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 231);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Вершина";
+            // 
+            // textBox_forDelete
+            // 
+            this.textBox_forDelete.Location = new System.Drawing.Point(112, 224);
+            this.textBox_forDelete.Name = "textBox_forDelete";
+            this.textBox_forDelete.Size = new System.Drawing.Size(50, 20);
+            this.textBox_forDelete.TabIndex = 12;
             // 
             // VisualGraph
             // 
@@ -172,5 +204,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label ErrorText;
+        private System.Windows.Forms.Button DeleteButton;
+        private System.Windows.Forms.TextBox textBox_forDelete;
+        private System.Windows.Forms.Label label1;
     }
 }

@@ -65,6 +65,25 @@ namespace MaximumTrafficFlow
             DrawNodes(e);
         }
 
+        private void button_DeleteNode(object sender, EventArgs e)
+        {
+            int indexForDelete = int.Parse(textBox_forDelete.Text) - 1;
+            nodes.Remove(nodes[indexForDelete]);
+            for(int j = 0; j < Node.Edges.Count; j++)
+            {
+                if (Node.Edges[j].EndIndex == indexForDelete || Node.Edges[j].StartIndex == indexForDelete)
+                {
+                    Node.Edges.RemoveAt(j);
+                    j--;
+                }
+            }
+            for(int i = 0; i < nodes.Count; i++)
+            {
+                nodes[i].Number = i + 1; 
+            }
+            Refresh();
+        }
+
         private void button_CreateEdge(object sender, EventArgs e)
         {
             string startIndex = indexFrom.Text ?? "";
@@ -203,5 +222,7 @@ namespace MaximumTrafficFlow
                 e.Handled = true;
             }
         }
+
+
     }
 }
