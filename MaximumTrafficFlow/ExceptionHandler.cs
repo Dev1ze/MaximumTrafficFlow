@@ -32,6 +32,13 @@ namespace MaximumTrafficFlow
             IsError = false;
         }
 
+        public static void HandleDeleteNode(System.Windows.Forms.Label errorText)
+        {
+            ErrorText = errorText;
+            ExceptionChecker.OnDeleteNode += NotifyError;
+            IsError = false;
+        }
+
         private static void NotifyError(string text)
         {
             ErrorText.Text = text;

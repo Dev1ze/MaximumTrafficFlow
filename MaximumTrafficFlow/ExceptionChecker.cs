@@ -14,6 +14,7 @@ namespace MaximumTrafficFlow
         public static event Action<string> OnInputStock;
         public static event Action<string> OnOutputIstock;
         public static event Action<string> OnIsolatedNode;
+        public static event Action<string> OnDeleteNode;
 
         private static bool CheckExsistNode(List<Node> nodes, string indexFrom, string indexTo)
         {
@@ -107,6 +108,16 @@ namespace MaximumTrafficFlow
                     OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i+1}");
                     return true;
                 }
+            }
+            return false;
+        }
+        public static bool CheckDeleteNode(List<Node> nodes, string deletedIndex)
+        {
+
+            if (int.Parse(deletedIndex) > nodes.Count)
+            {
+                OnDeleteNode?.Invoke("Таких вершин не существует");
+                return true;
             }
             return false;
         }

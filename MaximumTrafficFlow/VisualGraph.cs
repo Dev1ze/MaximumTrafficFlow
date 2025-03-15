@@ -67,21 +67,34 @@ namespace MaximumTrafficFlow
 
         private void button_DeleteNode(object sender, EventArgs e)
         {
-            int indexForDelete = int.Parse(textBox_forDelete.Text) - 1;
-            nodes.Remove(nodes[indexForDelete]);
-            for(int j = 0; j < Node.Edges.Count; j++)
+            string deleteIndex = textBox_forDelete.Text ?? "";
+            ExceptionHandler.HandleDeleteNode(ErrorText);
+            ExceptionChecker.CheckDeleteNode(nodes, deleteIndex);
+            if (!ExceptionHandler.IsError)
             {
-                if (Node.Edges[j].EndIndex == indexForDelete || Node.Edges[j].StartIndex == indexForDelete)
+                int lastDeletedEdge = 0;
+                int indexForDelete = int.Parse(textBox_forDelete.Text) - 1;
+                nodes.Remove(nodes[indexForDelete]);
+                for (int j = 0; j < Node.Edges.Count; j++)
                 {
-                    Node.Edges.RemoveAt(j);
-                    j--;
+                    if (Node.Edges[j].EndIndex == indexForDelete || Node.Edges[j].StartIndex == indexForDelete)
+                    {
+                        Node.Edges.RemoveAt(j);
+                        lastDeletedEdge = j;
+                        j--;
+                    }
                 }
+                for (int i = lastDeletedEdge; i < Node.Edges.Count; i++)
+                {
+                    Node.Edges[i].EndIndex--;
+                    Node.Edges[i].StartIndex--;
+                }
+                for (int i = 0; i < nodes.Count; i++)
+                {
+                    nodes[i].Number = i + 1;
+                }
+                Refresh();
             }
-            for(int i = 0; i < nodes.Count; i++)
-            {
-                nodes[i].Number = i + 1; 
-            }
-            Refresh();
         }
 
         private void button_CreateEdge(object sender, EventArgs e)
@@ -222,7 +235,5 @@ namespace MaximumTrafficFlow
                 e.Handled = true;
             }
         }
-
-
     }
 }
