@@ -16,7 +16,7 @@ namespace MaximumTrafficFlow
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new VisualGraph());
+            Application.Run(new Main());
         }
     }
 }

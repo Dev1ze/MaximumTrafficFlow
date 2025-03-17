@@ -14,15 +14,19 @@ namespace MaximumTrafficFlow
 {
     public partial class VisualGraph : Form
     {
+        Form1 form1 = new Form1();
+        public List<Node> nodes = new List<Node>();
+        public int selectedNodeIndex = -1;
+        public static event Action OnExsistEdge;
+        Matrix matrix1;
+        Graph graph;
+
         public VisualGraph()
         {
             InitializeComponent();
             this.DoubleBuffered = true;
+            form1.onClickBack += BackToGraph;
         }
-
-        public List<Node> nodes = new List<Node>();
-        public int selectedNodeIndex = -1;
-        public static event Action OnExsistEdge;
 
         private void VisualGraph_MouseDown(object sender, MouseEventArgs e)
         {
@@ -134,14 +138,12 @@ namespace MaximumTrafficFlow
 
             if (!ExceptionHandler.IsError)
             {
-                Matrix matrix1 = new Matrix(MatrixConverter.BuildMatrix(Node.Edges));
-                Graph graph = new Graph(matrix1);
+                matrix1 = new Matrix(MatrixConverter.BuildMatrix(Node.Edges));
+                graph = new Graph(matrix1);
                 graph.GetResult += GetMultitude;
                 graph.FindMinimalCut();
-                Form1 form1 = new Form1();
                 form1.PrintText(graph.Results);
-                form1.Show();
-                string i;
+                ShowResults.Visible = true;
             }
             
         }
@@ -234,6 +236,32 @@ namespace MaximumTrafficFlow
                 // Если символ не является цифрой, отменяем его ввод
                 e.Handled = true;
             }
+        }
+
+        private void ShowResults_Click(object sender, EventArgs e)
+        {
+            if (graph.Results.Count == 0)
+            {
+                graph.GetResult += GetMultitude;
+                graph.FindMinimalCut();
+                form1.PrintText(graph.Results);
+            }
+            form1.TopLevel = false;  // Делаем форму вложенной
+            form1.FormBorderStyle = FormBorderStyle.None; // Убираем границы
+            form1.Dock = DockStyle.Fill; // Растягиваем на всю панель
+            panelChildForm.Controls.Add(form1); // Добавляем в панель
+            panelChildForm.Visible = true;
+            panelChildForm.BringToFront();
+            form1.Show();
+            //form1.Show();
+            string i;
+        }
+
+        private void BackToGraph()
+        {
+            //this.TopLevel = true;
+            panelChildForm.Visible = false;
+            panelChildForm.SendToBack();
         }
     }
 }

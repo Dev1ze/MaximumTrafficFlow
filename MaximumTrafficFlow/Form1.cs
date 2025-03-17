@@ -13,6 +13,7 @@ namespace MaximumTrafficFlow
 {
     public partial class Form1 : Form
     {
+        public event Action onClickBack;
         public Form1()
         {
             InitializeComponent();
@@ -28,6 +29,11 @@ namespace MaximumTrafficFlow
                 }
                 Window.NewLIne();
             }
+        }
+
+        private void BackToGraph_Click(object sender, EventArgs e)
+        {
+            onClickBack?.Invoke();
         }
     }
 }
