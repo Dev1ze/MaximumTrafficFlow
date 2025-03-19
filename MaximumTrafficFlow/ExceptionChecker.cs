@@ -105,7 +105,7 @@ namespace MaximumTrafficFlow
             {
                 if (nodes[i].IndexFrom == - 1 || nodes[i].IndexTo == -1)
                 {
-                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i+1}");
+                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i+2}");
                     return true;
                 }
             }

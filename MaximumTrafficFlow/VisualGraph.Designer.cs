@@ -32,7 +32,7 @@
             this.indexFrom = new System.Windows.Forms.TextBox();
             this.indexTo = new System.Windows.Forms.TextBox();
             this.valueEdge = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_FindMinCut = new System.Windows.Forms.Button();
             this.startIndex = new System.Windows.Forms.Label();
             this.endIndex = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -83,16 +83,16 @@
             this.valueEdge.TabIndex = 3;
             this.valueEdge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
-            // button2
+            // btn_FindMinCut
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(631, 169);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(141, 36);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Найти минимальный разрез";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btn_FindMinCut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_FindMinCut.Location = new System.Drawing.Point(631, 169);
+            this.btn_FindMinCut.Name = "btn_FindMinCut";
+            this.btn_FindMinCut.Size = new System.Drawing.Size(141, 36);
+            this.btn_FindMinCut.TabIndex = 4;
+            this.btn_FindMinCut.Text = "Найти минимальный разрез";
+            this.btn_FindMinCut.UseVisualStyleBackColor = true;
+            this.btn_FindMinCut.Click += new System.EventHandler(this.FindMinCut_Click);
             // 
             // startIndex
             // 
@@ -209,7 +209,7 @@
             this.Controls.Add(this.ErrorText);
             this.Controls.Add(this.indexTo);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btn_FindMinCut);
             this.Controls.Add(this.endIndex);
             this.Controls.Add(this.valueEdge);
             this.Controls.Add(this.startIndex);
@@ -234,7 +234,7 @@
         private System.Windows.Forms.TextBox indexFrom;
         private System.Windows.Forms.TextBox indexTo;
         private System.Windows.Forms.TextBox valueEdge;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_FindMinCut;
         private System.Windows.Forms.Label startIndex;
         private System.Windows.Forms.Label endIndex;
         private System.Windows.Forms.Label label3;

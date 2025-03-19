@@ -51,7 +51,6 @@ namespace MaximumTrafficFlow
                     }
                 }
             }
-            
         }
 
         private void VisualGraph_MouseMove(object sender, MouseEventArgs e)
@@ -91,19 +90,19 @@ namespace MaximumTrafficFlow
                         Node.Edges.RemoveAt(j);
                         lastDeletedEdge = j;
                         j--;
+                        for (int i = lastDeletedEdge; i < Node.Edges.Count; i++)
+                        {
+                            Node.Edges[i].EndIndex--;
+                            Node.Edges[i].StartIndex--;
+                        }
+                        for (int i = 0; i < nodes.Count; i++)
+                        {
+                            nodes[i].Number = i + 1;
+                        }
                     }
                 }
-                for (int i = lastDeletedEdge; i < Node.Edges.Count; i++)
-                {
-                    Node.Edges[i].EndIndex--;
-                    Node.Edges[i].StartIndex--;
-                }
-                for (int i = 0; i < nodes.Count; i++)
-                {
-                    nodes[i].Number = i + 1;
-                }
-                Refresh();
             }
+            Refresh();
         }
 
         private void button_CreateEdge(object sender, EventArgs e)
@@ -127,7 +126,7 @@ namespace MaximumTrafficFlow
             }
         }
 
-        private void button2_Click(object sender, EventArgs e) //Нажатие на кнопку "Найти минимальный разрез"
+        private void FindMinCut_Click(object sender, EventArgs e) //Нажатие на кнопку "Найти минимальный разрез"
         {
             string startIndex = indexFrom.Text ?? "";
             string endIndex = indexTo.Text ?? "";
