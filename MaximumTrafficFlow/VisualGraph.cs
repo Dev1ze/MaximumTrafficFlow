@@ -31,23 +31,27 @@ namespace MaximumTrafficFlow
 
         private void VisualGraph_MouseDown(object sender, MouseEventArgs e)
         {
-            if (e.Button == MouseButtons.Left)
+            if (graph == null)
             {
-                nodes.Add(new Node(e.Location));
-                nodes[nodes.Count - 1].Number = nodes.Count;
-                Refresh();
-            }
-            if (e.Button == MouseButtons.Right)
-            {
-                for (int i = 0; i < nodes.Count; i++)
+                if (e.Button == MouseButtons.Left)
                 {
-                    if (Distance(e.Location, nodes[i].Position) < Node.Radius)
+                    nodes.Add(new Node(e.Location));
+                    nodes[nodes.Count - 1].Number = nodes.Count;
+                    Refresh();
+                }
+                if (e.Button == MouseButtons.Right)
+                {
+                    for (int i = 0; i < nodes.Count; i++)
                     {
-                        selectedNodeIndex = i;
-                        break;
+                        if (Distance(e.Location, nodes[i].Position) < Node.Radius)
+                        {
+                            selectedNodeIndex = i;
+                            break;
+                        }
                     }
                 }
             }
+            
         }
 
         private void VisualGraph_MouseMove(object sender, MouseEventArgs e)
@@ -254,7 +258,6 @@ namespace MaximumTrafficFlow
             panelChildForm.Visible = true;
             panelChildForm.BringToFront();
             form1.Show();
-            //form1.Show();
             string i;
         }
 
