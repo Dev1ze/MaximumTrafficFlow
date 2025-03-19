@@ -34,14 +34,16 @@ namespace MaximumTrafficFlow
             childForm.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new VisualGraph());
-        }
-
         private void btn_Home_Click(object sender, EventArgs e)
         {
             OpenChildForm(new HomePage());
+        }
+
+        private void CreateGraph_Click(object sender, EventArgs e)
+        {
+            VisualGraph visualGraph = new VisualGraph();
+            OpenChildForm(visualGraph);
+            Node.Edges.Clear();
         }
     }
 }

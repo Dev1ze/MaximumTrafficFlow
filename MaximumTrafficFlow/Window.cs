@@ -70,5 +70,10 @@ namespace MaximumTrafficFlow
             }
             return maxValue;
         }
+
+        public static void ResetPosition()
+        {
+            startPositionY = 60;
+        }
     }
 }

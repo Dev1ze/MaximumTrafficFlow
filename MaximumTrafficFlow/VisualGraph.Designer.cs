@@ -168,9 +168,10 @@
             // panelChildForm
             // 
             this.panelChildForm.AutoScroll = true;
-            this.panelChildForm.Location = new System.Drawing.Point(2, 1);
+            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelChildForm.Location = new System.Drawing.Point(0, 0);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(797, 485);
+            this.panelChildForm.Size = new System.Drawing.Size(802, 498);
             this.panelChildForm.TabIndex = 9;
             this.panelChildForm.Visible = false;
             // 

@@ -26,6 +26,7 @@ namespace MaximumTrafficFlow
             InitializeComponent();
             this.DoubleBuffered = true;
             form1.onClickBack += BackToGraph;
+            ShowResults.Visible = false;
         }
 
         private void VisualGraph_MouseDown(object sender, MouseEventArgs e)
@@ -259,7 +260,6 @@ namespace MaximumTrafficFlow
 
         private void BackToGraph()
         {
-            //this.TopLevel = true;
             panelChildForm.Visible = false;
             panelChildForm.SendToBack();
         }

@@ -29,6 +29,7 @@ namespace MaximumTrafficFlow
                 }
                 Window.NewLIne();
             }
+            Window.ResetPosition();
         }
 
         private void BackToGraph_Click(object sender, EventArgs e)

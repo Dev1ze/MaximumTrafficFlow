@@ -31,7 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelSideMenu = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_CreateGraph = new System.Windows.Forms.Button();
             this.btn_Home = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -46,7 +46,7 @@
             // 
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
             this.panelSideMenu.Controls.Add(this.button2);
-            this.panelSideMenu.Controls.Add(this.button1);
+            this.panelSideMenu.Controls.Add(this.btn_CreateGraph);
             this.panelSideMenu.Controls.Add(this.btn_Home);
             this.panelSideMenu.Controls.Add(this.panelLogo);
             this.panelSideMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -73,24 +73,24 @@
             this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.button2.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btn_CreateGraph
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 168);
-            this.button1.Name = "button1";
-            this.button1.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button1.Size = new System.Drawing.Size(200, 45);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "              СОЗДАТЬ ГРАФ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_CreateGraph.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_CreateGraph.FlatAppearance.BorderSize = 0;
+            this.btn_CreateGraph.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_CreateGraph.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_CreateGraph.ForeColor = System.Drawing.Color.White;
+            this.btn_CreateGraph.Image = ((System.Drawing.Image)(resources.GetObject("btn_CreateGraph.Image")));
+            this.btn_CreateGraph.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_CreateGraph.Location = new System.Drawing.Point(0, 168);
+            this.btn_CreateGraph.Name = "btn_CreateGraph";
+            this.btn_CreateGraph.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btn_CreateGraph.Size = new System.Drawing.Size(200, 45);
+            this.btn_CreateGraph.TabIndex = 2;
+            this.btn_CreateGraph.Text = "              СОЗДАТЬ ГРАФ";
+            this.btn_CreateGraph.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_CreateGraph.UseVisualStyleBackColor = true;
+            this.btn_CreateGraph.Click += new System.EventHandler(this.CreateGraph_Click);
             // 
             // btn_Home
             // 
@@ -170,7 +170,7 @@
 
         private System.Windows.Forms.Panel panelSideMenu;
         private System.Windows.Forms.Button btn_Home;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_CreateGraph;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
