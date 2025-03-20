@@ -139,6 +139,7 @@ namespace MaximumTrafficFlow
             };
             ExceptionHandler.HandleFindMinimalCut(ErrorText);
             ExceptionChecker.CheckIsolatedkNode(nodes);
+            ExceptionChecker.CheckExsistGraph(Node.Edges);
 
             if (!ExceptionHandler.IsError)
             {

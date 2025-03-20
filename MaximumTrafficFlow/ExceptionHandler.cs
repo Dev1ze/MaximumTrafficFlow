@@ -29,6 +29,7 @@ namespace MaximumTrafficFlow
         {
             ErrorText = errorText;
             ExceptionChecker.OnIsolatedNode += NotifyError;
+            ExceptionChecker.OnExsistGraph += NotifyError;
             IsError = false;
         }
 

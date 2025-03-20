@@ -15,6 +15,7 @@ namespace MaximumTrafficFlow
         public static event Action<string> OnOutputIstock;
         public static event Action<string> OnIsolatedNode;
         public static event Action<string> OnDeleteNode;
+        public static event Action<string> OnExsistGraph;
 
         private static bool CheckExsistNode(List<Node> nodes, string indexFrom, string indexTo)
         {
@@ -105,7 +106,7 @@ namespace MaximumTrafficFlow
             {
                 if (nodes[i].IndexFrom == - 1 || nodes[i].IndexTo == -1)
                 {
-                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i+2}");
+                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i + 2}");
                     return true;
                 }
             }
@@ -114,9 +115,18 @@ namespace MaximumTrafficFlow
         public static bool CheckDeleteNode(List<Node> nodes, string deletedIndex)
         {
 
-            if (int.Parse(deletedIndex) > nodes.Count)
+            if (int.Parse(deletedIndex) > nodes.Count || int.Parse(deletedIndex) <= 0)
             {
                 OnDeleteNode?.Invoke("Таких вершин не существует");
+                return true;
+            }
+            return false;
+        }
+        public static bool CheckExsistGraph(List<Edge> edges)
+        {
+            if(edges.Count < 2)
+            {
+                OnExsistGraph?.Invoke("Граф должен состоять из нелскольких ребер");
                 return true;
             }
             return false;
