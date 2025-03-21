@@ -44,7 +44,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.DoneImg = new System.Windows.Forms.PictureBox();
-            this.panelChildForm.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DoneImg)).BeginInit();
             this.SuspendLayout();
@@ -52,10 +51,11 @@
             // ErrorText
             // 
             this.ErrorText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ErrorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ErrorText.ForeColor = System.Drawing.Color.Red;
-            this.ErrorText.Location = new System.Drawing.Point(409, 303);
+            this.ErrorText.Location = new System.Drawing.Point(3, 164);
             this.ErrorText.Name = "ErrorText";
-            this.ErrorText.Size = new System.Drawing.Size(175, 26);
+            this.ErrorText.Size = new System.Drawing.Size(256, 41);
             this.ErrorText.TabIndex = 10;
             this.ErrorText.Text = "Указаны несуществующие узлы";
             this.ErrorText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -64,7 +64,6 @@
             // panelChildForm
             // 
             this.panelChildForm.AutoScroll = true;
-            this.panelChildForm.Controls.Add(this.ErrorText);
             this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelChildForm.ForeColor = System.Drawing.Color.Black;
             this.panelChildForm.Location = new System.Drawing.Point(0, 0);
@@ -78,7 +77,7 @@
             this.ShowResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowResults.ForeColor = System.Drawing.Color.Black;
-            this.ShowResults.Location = new System.Drawing.Point(34, 245);
+            this.ShowResults.Location = new System.Drawing.Point(34, 250);
             this.ShowResults.Name = "ShowResults";
             this.ShowResults.Size = new System.Drawing.Size(192, 31);
             this.ShowResults.TabIndex = 0;
@@ -93,7 +92,7 @@
             this.valueEdge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.valueEdge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.valueEdge.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.valueEdge.Location = new System.Drawing.Point(167, 37);
+            this.valueEdge.Location = new System.Drawing.Point(167, 27);
             this.valueEdge.Multiline = true;
             this.valueEdge.Name = "valueEdge";
             this.valueEdge.Size = new System.Drawing.Size(60, 25);
@@ -108,7 +107,7 @@
             this.btn_FindMinCut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_FindMinCut.Image = ((System.Drawing.Image)(resources.GetObject("btn_FindMinCut.Image")));
             this.btn_FindMinCut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_FindMinCut.Location = new System.Drawing.Point(34, 199);
+            this.btn_FindMinCut.Location = new System.Drawing.Point(34, 207);
             this.btn_FindMinCut.Name = "btn_FindMinCut";
             this.btn_FindMinCut.Size = new System.Drawing.Size(192, 40);
             this.btn_FindMinCut.TabIndex = 4;
@@ -123,7 +122,7 @@
             this.indexTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.indexTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.indexTo.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.indexTo.Location = new System.Drawing.Point(100, 37);
+            this.indexTo.Location = new System.Drawing.Point(100, 27);
             this.indexTo.Multiline = true;
             this.indexTo.Name = "indexTo";
             this.indexTo.Size = new System.Drawing.Size(60, 25);
@@ -136,7 +135,7 @@
             this.indexFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.indexFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.indexFrom.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.indexFrom.Location = new System.Drawing.Point(33, 37);
+            this.indexFrom.Location = new System.Drawing.Point(33, 27);
             this.indexFrom.Multiline = true;
             this.indexFrom.Name = "indexFrom";
             this.indexFrom.Size = new System.Drawing.Size(60, 25);
@@ -152,7 +151,7 @@
             this.DeleteButton.ForeColor = System.Drawing.Color.Black;
             this.DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Image")));
             this.DeleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DeleteButton.Location = new System.Drawing.Point(34, 144);
+            this.DeleteButton.Location = new System.Drawing.Point(34, 133);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(192, 31);
             this.DeleteButton.TabIndex = 9;
@@ -166,12 +165,13 @@
             this.textBox_forDelete.BackColor = System.Drawing.Color.DarkGray;
             this.textBox_forDelete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_forDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox_forDelete.ForeColor = System.Drawing.SystemColors.Window;
-            this.textBox_forDelete.Location = new System.Drawing.Point(33, 114);
+            this.textBox_forDelete.ForeColor = System.Drawing.Color.Black;
+            this.textBox_forDelete.Location = new System.Drawing.Point(33, 104);
             this.textBox_forDelete.Multiline = true;
             this.textBox_forDelete.Name = "textBox_forDelete";
             this.textBox_forDelete.Size = new System.Drawing.Size(194, 24);
             this.textBox_forDelete.TabIndex = 12;
+            this.textBox_forDelete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_KeyPress);
             // 
             // CreateEdge
             // 
@@ -181,7 +181,7 @@
             this.CreateEdge.ForeColor = System.Drawing.Color.Black;
             this.CreateEdge.Image = ((System.Drawing.Image)(resources.GetObject("CreateEdge.Image")));
             this.CreateEdge.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CreateEdge.Location = new System.Drawing.Point(34, 68);
+            this.CreateEdge.Location = new System.Drawing.Point(34, 58);
             this.CreateEdge.Name = "CreateEdge";
             this.CreateEdge.Size = new System.Drawing.Size(192, 29);
             this.CreateEdge.TabIndex = 0;
@@ -193,7 +193,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 20);
+            this.label1.Location = new System.Drawing.Point(52, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(22, 13);
             this.label1.TabIndex = 13;
@@ -202,7 +202,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(122, 20);
+            this.label2.Location = new System.Drawing.Point(122, 10);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(14, 13);
             this.label2.TabIndex = 14;
@@ -211,7 +211,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(182, 21);
+            this.label3.Location = new System.Drawing.Point(182, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 15;
@@ -221,6 +221,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(95)))), ((int)(((byte)(100)))));
+            this.panel1.Controls.Add(this.ErrorText);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ShowResults);
             this.panel1.Controls.Add(this.label2);
@@ -241,9 +242,9 @@
             // DoneImg
             // 
             this.DoneImg.Image = ((System.Drawing.Image)(resources.GetObject("DoneImg.Image")));
-            this.DoneImg.Location = new System.Drawing.Point(50, 54);
+            this.DoneImg.Location = new System.Drawing.Point(50, 44);
             this.DoneImg.Name = "DoneImg";
-            this.DoneImg.Size = new System.Drawing.Size(160, 138);
+            this.DoneImg.Size = new System.Drawing.Size(160, 160);
             this.DoneImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.DoneImg.TabIndex = 16;
             this.DoneImg.TabStop = false;
@@ -264,7 +265,6 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.VisualGraph_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.VisualGraph_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.VisualGraph_MouseUp);
-            this.panelChildForm.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DoneImg)).EndInit();

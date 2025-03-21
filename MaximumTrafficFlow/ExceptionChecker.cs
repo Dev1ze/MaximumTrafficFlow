@@ -114,7 +114,11 @@ namespace MaximumTrafficFlow
         }
         public static bool CheckDeleteNode(List<Node> nodes, string deletedIndex)
         {
-
+            if(deletedIndex.Length == 0)
+            {
+                OnDeleteNode?.Invoke("Не указаны вершины для удаления");
+                return true;
+            }
             if (int.Parse(deletedIndex) > nodes.Count || int.Parse(deletedIndex) <= 0)
             {
                 OnDeleteNode?.Invoke("Таких вершин не существует");
@@ -126,7 +130,7 @@ namespace MaximumTrafficFlow
         {
             if(edges.Count < 2)
             {
-                OnExsistGraph?.Invoke("Граф должен состоять из нелскольких ребер");
+                OnExsistGraph?.Invoke("Граф должен состоять из нескольких ребер");
                 return true;
             }
             return false;

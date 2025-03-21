@@ -236,8 +236,9 @@ namespace MaximumTrafficFlow
         private void textBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
-            ErrorText.Visible = false;
-            if (!char.IsDigit(number) && number != (char)Keys.Back)
+            TextBox textBox = sender as TextBox;
+            //ErrorText.Visible = false;
+            if ((!char.IsDigit(number) && number != (char)Keys.Back) || (textBox.Text.Length > 5 && number != (char)Keys.Back))
             {
                 // Если символ не является цифрой, отменяем его ввод
                 e.Handled = true;
