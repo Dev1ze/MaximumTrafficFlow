@@ -149,8 +149,9 @@ namespace MaximumTrafficFlow
                 graph.FindMinimalCut();
                 form1.PrintText(graph.Results);
                 ShowResults.Visible = true;
+                SwitchEnableInterface(panel1, false);
             }
-            
+
         }
 
         private void BuildEdge(List<Node> nodes)
@@ -265,6 +266,18 @@ namespace MaximumTrafficFlow
         {
             panelChildForm.Visible = false;
             panelChildForm.SendToBack();
+        }
+
+        private void SwitchEnableInterface(Control panel, bool isEnables) 
+        {
+            foreach (Control item in panel.Controls)
+            {
+                if(item.Name != "ShowResults")
+                {
+                    item.Visible = isEnables;
+                }
+                DoneImg.Visible = true;
+            }
         }
     }
 }

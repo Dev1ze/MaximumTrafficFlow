@@ -132,12 +132,13 @@
             // 
             // panelChildForm
             // 
+            this.panelChildForm.AllowDrop = true;
             this.panelChildForm.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelChildForm.Location = new System.Drawing.Point(204, 100);
+            this.panelChildForm.Location = new System.Drawing.Point(200, 68);
             this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(804, 486);
+            this.panelChildForm.Size = new System.Drawing.Size(808, 518);
             this.panelChildForm.TabIndex = 1;
             // 
             // panel1
@@ -146,7 +147,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(200, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(808, 94);
+            this.panel1.Size = new System.Drawing.Size(808, 70);
             this.panel1.TabIndex = 2;
             // 
             // Main

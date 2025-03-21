@@ -33,6 +33,7 @@
             // 
             // BackToGraph
             // 
+            this.BackToGraph.ForeColor = System.Drawing.Color.Black;
             this.BackToGraph.Location = new System.Drawing.Point(25, 13);
             this.BackToGraph.Name = "BackToGraph";
             this.BackToGraph.Size = new System.Drawing.Size(75, 23);
