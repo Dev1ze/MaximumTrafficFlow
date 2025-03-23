@@ -72,7 +72,7 @@ namespace MaximumTrafficFlow
                 }
                 if (edge.EndIndex == index)
                 {
-                    if (edge.StartPos.X >= edge.EndPos.X && edge.StartPos.Y >= edge.EndPos.Y)
+                    if (edge.StartPos.X > edge.EndPos.X && edge.StartPos.Y > edge.EndPos.Y)
                     {
                         edge.EndPos = new Point(Position.X + 5, Position.Y - 5);
                     }

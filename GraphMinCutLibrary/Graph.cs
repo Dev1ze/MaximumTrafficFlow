@@ -9,15 +9,15 @@ namespace GraphMinCutLibrary
 {
     public class Graph
     {
-        public Matrix Matrix { get; } //Матрица смежности
-        public List<List<string>> Results { get; private set; }
-        public event Action<List<List<int>>> GetResult;
         public Graph(Matrix connectionsMatrix)
         {
             Matrix = connectionsMatrix;
             Results = new List<List<string>>();
         }
+        public Matrix Matrix { get; } //Матрица смежности
+        public List<List<string>> Results { get; private set; }
 
+        public event Action<List<List<int>>> OnGetResult;
         public List<List<int>> FindMinimalCut()
         {
             int countLoop = 1;
@@ -95,7 +95,7 @@ namespace GraphMinCutLibrary
                     new Listing(minimalEdges.ElementAt(i - 1)).ToString()
                 });
             }
-            GetResult.Invoke(multitude);
+            OnGetResult.Invoke(multitude);
             return multitude;
         }
     }

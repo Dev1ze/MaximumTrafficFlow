@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VisualGraph));
             this.ErrorText = new System.Windows.Forms.Label();
-            this.panelChildForm = new System.Windows.Forms.Panel();
             this.ShowResults = new System.Windows.Forms.Button();
             this.valueEdge = new System.Windows.Forms.TextBox();
             this.btn_FindMinCut = new System.Windows.Forms.Button();
@@ -43,7 +42,9 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.SaveGraph = new System.Windows.Forms.Button();
             this.DoneImg = new System.Windows.Forms.PictureBox();
+            this.panelChildForm = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DoneImg)).BeginInit();
             this.SuspendLayout();
@@ -61,17 +62,6 @@
             this.ErrorText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.ErrorText.Visible = false;
             // 
-            // panelChildForm
-            // 
-            this.panelChildForm.AutoScroll = true;
-            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelChildForm.ForeColor = System.Drawing.Color.Black;
-            this.panelChildForm.Location = new System.Drawing.Point(0, 0);
-            this.panelChildForm.Name = "panelChildForm";
-            this.panelChildForm.Size = new System.Drawing.Size(802, 498);
-            this.panelChildForm.TabIndex = 9;
-            this.panelChildForm.Visible = false;
-            // 
             // ShowResults
             // 
             this.ShowResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -79,7 +69,7 @@
             this.ShowResults.ForeColor = System.Drawing.Color.Black;
             this.ShowResults.Location = new System.Drawing.Point(34, 250);
             this.ShowResults.Name = "ShowResults";
-            this.ShowResults.Size = new System.Drawing.Size(192, 31);
+            this.ShowResults.Size = new System.Drawing.Size(142, 31);
             this.ShowResults.TabIndex = 0;
             this.ShowResults.Text = "ПОКАЗАТЬ РЕШЕНИЕ";
             this.ShowResults.UseVisualStyleBackColor = true;
@@ -221,6 +211,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(95)))), ((int)(((byte)(100)))));
+            this.panel1.Controls.Add(this.SaveGraph);
             this.panel1.Controls.Add(this.ErrorText);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.ShowResults);
@@ -239,6 +230,16 @@
             this.panel1.Size = new System.Drawing.Size(262, 290);
             this.panel1.TabIndex = 13;
             // 
+            // SaveGraph
+            // 
+            this.SaveGraph.Location = new System.Drawing.Point(182, 258);
+            this.SaveGraph.Name = "SaveGraph";
+            this.SaveGraph.Size = new System.Drawing.Size(76, 23);
+            this.SaveGraph.TabIndex = 14;
+            this.SaveGraph.Text = "button1";
+            this.SaveGraph.UseVisualStyleBackColor = true;
+            this.SaveGraph.Click += new System.EventHandler(this.SaveGraph_Click);
+            // 
             // DoneImg
             // 
             this.DoneImg.Image = ((System.Drawing.Image)(resources.GetObject("DoneImg.Image")));
@@ -249,6 +250,17 @@
             this.DoneImg.TabIndex = 16;
             this.DoneImg.TabStop = false;
             this.DoneImg.Visible = false;
+            // 
+            // panelChildForm
+            // 
+            this.panelChildForm.AutoScroll = true;
+            this.panelChildForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelChildForm.ForeColor = System.Drawing.Color.Black;
+            this.panelChildForm.Location = new System.Drawing.Point(0, 0);
+            this.panelChildForm.Name = "panelChildForm";
+            this.panelChildForm.Size = new System.Drawing.Size(802, 498);
+            this.panelChildForm.TabIndex = 9;
+            this.panelChildForm.Visible = false;
             // 
             // VisualGraph
             // 
@@ -274,7 +286,6 @@
 
         #endregion
         private System.Windows.Forms.Label ErrorText;
-        private System.Windows.Forms.Panel panelChildForm;
         private System.Windows.Forms.Button ShowResults;
         private System.Windows.Forms.TextBox valueEdge;
         private System.Windows.Forms.Button btn_FindMinCut;
@@ -288,5 +299,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox DoneImg;
+        private System.Windows.Forms.Button SaveGraph;
+        private System.Windows.Forms.Panel panelChildForm;
     }
 }

@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelSideMenu = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btn_Saves = new System.Windows.Forms.Button();
             this.btn_CreateGraph = new System.Windows.Forms.Button();
             this.btn_Home = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
@@ -45,7 +45,7 @@
             // panelSideMenu
             // 
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
-            this.panelSideMenu.Controls.Add(this.button2);
+            this.panelSideMenu.Controls.Add(this.btn_Saves);
             this.panelSideMenu.Controls.Add(this.btn_CreateGraph);
             this.panelSideMenu.Controls.Add(this.btn_Home);
             this.panelSideMenu.Controls.Add(this.panelLogo);
@@ -55,23 +55,24 @@
             this.panelSideMenu.Size = new System.Drawing.Size(200, 586);
             this.panelSideMenu.TabIndex = 0;
             // 
-            // button2
+            // btn_Saves
             // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 213);
-            this.button2.Name = "button2";
-            this.button2.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.button2.Size = new System.Drawing.Size(200, 45);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "              НАСТРОЙКИ";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btn_Saves.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_Saves.FlatAppearance.BorderSize = 0;
+            this.btn_Saves.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_Saves.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_Saves.ForeColor = System.Drawing.Color.White;
+            this.btn_Saves.Image = ((System.Drawing.Image)(resources.GetObject("btn_Saves.Image")));
+            this.btn_Saves.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Saves.Location = new System.Drawing.Point(0, 213);
+            this.btn_Saves.Name = "btn_Saves";
+            this.btn_Saves.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btn_Saves.Size = new System.Drawing.Size(200, 45);
+            this.btn_Saves.TabIndex = 3;
+            this.btn_Saves.Text = "              СОХРАНЕНИЯ";
+            this.btn_Saves.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_Saves.UseVisualStyleBackColor = true;
+            this.btn_Saves.Click += new System.EventHandler(this.Saves_Click);
             // 
             // btn_CreateGraph
             // 
@@ -172,7 +173,7 @@
         private System.Windows.Forms.Panel panelSideMenu;
         private System.Windows.Forms.Button btn_Home;
         private System.Windows.Forms.Button btn_CreateGraph;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btn_Saves;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panelChildForm;

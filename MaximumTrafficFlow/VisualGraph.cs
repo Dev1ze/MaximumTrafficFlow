@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using GraphMinCutLibrary;
+using System.Text.Json;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace MaximumTrafficFlow
 {
@@ -27,6 +30,7 @@ namespace MaximumTrafficFlow
             this.DoubleBuffered = true;
             form1.onClickBack += BackToGraph;
             ShowResults.Visible = false;
+            Node.Edges.Clear();
         }
 
         private void VisualGraph_MouseDown(object sender, MouseEventArgs e)
@@ -80,29 +84,37 @@ namespace MaximumTrafficFlow
             ExceptionChecker.CheckDeleteNode(nodes, deleteIndex);
             if (!ExceptionHandler.IsError)
             {
-                int lastDeletedEdge = 0;
                 int indexForDelete = int.Parse(textBox_forDelete.Text) - 1;
-                nodes.Remove(nodes[indexForDelete]);
-                for (int j = 0; j < Node.Edges.Count; j++)
+
+                // Удаляем вершину
+                nodes.RemoveAt(indexForDelete);
+
+                // Удаляем связанные рёбра (проходим в обратном порядке, чтобы безопасно удалять)
+                for (int j = Node.Edges.Count - 1; j >= 0; j--)
                 {
-                    if (Node.Edges[j].EndIndex == indexForDelete || Node.Edges[j].StartIndex == indexForDelete)
+                    if (Node.Edges[j].StartIndex == indexForDelete || Node.Edges[j].EndIndex == indexForDelete)
                     {
                         Node.Edges.RemoveAt(j);
-                        lastDeletedEdge = j;
-                        j--;
-                        for (int i = lastDeletedEdge; i < Node.Edges.Count; i++)
-                        {
-                            Node.Edges[i].EndIndex--;
-                            Node.Edges[i].StartIndex--;
-                        }
-                        for (int i = 0; i < nodes.Count; i++)
-                        {
-                            nodes[i].Number = i + 1;
-                        }
                     }
                 }
+
+                // Обновляем индексы вершин в рёбрах
+                for (int i = 0; i < Node.Edges.Count; i++)
+                {
+                    if (Node.Edges[i].StartIndex > indexForDelete)
+                        Node.Edges[i].StartIndex--;
+                    if (Node.Edges[i].EndIndex > indexForDelete)
+                        Node.Edges[i].EndIndex--;
+                }
+
+                // Перенумеровываем вершины
+                for (int i = 0; i < nodes.Count; i++)
+                {
+                    nodes[i].Number = i + 1;
+                }
+
+                Refresh();
             }
-            Refresh();
         }
 
         private void button_CreateEdge(object sender, EventArgs e)
@@ -145,7 +157,7 @@ namespace MaximumTrafficFlow
             {
                 matrix1 = new Matrix(MatrixConverter.BuildMatrix(Node.Edges));
                 graph = new Graph(matrix1);
-                graph.GetResult += GetMultitude;
+                graph.OnGetResult += GetMultitude;
                 graph.FindMinimalCut();
                 form1.PrintText(graph.Results);
                 ShowResults.Visible = true;
@@ -249,7 +261,7 @@ namespace MaximumTrafficFlow
         {
             if (graph.Results.Count == 0)
             {
-                graph.GetResult += GetMultitude;
+                graph.OnGetResult += GetMultitude;
                 graph.FindMinimalCut();
                 form1.PrintText(graph.Results);
             }
@@ -279,6 +291,46 @@ namespace MaximumTrafficFlow
                 }
                 DoneImg.Visible = true;
             }
+        }
+
+        private void SaveGraph_Click(object sender, EventArgs e)
+        {
+            string name = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "saves");
+            if (!Directory.Exists(fullPath))
+            {
+                Directory.CreateDirectory(fullPath);
+            }
+            string pathToSaveFile = Path.Combine(fullPath, $"{name}.json");
+            DataSaveGraph dataSave = new DataSaveGraph();
+            dataSave.FillList(Node.Edges, nodes);
+            string jsonString = JsonSerializer.Serialize(dataSave, new JsonSerializerOptions { WriteIndented = true });
+            File.WriteAllText(pathToSaveFile, jsonString);
+            DataSaveGraph dataSave2 = JsonSerializer.Deserialize<DataSaveGraph>(jsonString);
+        }
+
+        public void LoadGraph(List<NodeData> nodeDatas, List<EdgeData> edgeDatas)
+        {
+            foreach(NodeData nodeData in nodeDatas)
+            {
+                nodes.Add(new Node(nodeData.Position));
+                nodes[nodes.Count - 1].Number = nodes.Count;
+            }
+
+            foreach(EdgeData edgeData in edgeDatas)
+            {
+                int start = edgeData.From;
+                int end = edgeData.To;
+                int value = edgeData.Weight;
+                Point startPos = new Point(nodes[start].Position.X, nodes[start].Position.Y);
+                Point endPos = new Point(nodes[end].Position.X, nodes[end].Position.Y);
+                nodes[start].AddEdge(new Edge(startPos, endPos, start, end, value));
+                nodes[start].IndexTo = end;
+                nodes[end].IndexFrom = start;
+                Node.UpdateRelatedEdge(Node.Edges, start, nodes[start].Position);
+                Node.UpdateRelatedEdge(Node.Edges, end, nodes[end].Position);
+            }
+
         }
     }
 }

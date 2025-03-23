@@ -16,6 +16,7 @@ namespace MaximumTrafficFlow
         {
             InitializeComponent();
             OpenChildForm(new HomePage());
+            Saves.OnOpenSavedGraph += LoadGraph;
         }
 
         private Form activeForm = null;
@@ -44,6 +45,19 @@ namespace MaximumTrafficFlow
             VisualGraph visualGraph = new VisualGraph();
             OpenChildForm(visualGraph);
             Node.Edges.Clear();
+        }
+
+        private void Saves_Click(object sender, EventArgs e)
+        {
+            Saves saves = new Saves();
+            OpenChildForm(saves);
+        }
+
+        private void LoadGraph(DataSaveGraph dataSaveGraph)
+        {
+            VisualGraph visualGraph = new VisualGraph();
+            visualGraph.LoadGraph(dataSaveGraph.nodeDatas, dataSaveGraph.edgeDatas);
+            OpenChildForm(visualGraph);
         }
     }
 }
