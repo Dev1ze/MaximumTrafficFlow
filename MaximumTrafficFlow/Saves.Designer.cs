@@ -33,9 +33,10 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(200, 426);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(243, 426);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // Saves

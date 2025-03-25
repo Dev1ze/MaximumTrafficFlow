@@ -15,7 +15,6 @@ namespace MaximumTrafficFlow
     public partial class Saves: Form
     {
         public static event Action<DataSaveGraph> OnOpenSavedGraph;
-
         private string path;
 
         public Saves()
@@ -27,10 +26,20 @@ namespace MaximumTrafficFlow
             foreach (string file in files)
             {
                 Button button = new Button();
+                Button delete = new Button();
+                FlowLayoutPanel ItemSave = new FlowLayoutPanel();
+                ItemSave.FlowDirection = FlowDirection.LeftToRight;
+                ItemSave.AutoSize = true;
+                ItemSave.WrapContents = false;
+                ItemSave.Controls.Add(button);
+                ItemSave.Controls.Add(delete);
+                button.Width = 100;
+                delete.Text = "Удалить";
                 button.Width = 150;
                 button.Click += Button_Click;
+                delete.Click += DeleteButton_Click;
                 button.Text = Path.GetFileName(file);
-                flowLayoutPanel1.Controls.Add(button);
+                flowLayoutPanel1.Controls.Add(ItemSave);
             }
         }
 
@@ -41,6 +50,16 @@ namespace MaximumTrafficFlow
             DataSaveGraph dataSave = JsonSerializer.Deserialize<DataSaveGraph>(jsonString);
             OnOpenSavedGraph?.Invoke(dataSave);
         }
-
+        private void DeleteButton_Click(object sender, EventArgs e)
+        {
+            Button deleteButton = sender as Button;
+            if (deleteButton != null && deleteButton.Parent is FlowLayoutPanel itemSave)
+            {
+                flowLayoutPanel1.Controls.Remove(itemSave);
+                string fileName = itemSave.Controls[0].Text;
+                File.Delete($"{path}\\{fileName}");
+                //itemSave.Dispose();
+            }
+        }
     }
 }

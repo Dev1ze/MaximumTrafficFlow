@@ -232,12 +232,15 @@
             // 
             // SaveGraph
             // 
-            this.SaveGraph.Location = new System.Drawing.Point(182, 258);
+            this.SaveGraph.FlatAppearance.BorderSize = 0;
+            this.SaveGraph.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SaveGraph.Image = ((System.Drawing.Image)(resources.GetObject("SaveGraph.Image")));
+            this.SaveGraph.Location = new System.Drawing.Point(182, 250);
             this.SaveGraph.Name = "SaveGraph";
-            this.SaveGraph.Size = new System.Drawing.Size(76, 23);
+            this.SaveGraph.Size = new System.Drawing.Size(45, 31);
             this.SaveGraph.TabIndex = 14;
-            this.SaveGraph.Text = "button1";
             this.SaveGraph.UseVisualStyleBackColor = true;
+            this.SaveGraph.Visible = false;
             this.SaveGraph.Click += new System.EventHandler(this.SaveGraph_Click);
             // 
             // DoneImg

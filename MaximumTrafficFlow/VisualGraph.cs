@@ -114,6 +114,7 @@ namespace MaximumTrafficFlow
                 }
 
                 Refresh();
+                if (Node.Edges.Count < 2) SaveGraph.Visible = false;
             }
         }
 
@@ -136,6 +137,8 @@ namespace MaximumTrafficFlow
             {
                 BuildEdge(nodes);
             }
+
+            if(Node.Edges.Count >= 2) SaveGraph.Visible = true;
         }
 
         private void FindMinCut_Click(object sender, EventArgs e) //Нажатие на кнопку "Найти минимальный разрез"
