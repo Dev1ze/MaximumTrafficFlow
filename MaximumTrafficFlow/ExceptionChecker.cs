@@ -15,7 +15,9 @@ namespace MaximumTrafficFlow
         public static event Action<string> OnOutputIstock;
         public static event Action<string> OnIsolatedNode;
         public static event Action<string> OnDeleteNode;
-        public static event Action<string> OnExsistGraph;
+        public static event Action<string> OnExsistGraph; 
+        public static event Action<string> OnZeroDataForSave; //Мало ребер для сохранения
+
 
         private static bool CheckExsistNode(List<Node> nodes, string indexFrom, string indexTo)
         {
@@ -157,6 +159,15 @@ namespace MaximumTrafficFlow
             {
                 return;
             }
+        }
+        public static bool CheckZeroDataForSave(List<Node> nodes)
+        {
+            if (nodes.Count == 0)
+            {
+                OnZeroDataForSave?.Invoke("Нет данных для сохранения");
+                return true;
+            }
+            return false;
         }
     }
 }

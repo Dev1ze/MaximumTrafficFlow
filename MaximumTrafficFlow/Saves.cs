@@ -48,6 +48,7 @@ namespace MaximumTrafficFlow
             Button button = (Button)sender;
             string jsonString = File.ReadAllText(path + @"\" + $"{button.Text}");
             DataSaveGraph dataSave = JsonSerializer.Deserialize<DataSaveGraph>(jsonString);
+            dataSave.Name = button.Text;
             OnOpenSavedGraph?.Invoke(dataSave);
         }
         private void DeleteButton_Click(object sender, EventArgs e)

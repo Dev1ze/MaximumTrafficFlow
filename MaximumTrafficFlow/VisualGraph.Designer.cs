@@ -66,7 +66,7 @@
             // 
             this.ShowResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ShowResults.ForeColor = System.Drawing.Color.Black;
+            this.ShowResults.ForeColor = System.Drawing.Color.Transparent;
             this.ShowResults.Location = new System.Drawing.Point(34, 250);
             this.ShowResults.Name = "ShowResults";
             this.ShowResults.Size = new System.Drawing.Size(142, 31);
@@ -183,20 +183,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 10);
+            this.label1.Location = new System.Drawing.Point(37, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(22, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 13;
-            this.label1.Text = "ИЗ";
+            this.label1.Text = "ОТКУДА";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(122, 10);
+            this.label2.Location = new System.Drawing.Point(111, 10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(14, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 14;
-            this.label2.Text = "В";
+            this.label2.Text = "КУДА";
             // 
             // label3
             // 
@@ -240,7 +240,6 @@
             this.SaveGraph.Size = new System.Drawing.Size(45, 31);
             this.SaveGraph.TabIndex = 14;
             this.SaveGraph.UseVisualStyleBackColor = true;
-            this.SaveGraph.Visible = false;
             this.SaveGraph.Click += new System.EventHandler(this.SaveGraph_Click);
             // 
             // DoneImg

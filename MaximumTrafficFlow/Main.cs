@@ -15,14 +15,14 @@ namespace MaximumTrafficFlow
         public Main()
         {
             InitializeComponent();
-            OpenChildForm(new HomePage());
+            OpenChildForm(new HomePage(), "ГЛАВНАЯ");
             Saves.OnOpenSavedGraph += LoadGraph;
         }
 
         private Form activeForm = null;
 
 
-        private void OpenChildForm(Form childForm)
+        private void OpenChildForm(Form childForm, string title)
         {
             if (activeForm != null) activeForm.Close();
             activeForm = childForm;
@@ -33,31 +33,32 @@ namespace MaximumTrafficFlow
             panelChildForm.Tag = childForm;
             childForm.BringToFront();
             childForm.Show();
+            Title.Text = title;
         }
 
         private void btn_Home_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new HomePage());
+            OpenChildForm(new HomePage(), "ГЛАВНАЯ");
         }
 
         private void CreateGraph_Click(object sender, EventArgs e)
         {
             VisualGraph visualGraph = new VisualGraph();
-            OpenChildForm(visualGraph);
+            OpenChildForm(visualGraph, "СОЗДАНИЕ НОВОГО ГРАФА");
             Node.Edges.Clear();
         }
 
         private void Saves_Click(object sender, EventArgs e)
         {
             Saves saves = new Saves();
-            OpenChildForm(saves);
+            OpenChildForm(saves, "СОХРАНЕНИЯ");
         }
 
         private void LoadGraph(DataSaveGraph dataSaveGraph)
         {
             VisualGraph visualGraph = new VisualGraph();
             visualGraph.LoadGraph(dataSaveGraph.nodeDatas, dataSaveGraph.edgeDatas);
-            OpenChildForm(visualGraph);
+            OpenChildForm(visualGraph, dataSaveGraph.Name);
         }
     }
 }

@@ -9,6 +9,7 @@ namespace MaximumTrafficFlow
 {
     public class DataSaveGraph
     {
+        public string Name { get; set; }
         public List<NodeData> nodeDatas { get; set; } = new List<NodeData>();
         public List<EdgeData> edgeDatas { get; set; } = new List<EdgeData>();
         public void FillList(List<Edge> edges, List<Node> nodes)
@@ -36,8 +37,6 @@ namespace MaximumTrafficFlow
             }
         }
     }
-
-
 
     public class NodeData
     {

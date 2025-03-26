@@ -166,7 +166,6 @@ namespace MaximumTrafficFlow
                 ShowResults.Visible = true;
                 SwitchEnableInterface(panel1, false);
             }
-
         }
 
         private void BuildEdge(List<Node> nodes)
@@ -288,7 +287,7 @@ namespace MaximumTrafficFlow
         {
             foreach (Control item in panel.Controls)
             {
-                if(item.Name != "ShowResults")
+                if (item.Name != "ShowResults" && item.Name != "SaveGraph")
                 {
                     item.Visible = isEnables;
                 }
@@ -298,18 +297,24 @@ namespace MaximumTrafficFlow
 
         private void SaveGraph_Click(object sender, EventArgs e)
         {
-            string name = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
-            string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "saves");
-            if (!Directory.Exists(fullPath))
+            ExceptionHandler.HandleSaveGrapgh(ErrorText);
+            ExceptionChecker.CheckZeroDataForSave(nodes);
+            if(!ExceptionHandler.IsError)
             {
-                Directory.CreateDirectory(fullPath);
+                string name = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
+                string fullPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "saves");
+                if (!Directory.Exists(fullPath))
+                {
+                    Directory.CreateDirectory(fullPath);
+                }
+                string pathToSaveFile = Path.Combine(fullPath, $"{name}.json");
+                DataSaveGraph dataSave = new DataSaveGraph();
+                dataSave.FillList(Node.Edges, nodes);
+                string jsonString = JsonSerializer.Serialize(dataSave, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(pathToSaveFile, jsonString);
+                DataSaveGraph dataSave2 = JsonSerializer.Deserialize<DataSaveGraph>(jsonString);
             }
-            string pathToSaveFile = Path.Combine(fullPath, $"{name}.json");
-            DataSaveGraph dataSave = new DataSaveGraph();
-            dataSave.FillList(Node.Edges, nodes);
-            string jsonString = JsonSerializer.Serialize(dataSave, new JsonSerializerOptions { WriteIndented = true });
-            File.WriteAllText(pathToSaveFile, jsonString);
-            DataSaveGraph dataSave2 = JsonSerializer.Deserialize<DataSaveGraph>(jsonString);
+            
         }
 
         public void LoadGraph(List<NodeData> nodeDatas, List<EdgeData> edgeDatas)
@@ -333,7 +338,6 @@ namespace MaximumTrafficFlow
                 Node.UpdateRelatedEdge(Node.Edges, start, nodes[start].Position);
                 Node.UpdateRelatedEdge(Node.Edges, end, nodes[end].Position);
             }
-
         }
     }
 }
