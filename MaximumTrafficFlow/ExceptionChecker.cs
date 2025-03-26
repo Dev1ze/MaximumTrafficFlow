@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 
@@ -17,6 +18,7 @@ namespace MaximumTrafficFlow
         public static event Action<string> OnDeleteNode;
         public static event Action<string> OnExsistGraph; 
         public static event Action<string> OnZeroDataForSave; //Мало ребер для сохранения
+        public static event Action<string> OnSucsessSave;
 
 
         private static bool CheckExsistNode(List<Node> nodes, string indexFrom, string indexTo)
@@ -165,6 +167,16 @@ namespace MaximumTrafficFlow
             if (nodes.Count == 0)
             {
                 OnZeroDataForSave?.Invoke("Нет данных для сохранения");
+                return true;
+            }
+            return false;
+
+        }
+        public static bool CheckSucsessSave(string path)
+        {
+            if (File.Exists(path))
+            {
+                OnSucsessSave?.Invoke("Граф успешно сохранен");
                 return true;
             }
             return false;

@@ -12,15 +12,14 @@ namespace MaximumTrafficFlow
 {
     public partial class Main: Form
     {
+        private Form activeForm = null;
+
         public Main()
         {
             InitializeComponent();
             OpenChildForm(new HomePage(), "ГЛАВНАЯ");
             Saves.OnOpenSavedGraph += LoadGraph;
         }
-
-        private Form activeForm = null;
-
 
         private void OpenChildForm(Form childForm, string title)
         {

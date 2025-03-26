@@ -112,7 +112,6 @@ namespace MaximumTrafficFlow
                 {
                     nodes[i].Number = i + 1;
                 }
-
                 Refresh();
             }
         }
@@ -298,6 +297,7 @@ namespace MaximumTrafficFlow
         {
             ExceptionHandler.HandleSaveGrapgh(ErrorText);
             ExceptionChecker.CheckZeroDataForSave(nodes);
+            
             if(!ExceptionHandler.IsError)
             {
                 string name = DateTime.Now.ToString("yyyy-MM-dd_HH-mm-ss");
@@ -312,6 +312,7 @@ namespace MaximumTrafficFlow
                 string jsonString = JsonSerializer.Serialize(dataSave, new JsonSerializerOptions { WriteIndented = true });
                 File.WriteAllText(pathToSaveFile, jsonString);
                 DataSaveGraph dataSave2 = JsonSerializer.Deserialize<DataSaveGraph>(jsonString);
+                ExceptionChecker.CheckSucsessSave(pathToSaveFile);
             }
             
         }

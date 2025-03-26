@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
@@ -43,6 +44,7 @@ namespace MaximumTrafficFlow
         {
             ErrorText = errorText;
             ExceptionChecker.OnZeroDataForSave += NotifyError;
+            ExceptionChecker.OnSucsessSave += NotifySucsess;
             IsError = false;
         }
 
@@ -50,13 +52,23 @@ namespace MaximumTrafficFlow
         {
             ErrorText.Text = text;
             IsError = true;
-            Task.Run(() => ShowException(ErrorText));
+            Task.Run(() => ShowException(ErrorText, Color.Red));
+        }
+                
+        private static void NotifySucsess(string text)
+        {
+            ErrorText.Text = text;
+            IsError = false;
+            Task.Run(() => ShowException(ErrorText, Color.LightGreen));
         }
 
-        private static void ShowException(System.Windows.Forms.Label textBlock)
+        private static void ShowException(System.Windows.Forms.Label textBlock, Color color)
         {
+            textBlock.ForeColor = color;
+            if (textBlock.IsDisposed) return;
             textBlock.Invoke(new Action(() => textBlock.Visible = true));
             Thread.Sleep(2000);
+            if (textBlock.IsDisposed) return;
             textBlock.Invoke(new Action(() => textBlock.Visible = false));
         }
     }
