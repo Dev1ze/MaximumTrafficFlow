@@ -59,7 +59,7 @@ namespace MaximumTrafficFlow
 
         private void VisualGraph_MouseMove(object sender, MouseEventArgs e)
         {
-            if(selectedNodeIndex != -1)
+            if (selectedNodeIndex != -1 && e.Location.X > 0 && e.Location.Y > 0)
             {
                 nodes[selectedNodeIndex].Position = e.Location;
                 Refresh();
@@ -114,7 +114,6 @@ namespace MaximumTrafficFlow
                 }
 
                 Refresh();
-                if (Node.Edges.Count < 2) SaveGraph.Visible = false;
             }
         }
 
