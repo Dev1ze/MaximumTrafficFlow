@@ -59,7 +59,6 @@ namespace MaximumTrafficFlow
                 flowLayoutPanel1.Controls.Remove(itemSave);
                 string fileName = itemSave.Controls[0].Text;
                 File.Delete($"{path}\\{fileName}");
-                //itemSave.Dispose();
             }
         }
     }

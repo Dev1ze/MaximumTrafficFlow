@@ -245,7 +245,7 @@
             // DoneImg
             // 
             this.DoneImg.Image = ((System.Drawing.Image)(resources.GetObject("DoneImg.Image")));
-            this.DoneImg.Location = new System.Drawing.Point(50, 44);
+            this.DoneImg.Location = new System.Drawing.Point(50, 41);
             this.DoneImg.Name = "DoneImg";
             this.DoneImg.Size = new System.Drawing.Size(160, 160);
             this.DoneImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

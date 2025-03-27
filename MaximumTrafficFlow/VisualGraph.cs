@@ -162,7 +162,7 @@ namespace MaximumTrafficFlow
                 graph.FindMinimalCut();
                 form1.PrintText(graph.Results);
                 ShowResults.Visible = true;
-                SwitchEnableInterface(panel1, false);
+                SwitchEnableInterface(panel1, false, graph.Results);
             }
         }
 
@@ -281,14 +281,25 @@ namespace MaximumTrafficFlow
             panelChildForm.SendToBack();
         }
 
-        private void SwitchEnableInterface(Control panel, bool isEnables) 
+        private void SwitchEnableInterface(Control panel, bool isEnables, List<List<string>> results) 
         {
+            string imgPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img");
             foreach (Control item in panel.Controls)
             {
                 if (item.Name != "ShowResults" && item.Name != "SaveGraph")
                 {
                     item.Visible = isEnables;
                 }
+            }
+            if (results.Last().Last() == "")
+            {
+                DoneImg.Image = Image.FromFile(imgPath + @"\" + "Error-Icon.png");
+                DoneImg.Visible = true;
+            }
+                
+            else 
+            {
+                DoneImg.Image = Image.FromFile(imgPath + @"\" + "Done-Icon.png");
                 DoneImg.Visible = true;
             }
         }
