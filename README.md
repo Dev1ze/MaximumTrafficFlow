@@ -1,3 +1,9 @@
+# Установка
+| Операционная система | Разрядность | Ссылка на скачивание |
+|----------------------|------------|----------------------|
+| Windows 10, 11      | 64-bit     | [Скачать](https://github.com/Dev1ze/MaximumTrafficFlow/raw/refs/heads/main/Setup.exe) |
+| LINUX    | 64-bit     | [Скачать](https://hub.docker.com/r/dev1ze/graph-minimum-cut-finder)
+
 # Поиск загруженных участков сети при моделировании потоков
 ![граф с минимальным разрезом](https://github.com/user-attachments/assets/8b9b87f3-e577-4dde-a4dc-7556b81fd766)
 
@@ -110,6 +116,21 @@ docker run -it --name GraphMin dev1ze/graph-minimum-cut-finder
 
 Множество B
 6    5    4
+Множество A
+3    2    1
+
+
+Минимальный разрез #4
+1    4
+
+Минимальный разрез #3
+2    4
+
+Минимальный разрез #2
+2    5
+
+Минимальный разрез #1
+3    5
 ```
 <div align="center">
 <<<<<<< HEAD
