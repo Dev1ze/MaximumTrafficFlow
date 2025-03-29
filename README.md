@@ -133,12 +133,7 @@ docker run -it --name GraphMin dev1ze/graph-minimum-cut-finder
 3    5
 ```
 <div align="center">
-<<<<<<< HEAD
-    <img src="https://github.com/user-attachments/assets/b66b1bbb-c2e4-497d-b214-2507f0d9760d"
-=======
-    <img src="https://github.com/user-attachments/assets/8b9b87f3-e577-4dde-a4dc-7556b81fd766"
->>>>>>> 239676ada2deea735ce2c8ea8615347063d30bff
-    style="width: 80%"/>
+    <img src="https://github.com/user-attachments/assets/b66b1bbb-c2e4-497d-b214-2507f0d9760d" style="width: 80%"/>
 </div>
 
 # **Алгоритм Форда-Фалкерсона по поиску максимального потока**
