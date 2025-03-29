@@ -33,13 +33,15 @@
             // 
             // BackToGraph
             // 
-            this.BackToGraph.ForeColor = System.Drawing.Color.Black;
-            this.BackToGraph.Location = new System.Drawing.Point(25, 13);
+            this.BackToGraph.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
+            this.BackToGraph.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackToGraph.ForeColor = System.Drawing.SystemColors.Control;
+            this.BackToGraph.Location = new System.Drawing.Point(15, 13);
             this.BackToGraph.Name = "BackToGraph";
-            this.BackToGraph.Size = new System.Drawing.Size(75, 23);
+            this.BackToGraph.Size = new System.Drawing.Size(75, 30);
             this.BackToGraph.TabIndex = 0;
             this.BackToGraph.Text = "Вернутся";
-            this.BackToGraph.UseVisualStyleBackColor = true;
+            this.BackToGraph.UseVisualStyleBackColor = false;
             this.BackToGraph.Click += new System.EventHandler(this.BackToGraph_Click);
             // 
             // Form1

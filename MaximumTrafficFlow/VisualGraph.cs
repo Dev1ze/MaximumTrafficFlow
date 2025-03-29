@@ -330,13 +330,13 @@ namespace MaximumTrafficFlow
 
         public void LoadGraph(List<NodeData> nodeDatas, List<EdgeData> edgeDatas)
         {
-            foreach(NodeData nodeData in nodeDatas)
+            foreach (NodeData nodeData in nodeDatas)
             {
                 nodes.Add(new Node(nodeData.Position));
                 nodes[nodes.Count - 1].Number = nodes.Count;
             }
 
-            foreach(EdgeData edgeData in edgeDatas)
+            foreach (EdgeData edgeData in edgeDatas)
             {
                 int start = edgeData.From;
                 int end = edgeData.To;

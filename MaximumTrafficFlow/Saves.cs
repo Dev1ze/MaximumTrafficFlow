@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace MaximumTrafficFlow
 {
@@ -21,7 +22,8 @@ namespace MaximumTrafficFlow
         {
             InitializeComponent();
             path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "saves");
-            string[] files = Directory.GetFiles(path);
+            Directory.CreateDirectory(path);
+            string[] files = Directory.GetFiles(path, "*.json");
 
             foreach (string file in files)
             {
@@ -33,12 +35,22 @@ namespace MaximumTrafficFlow
                 ItemSave.WrapContents = false;
                 ItemSave.Controls.Add(button);
                 ItemSave.Controls.Add(delete);
-                button.Width = 100;
-                delete.Text = "Удалить";
-                button.Width = 150;
+                button.BackColor = Color.FromArgb(35, 40, 45);
+                button.FlatStyle = FlatStyle.Flat;
+                button.Width = 160;
+                button.Height = 35;
                 button.Click += Button_Click;
-                delete.Click += DeleteButton_Click;
+                button.ForeColor = Color.White;
                 button.Text = Path.GetFileName(file);
+
+                delete.BackColor = Color.FromArgb(35, 40, 45);
+                delete.FlatStyle = FlatStyle.Flat;
+                delete.Image = Image.FromFile(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "img") + @"\" + "Delete.png");
+                delete.Height = 35;
+                delete.Width = 50;
+                delete.ForeColor = Color.White;
+                delete.Click += DeleteButton_Click;
+
                 flowLayoutPanel1.Controls.Add(ItemSave);
             }
         }
@@ -47,9 +59,16 @@ namespace MaximumTrafficFlow
         {
             Button button = (Button)sender;
             string jsonString = File.ReadAllText(path + @"\" + $"{button.Text}");
-            DataSaveGraph dataSave = JsonSerializer.Deserialize<DataSaveGraph>(jsonString);
-            dataSave.Name = button.Text;
-            OnOpenSavedGraph?.Invoke(dataSave);
+            try 
+            {
+                DataSaveGraph dataSave = JsonSerializer.Deserialize<DataSaveGraph>(jsonString);
+                dataSave.Name = button.Text;
+                OnOpenSavedGraph?.Invoke(dataSave);
+            }
+            catch
+            {
+                MessageBox.Show("Не удалось прочитать файл!", "Ошибка чтения!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
         private void DeleteButton_Click(object sender, EventArgs e)
         {
@@ -60,6 +79,10 @@ namespace MaximumTrafficFlow
                 string fileName = itemSave.Controls[0].Text;
                 File.Delete($"{path}\\{fileName}");
             }
+        }
+        private void OpenFolder_Click(object sender, EventArgs e)
+        {
+            Process.Start("explorer.exe", path);
         }
     }
 }

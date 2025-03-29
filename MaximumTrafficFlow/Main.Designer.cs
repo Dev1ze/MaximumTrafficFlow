@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.panelSideMenu = new System.Windows.Forms.Panel();
+            this.btn_DockerHub = new System.Windows.Forms.Button();
             this.btn_Saves = new System.Windows.Forms.Button();
             this.btn_CreateGraph = new System.Windows.Forms.Button();
             this.btn_Home = new System.Windows.Forms.Button();
@@ -47,6 +48,7 @@
             // panelSideMenu
             // 
             this.panelSideMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
+            this.panelSideMenu.Controls.Add(this.btn_DockerHub);
             this.panelSideMenu.Controls.Add(this.btn_Saves);
             this.panelSideMenu.Controls.Add(this.btn_CreateGraph);
             this.panelSideMenu.Controls.Add(this.btn_Home);
@@ -56,6 +58,25 @@
             this.panelSideMenu.Name = "panelSideMenu";
             this.panelSideMenu.Size = new System.Drawing.Size(200, 586);
             this.panelSideMenu.TabIndex = 0;
+            // 
+            // btn_DockerHub
+            // 
+            this.btn_DockerHub.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btn_DockerHub.FlatAppearance.BorderSize = 0;
+            this.btn_DockerHub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_DockerHub.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btn_DockerHub.ForeColor = System.Drawing.Color.White;
+            this.btn_DockerHub.Image = ((System.Drawing.Image)(resources.GetObject("btn_DockerHub.Image")));
+            this.btn_DockerHub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_DockerHub.Location = new System.Drawing.Point(0, 258);
+            this.btn_DockerHub.Name = "btn_DockerHub";
+            this.btn_DockerHub.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.btn_DockerHub.Size = new System.Drawing.Size(200, 45);
+            this.btn_DockerHub.TabIndex = 4;
+            this.btn_DockerHub.Text = "              LINUX - Версия";
+            this.btn_DockerHub.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btn_DockerHub.UseVisualStyleBackColor = true;
+            this.btn_DockerHub.Click += new System.EventHandler(this.btn_DockerHub_Click);
             // 
             // btn_Saves
             // 
@@ -116,6 +137,7 @@
             // 
             // panelLogo
             // 
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(40)))), ((int)(((byte)(45)))));
             this.panelLogo.Controls.Add(this.pictureBox1);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
@@ -126,9 +148,9 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(0, 19);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 21);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(197, 76);
+            this.pictureBox1.Size = new System.Drawing.Size(200, 78);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
@@ -157,11 +179,11 @@
             // Title
             // 
             this.Title.AutoSize = true;
-            this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Title.ForeColor = System.Drawing.Color.White;
+            this.Title.Font = new System.Drawing.Font("Microsoft Sans Serif", 18.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Title.ForeColor = System.Drawing.SystemColors.Control;
             this.Title.Location = new System.Drawing.Point(6, 19);
             this.Title.Name = "Title";
-            this.Title.Size = new System.Drawing.Size(0, 31);
+            this.Title.Size = new System.Drawing.Size(0, 29);
             this.Title.TabIndex = 0;
             // 
             // Main
@@ -172,8 +194,9 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelChildForm);
             this.Controls.Add(this.panelSideMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
-            this.Text = "Main";
+            this.Text = "Graph Minimum Cut Finder";
             this.panelSideMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -194,5 +217,6 @@
         private System.Windows.Forms.Panel panelChildForm;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Title;
+        private System.Windows.Forms.Button btn_DockerHub;
     }
 }

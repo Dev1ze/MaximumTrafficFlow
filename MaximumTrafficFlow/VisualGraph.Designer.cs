@@ -45,6 +45,7 @@
             this.SaveGraph = new System.Windows.Forms.Button();
             this.DoneImg = new System.Windows.Forms.PictureBox();
             this.panelChildForm = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DoneImg)).BeginInit();
             this.SuspendLayout();
@@ -264,11 +265,24 @@
             this.panelChildForm.TabIndex = 9;
             this.panelChildForm.Visible = false;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.SystemColors.Menu;
+            this.label4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.ForeColor = System.Drawing.Color.Gray;
+            this.label4.Location = new System.Drawing.Point(0, 2);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(300, 14);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "ЛКМ - Добавить вершину; ПКМ - Переместить вершину";
+            // 
             // VisualGraph
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 498);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelChildForm);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -283,6 +297,7 @@
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DoneImg)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -303,5 +318,6 @@
         private System.Windows.Forms.PictureBox DoneImg;
         private System.Windows.Forms.Button SaveGraph;
         private System.Windows.Forms.Panel panelChildForm;
+        private System.Windows.Forms.Label label4;
     }
 }
