@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MaximumTrafficFlow.exe" size="298496">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MaximumTrafficFlow.exe" size="299008">
       <assemblyIdentity name="MaximumTrafficFlow" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>19sVmtGOCqerjN2tGSuX4AQl3U5JEwWsGtEKN9nPO3I=</dsig:DigestValue>
+        <dsig:DigestValue>QutZkB4YszAswWgBide7rwULkX12iIXI/6DjhfpYKBI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

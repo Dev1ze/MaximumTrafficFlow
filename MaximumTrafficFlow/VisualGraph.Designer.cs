@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.button1 = new System.Windows.Forms.Button();
             this.SaveGraph = new System.Windows.Forms.Button();
             this.DoneImg = new System.Windows.Forms.PictureBox();
             this.panelChildForm = new System.Windows.Forms.Panel();
@@ -55,7 +56,7 @@
             this.ErrorText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ErrorText.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ErrorText.ForeColor = System.Drawing.Color.Red;
-            this.ErrorText.Location = new System.Drawing.Point(3, 164);
+            this.ErrorText.Location = new System.Drawing.Point(3, 159);
             this.ErrorText.Name = "ErrorText";
             this.ErrorText.Size = new System.Drawing.Size(256, 41);
             this.ErrorText.TabIndex = 10;
@@ -68,7 +69,7 @@
             this.ShowResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.ShowResults.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ShowResults.ForeColor = System.Drawing.Color.Transparent;
-            this.ShowResults.Location = new System.Drawing.Point(34, 250);
+            this.ShowResults.Location = new System.Drawing.Point(34, 299);
             this.ShowResults.Name = "ShowResults";
             this.ShowResults.Size = new System.Drawing.Size(142, 31);
             this.ShowResults.TabIndex = 0;
@@ -83,7 +84,7 @@
             this.valueEdge.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.valueEdge.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.valueEdge.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.valueEdge.Location = new System.Drawing.Point(167, 27);
+            this.valueEdge.Location = new System.Drawing.Point(167, 23);
             this.valueEdge.Multiline = true;
             this.valueEdge.Name = "valueEdge";
             this.valueEdge.Size = new System.Drawing.Size(60, 25);
@@ -98,7 +99,7 @@
             this.btn_FindMinCut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.btn_FindMinCut.Image = ((System.Drawing.Image)(resources.GetObject("btn_FindMinCut.Image")));
             this.btn_FindMinCut.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btn_FindMinCut.Location = new System.Drawing.Point(34, 207);
+            this.btn_FindMinCut.Location = new System.Drawing.Point(34, 256);
             this.btn_FindMinCut.Name = "btn_FindMinCut";
             this.btn_FindMinCut.Size = new System.Drawing.Size(192, 40);
             this.btn_FindMinCut.TabIndex = 4;
@@ -113,7 +114,7 @@
             this.indexTo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.indexTo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.indexTo.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.indexTo.Location = new System.Drawing.Point(100, 27);
+            this.indexTo.Location = new System.Drawing.Point(100, 23);
             this.indexTo.Multiline = true;
             this.indexTo.Name = "indexTo";
             this.indexTo.Size = new System.Drawing.Size(60, 25);
@@ -126,7 +127,7 @@
             this.indexFrom.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.indexFrom.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.indexFrom.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.indexFrom.Location = new System.Drawing.Point(33, 27);
+            this.indexFrom.Location = new System.Drawing.Point(33, 23);
             this.indexFrom.Multiline = true;
             this.indexFrom.Name = "indexFrom";
             this.indexFrom.Size = new System.Drawing.Size(60, 25);
@@ -142,7 +143,7 @@
             this.DeleteButton.ForeColor = System.Drawing.Color.Black;
             this.DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Image")));
             this.DeleteButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.DeleteButton.Location = new System.Drawing.Point(34, 133);
+            this.DeleteButton.Location = new System.Drawing.Point(34, 129);
             this.DeleteButton.Name = "DeleteButton";
             this.DeleteButton.Size = new System.Drawing.Size(192, 31);
             this.DeleteButton.TabIndex = 9;
@@ -157,7 +158,7 @@
             this.textBox_forDelete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_forDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.textBox_forDelete.ForeColor = System.Drawing.Color.Black;
-            this.textBox_forDelete.Location = new System.Drawing.Point(33, 104);
+            this.textBox_forDelete.Location = new System.Drawing.Point(33, 100);
             this.textBox_forDelete.Multiline = true;
             this.textBox_forDelete.Name = "textBox_forDelete";
             this.textBox_forDelete.Size = new System.Drawing.Size(194, 24);
@@ -172,7 +173,7 @@
             this.CreateEdge.ForeColor = System.Drawing.Color.Black;
             this.CreateEdge.Image = ((System.Drawing.Image)(resources.GetObject("CreateEdge.Image")));
             this.CreateEdge.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.CreateEdge.Location = new System.Drawing.Point(34, 58);
+            this.CreateEdge.Location = new System.Drawing.Point(34, 54);
             this.CreateEdge.Name = "CreateEdge";
             this.CreateEdge.Size = new System.Drawing.Size(192, 29);
             this.CreateEdge.TabIndex = 0;
@@ -184,7 +185,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 10);
+            this.label1.Location = new System.Drawing.Point(37, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 13;
@@ -193,7 +194,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(111, 10);
+            this.label2.Location = new System.Drawing.Point(111, 6);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 14;
@@ -202,7 +203,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(182, 11);
+            this.label3.Location = new System.Drawing.Point(182, 7);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(28, 13);
             this.label3.TabIndex = 15;
@@ -212,6 +213,7 @@
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(95)))), ((int)(((byte)(100)))));
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.SaveGraph);
             this.panel1.Controls.Add(this.ErrorText);
             this.panel1.Controls.Add(this.label3);
@@ -228,15 +230,25 @@
             this.panel1.Controls.Add(this.DoneImg);
             this.panel1.Location = new System.Drawing.Point(540, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(262, 290);
+            this.panel1.Size = new System.Drawing.Size(262, 341);
             this.panel1.TabIndex = 13;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(33, 209);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(193, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.DeleteEdge_Click);
             // 
             // SaveGraph
             // 
             this.SaveGraph.FlatAppearance.BorderSize = 0;
             this.SaveGraph.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SaveGraph.Image = ((System.Drawing.Image)(resources.GetObject("SaveGraph.Image")));
-            this.SaveGraph.Location = new System.Drawing.Point(182, 250);
+            this.SaveGraph.Location = new System.Drawing.Point(182, 299);
             this.SaveGraph.Name = "SaveGraph";
             this.SaveGraph.Size = new System.Drawing.Size(45, 31);
             this.SaveGraph.TabIndex = 14;
@@ -246,7 +258,7 @@
             // DoneImg
             // 
             this.DoneImg.Image = ((System.Drawing.Image)(resources.GetObject("DoneImg.Image")));
-            this.DoneImg.Location = new System.Drawing.Point(50, 41);
+            this.DoneImg.Location = new System.Drawing.Point(50, 37);
             this.DoneImg.Name = "DoneImg";
             this.DoneImg.Size = new System.Drawing.Size(160, 160);
             this.DoneImg.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -319,5 +331,6 @@
         private System.Windows.Forms.Button SaveGraph;
         private System.Windows.Forms.Panel panelChildForm;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }

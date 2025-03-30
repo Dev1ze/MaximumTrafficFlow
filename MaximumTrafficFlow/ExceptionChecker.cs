@@ -106,11 +106,21 @@ namespace MaximumTrafficFlow
         }
         public static bool CheckIsolatedkNode(List<Node> nodes)
         {
-            for(int i = 1; i < nodes.Count - 1; i++)
+            if (nodes.First().IndexTo.Count == 0)
             {
-                if (nodes[i].IndexFrom == - 1 || nodes[i].IndexTo == -1)
+                OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {1}");
+                return true;
+            }
+            if (nodes.Last().IndexFrom.Count == 0)
+            {
+                OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {nodes.Count}");
+                return true;
+            }
+            for (int i = 1; i < nodes.Count - 2; i++)
+            {
+                if (nodes[i].IndexFrom.Count == 0 || nodes[i].IndexTo.Count == 0)
                 {
-                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i + 2}");
+                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i}");
                     return true;
                 }
             }
