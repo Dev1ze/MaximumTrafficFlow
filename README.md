@@ -1,7 +1,7 @@
 
 <div align="center">
     <img src="https://github.com/user-attachments/assets/99ec63a4-d48a-4b05-a40e-f685e9567afc"
-    style="width: 70%"/>
+    style="width: 100%"/>
 </div>
 
 # Установка
