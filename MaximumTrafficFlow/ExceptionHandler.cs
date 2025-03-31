@@ -40,6 +40,14 @@ namespace MaximumTrafficFlow
             ExceptionChecker.OnDeleteNode += NotifyError;
             IsError = false;
         }
+
+        public static void HandleDeleteEdge(System.Windows.Forms.Label errorText)
+        {
+            ErrorText = errorText;
+            ExceptionChecker.OnNoneExsistEdge += NotifyError;
+            IsError = false;
+        }
+
         public static void HandleSaveGrapgh(System.Windows.Forms.Label errorText)
         {
             ErrorText = errorText;

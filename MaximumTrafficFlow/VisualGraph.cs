@@ -357,17 +357,22 @@ namespace MaximumTrafficFlow
             int end = int.Parse(indexTo.Text) - 1;
             int value = int.Parse(valueEdge.Text);
 
-            for (int i = 0; i < Node.Edges.Count; i++)
+            ExceptionHandler.HandleDeleteEdge(ErrorText);
+            ExceptionChecker.CheckNoneExsistEdge(Node.Edges, indexFrom.Text, indexTo.Text, valueEdge.Text);
+            if (!ExceptionHandler.IsError)
             {
-                if (Node.Edges[i].StartIndex == start && Node.Edges[i].EndIndex == end && Node.Edges[i].ValueStream == value)
+                for (int i = 0; i < Node.Edges.Count; i++)
                 {
-                    Node.Edges.RemoveAt(i);
-                    int index = nodes[start].IndexTo.IndexOf(end);
-                    nodes[start].IndexTo.RemoveAt(index);
-                    int index2 = nodes[end].IndexFrom.IndexOf(start);
-                    nodes[end].IndexFrom.RemoveAt(index2);
-                    Refresh();
-                    return;
+                    if (Node.Edges[i].StartIndex == start && Node.Edges[i].EndIndex == end && Node.Edges[i].ValueStream == value)
+                    {
+                        Node.Edges.RemoveAt(i);
+                        int indexEnd = nodes[start].IndexTo.IndexOf(end);
+                        nodes[start].IndexTo.RemoveAt(indexEnd);
+                        int indexStart = nodes[end].IndexFrom.IndexOf(start);
+                        nodes[end].IndexFrom.RemoveAt(indexStart);
+                        Refresh();
+                        return;
+                    }
                 }
             }
         }

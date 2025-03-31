@@ -18,7 +18,8 @@ namespace MaximumTrafficFlow
         public static event Action<string> OnDeleteNode;
         public static event Action<string> OnExsistGraph; 
         public static event Action<string> OnZeroDataForSave; //Мало ребер для сохранения
-        public static event Action<string> OnSucsessSave;
+        public static event Action<string> OnSucsessSave; //Успешное сохранение
+        public static event Action<string> OnNoneExsistEdge;
 
 
         private static bool CheckExsistNode(List<Node> nodes, string indexFrom, string indexTo)
@@ -106,22 +107,25 @@ namespace MaximumTrafficFlow
         }
         public static bool CheckIsolatedkNode(List<Node> nodes)
         {
-            if (nodes.First().IndexTo.Count == 0)
+            if(nodes.Count > 0)
             {
-                OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {1}");
-                return true;
-            }
-            if (nodes.Last().IndexFrom.Count == 0)
-            {
-                OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {nodes.Count}");
-                return true;
-            }
-            for (int i = 1; i < nodes.Count - 2; i++)
-            {
-                if (nodes[i].IndexFrom.Count == 0 || nodes[i].IndexTo.Count == 0)
+                if (nodes.First().IndexTo.Count == 0)
                 {
-                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i}");
+                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {1}");
                     return true;
+                }
+                if (nodes.Last().IndexFrom.Count == 0)
+                {
+                    OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {nodes.Count}");
+                    return true;
+                }
+                for (int i = 1; i < nodes.Count - 2; i++)
+                {
+                    if (nodes[i].IndexFrom.Count == 0 || nodes[i].IndexTo.Count == 0)
+                    {
+                        OnIsolatedNode?.Invoke($"Не должно быть изолированных вершин. Вершина {i}");
+                        return true;
+                    }
                 }
             }
             return false;
@@ -190,6 +194,18 @@ namespace MaximumTrafficFlow
                 return true;
             }
             return false;
+        }
+        public static bool CheckNoneExsistEdge(List<Edge> edges, string indexFrom, string indexTo, string value)
+        {
+            foreach(Edge edge in edges)
+            {
+                if(edge.StartIndex == int.Parse(indexFrom) - 1 && edge.EndIndex == int.Parse(indexTo) - 1 && edge.ValueStream == int.Parse(value))
+                {
+                    return false;
+                }
+            }
+            OnNoneExsistEdge?.Invoke("Не существует указанных ребер");
+            return true;
         }
     }
 }
