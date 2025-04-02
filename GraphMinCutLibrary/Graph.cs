@@ -84,15 +84,19 @@ namespace GraphMinCutLibrary
                 new Listing(multitude.First()).ToString(),
                 "Множество A",
                 new Listing(multitude.Last()).ToString(),
-
             });
 
-            for (int i = minimalEdges.Count; i > 0; i--)
+            Results.Add(new List<string>()
             {
+                "МИНИМАЛЬНЫЙ РАЗРЕЗ:"
+            });
+            for (int i = 0; i < minimalEdges.Count; i++)
+            {
+                int number = i + 1;
                 Results.Add(new List<string>()
                 {
-                    "Минимальный разрез #" + i.ToString(),
-                    new Listing(minimalEdges.ElementAt(i - 1)).ToString()
+                    "Ребро #" + number.ToString(),
+                    new Listing(minimalEdges.ElementAt(i)).ToString()
                 });
             }
             OnGetResult.Invoke(multitude);

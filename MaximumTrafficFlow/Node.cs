@@ -30,7 +30,7 @@ namespace MaximumTrafficFlow
             }
             set { } }
         public int Number { get; set; }
-        public static Font FontText { get; set; } = new Font("Arial", 14);
+        public static Font FontText { get; set; } = new Font("Arial", 12);
 
         public static List<Edge> Edges = new List<Edge>();
         public void AddEdge(Edge edge)

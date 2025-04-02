@@ -23,6 +23,10 @@ namespace MaximumTrafficFlow
         {
             foreach (var line in list)
             {
+                if(line.Count == 1)
+                {
+                    Window.WriteTitle(this, line[0]);
+                }
                 for(int i = 0; i < line.Count - 1; i = i + 2)
                 {
                     Window.Write(this, line[i + 1], line[i]);

@@ -26,11 +26,31 @@ namespace MaximumTrafficFlow
             heigherBlock.Add(textBox.Height);
         }
 
+        public static void WriteTitle(Form1 form, string name)
+        {
+            Label textBox = SetLabel(form, name);
+            textBox.Text = name.ToString();
+            heigherBlock.Add(textBox.Height);
+        }
+
         public static void NewLIne()
         {
             startPositionY += FindMaximumValue(heigherBlock) + margin;
             startPositionX = 60;
             heigherBlock.Clear();
+        }
+
+        private static Label SetLabel(Form form, string objectPrint)
+        {
+            Label textBox = new Label();
+            int matrixWidth = TextRenderer.MeasureText(objectPrint, textBox.Font).Width;
+            int matrixHeight = TextRenderer.MeasureText(objectPrint, textBox.Font).Height;
+            textBox.Location = new Point(startPositionX, startPositionY); // Положение textBox'а
+            textBox.Width = matrixWidth;
+            textBox.Height = matrixHeight;
+            startPositionX += matrixWidth + margin;
+            form.Controls.Add(textBox);
+            return textBox;
         }
 
         private static TextBox SetTextBox(Form form, string objectPrint)

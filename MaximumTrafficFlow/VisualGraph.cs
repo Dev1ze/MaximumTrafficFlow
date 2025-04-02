@@ -17,6 +17,7 @@ namespace MaximumTrafficFlow
 {
     public partial class VisualGraph : Form
     {
+        int MaxNodes { get; set; } = 25;
         Form1 form1 = new Form1();
         public List<Node> nodes = new List<Node>();
         public int selectedNodeIndex = -1;
@@ -39,10 +40,17 @@ namespace MaximumTrafficFlow
             {
                 if (e.Button == MouseButtons.Left)
                 {
-                    nodes.Add(new Node(e.Location));
-                    nodes[nodes.Count - 1].Number = nodes.Count;
-                    Refresh();
+                    ExceptionHandler.HandleAddNodes(ErrorText);
+                    ExceptionChecker.CheckLimitNodes(MaxNodes, nodes);
+                    if (!ExceptionHandler.IsError)
+                    {
+
+                        nodes.Add(new Node(e.Location));
+                        nodes[nodes.Count - 1].Number = nodes.Count;
+                        Refresh();
+                    }
                 }
+
                 if (e.Button == MouseButtons.Right)
                 {
                     for (int i = 0; i < nodes.Count; i++)
@@ -191,8 +199,36 @@ namespace MaximumTrafficFlow
                 {
                     e.Graphics.DrawLine(edge.ColorEdge, edge.StartPos.X, edge.StartPos.Y, edge.EndPos.X, edge.EndPos.Y);
                     e.Graphics.DrawString(edge.ValueStream.ToString(), Node.FontText, Brushes.Black, edge.ValueStreamPos);
+                    DrawArrow(e.Graphics, edge.StartPos, edge.EndPos, edge.ColorEdge.Color,0.5f);
                 }
             }
+        }
+
+        private void DrawArrow(Graphics g, Point start, Point end, Color color, float arrowPositionFactor)
+        {
+            Pen arrowPen = new Pen(color, 2);
+            double angle = Math.Atan2(end.Y - start.Y, end.X - start.X); // Вычисляем угол наклона ребра
+
+            int arrowSize = 10; // Размер стрелки
+
+            // Смещение точки стрелки (0.5 - середина, 0.7 - ближе к концу, 0.9 - почти в конце)
+            float arrowX = start.X + (end.X - start.X) * arrowPositionFactor;
+            float arrowY = start.Y + (end.Y - start.Y) * arrowPositionFactor;
+            PointF arrowPoint = new PointF(arrowX, arrowY);
+
+            // Вычисляем точки для стрелки
+            PointF arrowPoint1 = new PointF(
+                arrowPoint.X - arrowSize * (float)Math.Cos(angle - Math.PI / 6),
+                arrowPoint.Y - arrowSize * (float)Math.Sin(angle - Math.PI / 6)
+            );
+            PointF arrowPoint2 = new PointF(
+                arrowPoint.X - arrowSize * (float)Math.Cos(angle + Math.PI / 6),
+                arrowPoint.Y - arrowSize * (float)Math.Sin(angle + Math.PI / 6)
+            );
+
+            // Рисуем стрелку двумя линиями
+            g.DrawLine(arrowPen, arrowPoint, arrowPoint1);
+            g.DrawLine(arrowPen, arrowPoint, arrowPoint2);
         }
 
         private void DrawNodes(PaintEventArgs e)
@@ -291,7 +327,7 @@ namespace MaximumTrafficFlow
                     item.Visible = isEnables;
                 }
             }
-            if (results.Last().Last() == "")
+            if (results[results.Count - 2].Last() == "")
             {
                 DoneImg.Image = Image.FromFile(imgPath + @"\" + "Error-Icon.png");
                 DoneImg.Visible = true;

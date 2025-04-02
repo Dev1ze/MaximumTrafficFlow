@@ -197,6 +197,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Main";
             this.Text = "Graph Minimum Cut Finder";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panelSideMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

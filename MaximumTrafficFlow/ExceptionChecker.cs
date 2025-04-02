@@ -20,6 +20,7 @@ namespace MaximumTrafficFlow
         public static event Action<string> OnZeroDataForSave; //Мало ребер для сохранения
         public static event Action<string> OnSucsessSave; //Успешное сохранение
         public static event Action<string> OnNoneExsistEdge;
+        public static event Action<string> OnLimitNodes;
 
 
         private static bool CheckExsistNode(List<Node> nodes, string indexFrom, string indexTo)
@@ -206,6 +207,15 @@ namespace MaximumTrafficFlow
             }
             OnNoneExsistEdge?.Invoke("Не существует указанных ребер");
             return true;
+        }
+        public static bool CheckLimitNodes(int maximumNodes, List<Node> nodes)
+        {
+            if(nodes.Count >= maximumNodes)
+            {
+                OnLimitNodes?.Invoke($"Ограничение в {maximumNodes} вершин");
+                return true;
+            }
+            return false;
         }
     }
 }

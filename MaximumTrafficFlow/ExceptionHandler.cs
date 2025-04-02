@@ -56,6 +56,13 @@ namespace MaximumTrafficFlow
             IsError = false;
         }
 
+        public static void HandleAddNodes(System.Windows.Forms.Label errorText)
+        {
+            ErrorText = errorText;
+            ExceptionChecker.OnLimitNodes += NotifyError;
+            IsError = false;
+        }
+
         private static void NotifyError(string text)
         {
             ErrorText.Text = text;

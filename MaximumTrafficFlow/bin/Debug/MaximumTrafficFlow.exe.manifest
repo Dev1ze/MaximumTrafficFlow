@@ -49,19 +49,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lLK3iZbUyWJPlbIBUuGqPZ0NzMIzE4tAoOBz/BfMxyk=</dsig:DigestValue>
+        <dsig:DigestValue>XJWwp9Ckb+ndy2yC7blg3zK38ZJDW6NOdzBhCEgbgwM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MaximumTrafficFlow.exe" size="300544">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="MaximumTrafficFlow.exe" size="302080">
       <assemblyIdentity name="MaximumTrafficFlow" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>yVfTK67hhLlKpoWt1QwmaPAFV8K1khc8ktAR8RymwDM=</dsig:DigestValue>
+        <dsig:DigestValue>MrmIwbXWAlCspXQ/L5zLUBeed6v+nn9/o7RxZgelMw4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
