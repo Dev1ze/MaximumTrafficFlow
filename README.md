@@ -104,25 +104,6 @@
     <img src="https://github.com/user-attachments/assets/d1547b99-f034-4be6-80c3-7113f591d9ad"/>
 </div>
 
-# Итнерфейс
-
-Создание вершин ЛКМ
-
-<div align="center">
-    <img src="https://github.com/user-attachments/assets/2d1068cc-13c6-4cc8-b0cd-e05d10ba9c5a" style="width: 70%"/>
-</div>
-
-Создание ребер
-
-<div align="center">
-    <img src="https://github.com/user-attachments/assets/4bdff1e6-84d6-4d8c-8e31-74690f7dfa3a" style="width: 70%"/>
-</div>
-
-Редактирование сети - удерживание ПКМ
-
-<div align="center">
-    <img src="https://github.com/user-attachments/assets/595f9ebf-2a00-41f8-92b3-211417c69e38" style="width: 70%"/>
-</div>
 
 # **Docker-образ консольной версии | Windows, Linux**
 
