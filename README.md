@@ -47,28 +47,19 @@
 | Создание узлов | Перемещение узлов |
 |----------|----------|
 | ![Скрин 1](https://github.com/user-attachments/assets/ae9eab98-cc42-4b32-a783-4c38fc90d12c) | ![Скрин 2](https://github.com/user-attachments/assets/ed076e12-dcae-43aa-9488-4dff684225de) |
-| Описание 1 | Описание 2 |
+| ЛКМ - Создать узел | ПКМ - Переместить узел |
 
-| Создание ребер | Перемещение узлов |
+| Удаление вершин | Создание ребер |
 |----------|----------|
-| ![Скрин 1](https://github.com/user-attachments/assets/ae9eab98-cc42-4b32-a783-4c38fc90d12c) | ![Скрин 2](https://github.com/user-attachments/assets/35bc1b07-bc83-4432-a614-d62e9597d414) |
+| ![Скрин 1](https://github.com/user-attachments/assets/240bad6c-35b7-4ca3-8838-7d6e11d45c92) | ![Скрин 2](https://github.com/user-attachments/assets/35bc1b07-bc83-4432-a614-d62e9597d414) |
 | Описание 1 | Описание 2 |
 
-| Удаление вершин | Сохранение |
+| Поиск решения | Сохранение |
 |----------|----------|
-| ![Скрин 1](https://github.com/user-attachments/assets/240bad6c-35b7-4ca3-8838-7d6e11d45c92) | ![Скрин 2](https://github.com/user-attachments/assets/c29a0815-e9de-4f88-8464-515733904df0) |
-| Описание 1 | Описание 2 |
-
-| Поиск решения | Открытие сохранений |
-|----------|----------|
-| ![Скрин 1](https://github.com/user-attachments/assets/64b4df4f-d25b-4163-bd4a-5690522b6e1f) | ![Скрин 2](https://github.com/user-attachments/assets/27ec4db0-edc1-4f5a-a6a0-683a72f50bd9) |
+| ![Скрин 1](https://github.com/user-attachments/assets/64b4df4f-d25b-4163-bd4a-5690522b6e1f) | ![Скрин 2](https://github.com/user-attachments/assets/c29a0815-e9de-4f88-8464-515733904df0) |
 | Описание 1 | Описание 2 |
 
 
-![Удаление-вершин](https://github.com/user-attachments/assets/240bad6c-35b7-4ca3-8838-7d6e11d45c92)
-![Сохранение](https://github.com/user-attachments/assets/c29a0815-e9de-4f88-8464-515733904df0)
-![Поиск-и-решение](https://github.com/user-attachments/assets/64b4df4f-d25b-4163-bd4a-5690522b6e1f)
-![Открытие-сохранений](https://github.com/user-attachments/assets/27ec4db0-edc1-4f5a-a6a0-683a72f50bd9)
 
 # Проблема и решение
 
