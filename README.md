@@ -37,9 +37,9 @@
 <details>
   <summary>📸 Скриншоты (нажмите, чтобы раскрыть)</summary>
 
-  ![Скрин 1](./screenshots/screen1.png)
-  ![Скрин 2](./screenshots/screen2.png)
-  ![Скрин 3](./screenshots/screen3.png)
+  ![Скрин 1](https://github.com/user-attachments/assets/ae9eab98-cc42-4b32-a783-4c38fc90d12c)
+  ![Скрин 2](https://github.com/user-attachments/assets/ed076e12-dcae-43aa-9488-4dff684225de)
+  ![Скрин 3](https://github.com/user-attachments/assets/a7dc936f-aca5-45bc-ab5f-ea65965bbcbf)
   
 
 </details>
