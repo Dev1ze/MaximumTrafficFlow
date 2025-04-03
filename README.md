@@ -46,7 +46,7 @@
 
 | Пример 1 | Пример 2 |
 |----------|----------|
-| ![Скрин 1](./screenshots/screen1.png) | ![Скрин 2](./screenshots/screen2.png) |
+| ![Скрин 1](https://github.com/user-attachments/assets/ae9eab98-cc42-4b32-a783-4c38fc90d12c) | ![Скрин 2](https://github.com/user-attachments/assets/ed076e12-dcae-43aa-9488-4dff684225de) |
 | Описание 1 | Описание 2 |
 
 
