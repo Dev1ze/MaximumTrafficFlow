@@ -35,6 +35,7 @@
 | LINUX    | 64-bit     | [Скачать](https://hub.docker.com/r/dev1ze/graph-minimum-cut-finder)
 
 
+## Как это работает
 | Создание узлов | Перемещение узлов |
 |----------|----------|
 | ![Скрин 1](https://github.com/user-attachments/assets/ae9eab98-cc42-4b32-a783-4c38fc90d12c) | ![Скрин 2](https://github.com/user-attachments/assets/ed076e12-dcae-43aa-9488-4dff684225de) |
