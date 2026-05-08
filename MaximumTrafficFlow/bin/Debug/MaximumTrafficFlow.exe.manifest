@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GraphMinCutLibrary.dll" size="13312">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="GraphMinCutLibrary.dll" size="14336">
       <assemblyIdentity name="GraphMinCutLibrary" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>XJWwp9Ckb+ndy2yC7blg3zK38ZJDW6NOdzBhCEgbgwM=</dsig:DigestValue>
+        <dsig:DigestValue>W/vO5oA35Q9fUYJxJ0KqY5mUf6ZO9SsJgcDPXzUGF8k=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -61,7 +61,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>MrmIwbXWAlCspXQ/L5zLUBeed6v+nn9/o7RxZgelMw4=</dsig:DigestValue>
+        <dsig:DigestValue>ed5N05EuVHyR5YnRIdj4Hdc6DKgiVNFZYf2vVu2Iako=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
